@@ -1,0 +1,18 @@
+schema: http://localhost:8000/___graphql
+documents:
+  - ./src/**/*.{ts,tsx}
+  - ./.cache/fragments/**/*.js
+generates:
+  ./src/types.generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      skipTypename: true
+      maybeValue: T | undefined
+      scalars:
+        Date: string
+        JSON: unknown
+hooks:
+  afterAllFileWrite:
+    - prettier --write
