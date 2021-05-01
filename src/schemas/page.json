@@ -63,7 +63,8 @@
           "images": [],
           "text": [],
           "embed": [],
-          "textured_image": []
+          "textured_image": [],
+          "page_intro": []
         },
         "choices": {
           "textured_image": {
@@ -79,6 +80,31 @@
                   "constraint": {},
                   "thumbnails": [],
                   "label": "Image"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "page_intro": {
+            "type": "Slice",
+            "fieldset": "Page Intro",
+            "description": "Introductory block with heading and navigation",
+            "icon": "art_track",
+            "display": "list",
+            "non-repeat": {
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Heading"
+                }
+              },
+              "navigation": {
+                "type": "Link",
+                "config": {
+                  "select": "document",
+                  "customtypes": ["navigation"],
+                  "label": "Navigation"
                 }
               }
             },
