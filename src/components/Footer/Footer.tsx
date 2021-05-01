@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useSiteSettings } from '../hooks/useSiteSettings'
-import { BoundedBox } from '../components/BoundedBox'
+import { useSiteSettings } from '../../hooks/useSiteSettings'
+import { BoundedBox } from '../BoundedBox'
 
-const PageBodyFooter = () => {
+export const Footer = () => {
   const siteSettings = useSiteSettings()
 
   return (
@@ -19,9 +19,3 @@ const PageBodyFooter = () => {
     </BoundedBox>
   )
 }
-
-export const mapDataToContext = () => ({
-  bg: 'black',
-})
-
-export default PageBodyFooter

@@ -7,6 +7,10 @@ body {
   background-color: #fff;
 }
 
+.sb-show-main.sb-main-padded {
+  padding: 0;
+}
+
 .sb-show-nopreview {
   background-color: #fff;
 }

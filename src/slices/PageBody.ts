@@ -10,15 +10,11 @@ import { graphql } from 'gatsby'
 import { reshapeSlicesMap } from '../lib/mapSlicesToComponents'
 
 // 1. Import your slice
-import * as PageBodyFooter from './PageBodyFooter'
-import * as PageBodyHeader from './PageBodyHeader'
 import * as PageBodyText from './PageBodyText'
 import * as PageBodyImages from './PageBodyImages'
 
 // 2. Add your slice
 const slices = {
-  PageBodyFooter,
-  PageBodyHeader,
   PageBodyText,
   PageBodyImages,
 }
@@ -30,8 +26,6 @@ export const fragment = graphql`
     ...PageBodyText
 
     # The following slices do not have fragments:
-    #...PageBodyFooter
-    #...PageBodyHeader
   }
 `
 

@@ -7,8 +7,11 @@
  * @see https://github.com/jgthms/minireset.css/
  */
 
-@import '~minireset.css';
 @import '~@reach/skip-nav/styles.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html {
   overflow-x: hidden;
