@@ -62,55 +62,27 @@
         "labels": {
           "images": [],
           "text": [],
-          "embed": []
+          "embed": [],
+          "textured_image": []
         },
         "choices": {
-          "text": {
+          "textured_image": {
             "type": "Slice",
-            "fieldset": "Text",
-            "description": "Rich text with headings and links",
-            "icon": "text_fields",
+            "fieldset": "Textured Image",
+            "description": "Short, full-width image",
+            "icon": "linear_scale",
             "display": "list",
             "non-repeat": {
-              "text": {
-                "type": "StructuredText",
+              "image": {
+                "type": "Image",
                 "config": {
-                  "multi": "paragraph, heading1, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
-                  "allowTargetBlank": true,
-                  "label": "Text",
-                  "placeholder": "Text with formatting and rich content"
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "Image"
                 }
               }
             },
             "repeat": {}
-          },
-          "images": {
-            "type": "Slice",
-            "fieldset": "Images",
-            "description": "One or more images with optional captions",
-            "icon": "burst_mode",
-            "display": "grid",
-            "non-repeat": {},
-            "repeat": {
-              "image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {
-                    "width": 2000
-                  },
-                  "thumbnails": [],
-                  "label": "Image"
-                }
-              },
-              "caption": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "paragraph",
-                  "label": "Caption",
-                  "placeholder": "Optional - Caption below image"
-                }
-              }
-            }
           }
         }
       }
