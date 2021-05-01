@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React from 'react'
 import type { PolymorphicPropsWithoutRef } from 'react-polymorphic-types'
 
@@ -5,16 +6,13 @@ const defaultElement = 'div'
 
 const variants = {
   base: {
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingTop: 48,
-    paddingBottom: 48,
+    paddingX: 'px-8',
   },
 } as const
 
 interface OwnProps extends React.ComponentProps<'div'> {
   children?: React.ReactNode
-  innerMaxWidth?: React.CSSProperties['maxWidth']
+  innerMaxWidthClassName?: string
   variant?: keyof typeof variants
 }
 
@@ -28,25 +26,20 @@ export const BoundedBox = <
   as,
   children,
   variant = 'base',
-  innerMaxWidth,
-  style,
+  innerMaxWidthClassName = 'max-w-content',
+  className,
   ...props
 }: BoundedBoxProps<T>) => {
   const Element: React.ElementType = as || defaultElement
   const variantStyles = variants[variant]
 
   return (
-    <Element style={{ ...variantStyles, ...style }} {...props}>
+    <Element className={clsx(className, variantStyles.paddingX)} {...props}>
       <div
-        style={{
-          maxWidth: innerMaxWidth,
-          width: '100%',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
+        className={clsx(
+          'w-full mx-auto h-full flex flex-col',
+          innerMaxWidthClassName,
+        )}
       >
         {children}
       </div>

@@ -9,11 +9,12 @@ const SCREENS = {
   sm: '30rem',
   md: '48rem',
   lg: '64rem',
-  xl: '120rem',
+  xl: '90rem',
 }
 
 module.exports = {
   purge: ['./src/**/*.{ts,tsx}'],
+  mode: 'jit',
   darkMode: false,
   theme: {
     screens: SCREENS,
@@ -54,7 +55,11 @@ module.exports = {
       },
     },
 
-    extend: {},
+    extend: {
+      maxWidth: {
+        content: '56rem',
+      },
+    },
   },
   variants: {},
   plugins: [tailwindCapsize, tailwindAspectRatio, tailwindForms],
