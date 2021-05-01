@@ -6,11 +6,7 @@ import MapSlicesToComponents from '@walltowall/react-map-slices-to-components'
 
 import { NotFoundPageQuery } from '../types.generated'
 import { slicesMap } from '../slices/PageBody'
-import {
-  mapDataToPropsEnhancer,
-  PageTemplate,
-  slicesMiddleware,
-} from '../templates/page'
+import { mapDataToPropsEnhancer, PageTemplate } from '../templates/page'
 import { useSiteSettings } from '../hooks/useSiteSettings'
 
 import { Layout } from '../components/Layout'
@@ -61,7 +57,6 @@ export const NotFoundPage = ({
         list={page?.data?.body}
         map={slicesMap}
         meta={meta}
-        listMiddleware={slicesMiddleware}
         mapDataToPropsEnhancer={mapDataToPropsEnhancer}
       />
     </Layout>

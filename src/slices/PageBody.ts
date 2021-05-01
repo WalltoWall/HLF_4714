@@ -10,21 +10,17 @@ import { graphql } from 'gatsby'
 import { reshapeSlicesMap } from '../lib/mapSlicesToComponents'
 
 // 1. Import your slice
-import * as PageBodyText from './PageBodyText'
-import * as PageBodyImages from './PageBodyImages'
+import * as PageBodyTexturedImage from './PageBodyTexturedImage/PageBodyTexturedImage'
 
 // 2. Add your slice
 const slices = {
-  PageBodyText,
-  PageBodyImages,
+  PageBodyTexturedImage,
 }
 
 // 3. Add your slice fragment
 export const fragment = graphql`
   fragment SlicesPageBody on PrismicPageBodySlicesType {
-    ...PageBodyImages
-    ...PageBodyText
-
+    ...PageBodyTexturedImage
     # The following slices do not have fragments:
   }
 `

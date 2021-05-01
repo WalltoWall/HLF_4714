@@ -7,49 +7,26 @@
         "label": "Title"
       }
     },
-    "main": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
+    "nav_items": {
+      "type": "Group",
       "config": {
-        "choices": {
-          "nav_item": {
-            "type": "Slice",
-            "fieldset": "Nav Item",
-            "description": "Nav Item with Sub Navigation",
-            "icon": "insert_link",
-            "display": "list",
-            "non-repeat": {
-              "name": {
-                "type": "Text",
-                "config": {
-                  "label": "Name"
-                }
-              },
-              "link": {
-                "type": "Link",
-                "config": {
-                  "allowTargetBlank": true,
-                  "label": "Link"
-                }
-              }
-            },
-            "repeat": {
-              "name": {
-                "type": "Text",
-                "config": {
-                  "label": "Name"
-                }
-              },
-              "link": {
-                "type": "Link",
-                "config": {
-                  "allowTargetBlank": true,
-                  "label": "Link"
-                }
-              }
+        "fields": {
+          "label": {
+            "type": "StructuredText",
+            "config": {
+              "single": "heading6",
+              "label": "Label"
+            }
+          },
+          "link": {
+            "type": "Link",
+            "config": {
+              "allowTargetBlank": true,
+              "label": "Link"
             }
           }
-        }
+        },
+        "label": "Nav Items"
       }
     }
   }

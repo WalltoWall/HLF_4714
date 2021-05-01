@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import { buildImgixFluid } from 'gatsby-plugin-imgix'
+
+import * as Storybook from '../../components/Storybook'
+
+import PageBodyTexturedImage from './PageBodyTexturedImage.tsx'
+
+export const image = buildImgixFluid({
+  url:
+    'https://images.prismic.io/hawaii-leadership-forum/2b459211-1fc6-4bab-be2a-4112456d8213_plant-1.jpg',
+  sourceWidth: 2500,
+  sourceHeight: 156,
+})
+
+<Meta title="Pages/Textured Image" component={PageBodyTexturedImage} />
+
+#### Page
+
+# Textured Image
+
+Full-width image with a short height. Used throughout the site to break-up
+content sections and to provide homage to native fauna.
+
+#### Slice fields
+
+<Storybook.SliceFieldsTable
+  customTypeId="page"
+  sliceZoneId="body"
+  sliceId="textured_image"
+  fieldset="non-repeat"
+/>
+
+### Example
+
+<Canvas>
+  <Story name="Example">
+    <PageBodyTexturedImage imageFluid={image} />
+  </Story>
+</Canvas>
