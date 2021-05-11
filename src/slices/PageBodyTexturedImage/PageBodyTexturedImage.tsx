@@ -16,7 +16,7 @@ const PageBodyTexturedImage = ({
   if (!imageFluid) return
 
   return (
-    <section className="textured-image">
+    <section data-textured-image>
       <GatsbyImage
         className="h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px]"
         fluid={imageFluid}

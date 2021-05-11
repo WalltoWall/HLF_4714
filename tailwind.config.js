@@ -27,10 +27,17 @@ module.exports = {
     },
 
     fontFamily: {
-      sans: 'system-ui',
+      sans: '"proxima-nova", system-ui',
+      serif: '"PT Serif", serif',
     },
     fontSize: {
+      11: 11,
+      12: 12,
+      13: 13,
       16: 16,
+      24: 24,
+      32: 32,
+      40: 40,
     },
     lineHeight: {
       1: 1,
@@ -39,6 +46,7 @@ module.exports = {
       '1_3': 1.3,
       '1_35': 1.35,
       '1_4': 1.4,
+      '1_45': 1.45,
     },
     // Font metrics for @asyarb/tailwindcss-capsize to enable Capsize classnames.
     // @see https://github.com/asyarb/tailwind-capsize
@@ -46,9 +54,16 @@ module.exports = {
     capsize: {
       fontFamilies: {
         sans: {
-          capHeight: 710,
-          ascent: 940,
-          descent: -234,
+          capHeight: 667,
+          ascent: 917,
+          descent: -285,
+          lineGap: 0,
+          unitsPerEm: 1000,
+        },
+        serif: {
+          capHeight: 700,
+          ascent: 1039,
+          descent: -286,
           lineGap: 0,
           unitsPerEm: 1000,
         },
@@ -58,6 +73,9 @@ module.exports = {
     extend: {
       maxWidth: {
         content: '56rem',
+      },
+      letterSpacing: {
+        caps: '.14em',
       },
     },
   },

@@ -8,6 +8,7 @@
  */
 
 @import '~@reach/skip-nav/styles.css';
+@import '~@fontsource/pt-serif/400.css';
 
 @tailwind base;
 @tailwind components;
@@ -22,7 +23,6 @@ html {
 
 body {
   background-color: white;
-  font-family: system-ui;
 }
 
 a {

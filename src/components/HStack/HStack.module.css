@@ -1,0 +1,20 @@
+.hStack {
+  --column-gap: 0px;
+  --row-gap: 0px;
+
+  margin: calc(var(--row-gap) / -2) calc(var(--column-gap) / -2);
+
+  > * {
+    margin: calc(var(--row-gap) / 2) calc(var(--column-gap) / 2);
+  }
+
+  @screen md {
+    margin: calc(var(--md-row-gap, var(--row-gap)) / -2)
+      calc(var(--md-column-gap, var(--column-gap)) / -2);
+
+    > * {
+      margin: calc(var(--md-row-gap, var(--row-gap)) / 2)
+        calc(var(--md-column-gap, var(--column-gap)) / 2);
+    }
+  }
+}
