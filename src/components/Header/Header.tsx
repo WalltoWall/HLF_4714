@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import { useSiteSettings } from '../../hooks/useSiteSettings'
 import { BoundedBox } from '../BoundedBox'
 import { Link } from '../Link'
 
