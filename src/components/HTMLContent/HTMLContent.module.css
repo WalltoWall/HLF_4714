@@ -4,17 +4,36 @@
  */
 .centeredText {
   h4 {
-    @apply uppercase 
-    sans-11-1_25 lg:sans-12-1_25 
+    @apply sans-11-1_25 lg:sans-12-1_25 
     my-7 last:mb-0 first:mt-0
-    tracking-caps 
-    font-bold 
+    uppercase tracking-caps font-bold 
     text-gray-17;
   }
 
   p {
     @apply sans-16-1_55 md:sans-20-1_55 lg:sans-24-1_55
-    mb-4 last:mb-0 
+    my-7 last:mb-0 first:mt-0
     text-gray-38;
+  }
+}
+
+.twoColumnText {
+  h2 {
+    @apply serif-24-1_45 md:serif-32-1_35 lg:serif-40-1_25
+    my-7 last:mb-0 first:mt-0
+    text-gray-25;
+  }
+
+  h4 {
+    @apply sans-11-1_25 lg:sans-12-1_25 
+    my-7 last:mb-0 first:mt-0
+    tracking-caps uppercase font-bold 
+    text-gray-17;
+  }
+
+  p {
+    @apply sans-16-1_6
+    my-7 last:mb-0 first:mt-0
+    text-gray-25;
   }
 }
