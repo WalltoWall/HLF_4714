@@ -1,0 +1,13 @@
+@layer utilities {
+  .serif-heading {
+    @apply serif-24-1_45 md:serif-32-1_35 lg:serif-40-1_25;
+  }
+
+  .sans-caps {
+    @apply uppercase sans-11-1_25 lg:sans-12-1_25 tracking-caps font-bold;
+  }
+
+  .body-text {
+    @apply sans-16-1_55;
+  }
+}

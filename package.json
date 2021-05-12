@@ -74,6 +74,7 @@
     "gatsby-source-prismic": "^3.3.6",
     "husky": "^6.0.0",
     "postcss": "^8.2.15",
+    "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.5",
     "prettier": "^2.3.0",
     "storybook-css-modules-preset": "^1.1.1",

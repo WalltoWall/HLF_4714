@@ -8,7 +8,7 @@ import { PageTemplateEnhancerProps } from '../../templates/page'
 import { BoundedBox } from '../../components/BoundedBox'
 import { HStack } from '../../components/HStack'
 import heroBgUrl from '../../assets/hero-bg.jpg'
-import * as typo from '../../lib/typography'
+import * as typo from '../../typography'
 import { ChevronRight } from '../../components/icons/ChevronRight'
 import { Link } from '../../components/Link'
 
@@ -21,7 +21,7 @@ const NavItem = ({ children, href }: NavItemProps) => {
   return (
     <li>
       <Link className="flex items-center space-x-2 group" href={href}>
-        <div className={typo.capsText}>{children}</div>
+        <div className={typo.sansCaps}>{children}</div>
         <ChevronRight
           className={clsx(
             'w-[8px] transform transition ease-out',
