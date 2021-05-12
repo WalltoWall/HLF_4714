@@ -23,12 +23,14 @@ const PageBodyCenteredText = ({
       className={clsx('relative bg-white', 'py-10 lg:py-20')}
     >
       <div className="text-center space-y-7">
-        {capsHeading && <h4 className={typo.capsText}>{capsHeading}</h4>}
+        {capsHeading && (
+          <h4 className={clsx(typo.capsText, 'text-gray-17')}>{capsHeading}</h4>
+        )}
         {textHTML && (
           <HTMLContent
             html={textHTML}
             variant="centeredText"
-            className="max-w-2xl mx-auto"
+            className="max-w-2xl mx-auto text-gray-38"
           />
         )}
       </div>

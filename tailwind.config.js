@@ -24,6 +24,18 @@ module.exports = {
       white: '#fff',
       black: '#000',
       transparent: 'transparent',
+
+      gray: {
+        17: '#2b2b2b',
+        25: '#3f3f3f',
+        38: '#616161',
+        51: '#808285',
+      },
+
+      green: {
+        24: '#087050',
+        92: '#e8f5e2',
+      },
     },
 
     fontFamily: {
