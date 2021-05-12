@@ -1,0 +1,5 @@
+.centeredText {
+  p {
+    @apply sans-16-1_55 mb-4 md:sans-20-1_55 lg:sans-24-1_55 last:mb-0;
+  }
+}
