@@ -46,7 +46,7 @@ export const fragment = graphql`
     primary {
       image {
         alt
-        fluid(maxWidth: 1250) {
+        fluid(maxWidth: 1450) {
           ...GatsbyPrismicImageFluid
         }
       }

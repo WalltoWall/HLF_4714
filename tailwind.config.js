@@ -61,6 +61,7 @@ module.exports = {
       '1_4': 1.4,
       '1_45': 1.45,
       '1_55': 1.55,
+      '1_6': 1.6,
     },
     // Font metrics for @asyarb/tailwindcss-capsize to enable Capsize classnames.
     // @see https://github.com/asyarb/tailwind-capsize

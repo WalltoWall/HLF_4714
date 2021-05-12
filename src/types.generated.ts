@@ -323,7 +323,6 @@ export type PrismicPageBodyPageIntro = PrismicSliceType &
   }
 
 export type PrismicPageBodyCenteredTextPrimaryType = {
-  caps_heading?: Maybe<PrismicStructuredTextType>
   text?: Maybe<PrismicStructuredTextType>
 }
 
@@ -338,10 +337,27 @@ export type PrismicPageBodyCenteredText = PrismicSliceType &
     internal: Internal
   }
 
+export type PrismicPageBodyTwoColumnTextPrimaryType = {
+  right_text?: Maybe<PrismicStructuredTextType>
+  left_text?: Maybe<PrismicStructuredTextType>
+}
+
+export type PrismicPageBodyTwoColumnText = PrismicSliceType &
+  Node & {
+    slice_type: Scalars['String']
+    slice_label?: Maybe<Scalars['String']>
+    primary?: Maybe<PrismicPageBodyTwoColumnTextPrimaryType>
+    id: Scalars['ID']
+    parent?: Maybe<Node>
+    children: Array<Node>
+    internal: Internal
+  }
+
 export type PrismicPageBodySlicesType =
   | PrismicPageBodyTexturedImage
   | PrismicPageBodyPageIntro
   | PrismicPageBodyCenteredText
+  | PrismicPageBodyTwoColumnText
 
 export type PrismicPageDataType = {
   title?: Maybe<PrismicStructuredTextType>
@@ -1382,6 +1398,7 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoices = {
   textured_image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_Image>
   page_intro?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_Intro>
   centered_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text>
+  two_column_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_Text>
 }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_Image =
@@ -1463,20 +1480,7 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_Repeat =
   {
-    caps_heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_Heading>
     text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatText>
-  }
-
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_Heading =
-  {
-    type?: Maybe<Scalars['String']>
-    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfig>
-  }
-
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfig =
-  {
-    single?: Maybe<Scalars['String']>
-    label?: Maybe<Scalars['String']>
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatText =
@@ -1486,6 +1490,48 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextConfig =
+  {
+    multi?: Maybe<Scalars['String']>
+    allowTargetBlank?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_Text =
+  {
+    type?: Maybe<Scalars['String']>
+    fieldset?: Maybe<Scalars['String']>
+    description?: Maybe<Scalars['String']>
+    icon?: Maybe<Scalars['String']>
+    display?: Maybe<Scalars['String']>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_Repeat>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_Repeat =
+  {
+    right_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_Text>
+    left_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_Text>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_Text =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_TextConfig>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_TextConfig =
+  {
+    multi?: Maybe<Scalars['String']>
+    allowTargetBlank?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_Text =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_TextConfig>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_TextConfig =
   {
     multi?: Maybe<Scalars['String']>
     allowTargetBlank?: Maybe<Scalars['Boolean']>
@@ -1782,6 +1828,8 @@ export type Query = {
   allPrismicPageBodyPageIntro: PrismicPageBodyPageIntroConnection
   prismicPageBodyCenteredText?: Maybe<PrismicPageBodyCenteredText>
   allPrismicPageBodyCenteredText: PrismicPageBodyCenteredTextConnection
+  prismicPageBodyTwoColumnText?: Maybe<PrismicPageBodyTwoColumnText>
+  allPrismicPageBodyTwoColumnText: PrismicPageBodyTwoColumnTextConnection
   prismicPage?: Maybe<PrismicPage>
   allPrismicPage: PrismicPageConnection
   prismicNavigation?: Maybe<PrismicNavigation>
@@ -1994,6 +2042,23 @@ export type QueryPrismicPageBodyCenteredTextArgs = {
 export type QueryAllPrismicPageBodyCenteredTextArgs = {
   filter?: Maybe<PrismicPageBodyCenteredTextFilterInput>
   sort?: Maybe<PrismicPageBodyCenteredTextSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryPrismicPageBodyTwoColumnTextArgs = {
+  slice_type?: Maybe<StringQueryOperatorInput>
+  slice_label?: Maybe<StringQueryOperatorInput>
+  primary?: Maybe<PrismicPageBodyTwoColumnTextPrimaryTypeFilterInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type QueryAllPrismicPageBodyTwoColumnTextArgs = {
+  filter?: Maybe<PrismicPageBodyTwoColumnTextFilterInput>
+  sort?: Maybe<PrismicPageBodyTwoColumnTextSortInput>
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
 }
@@ -3142,6 +3207,7 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesFilterInput =
     textured_image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageFilterInput>
     page_intro?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroFilterInput>
     centered_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextFilterInput>
+    two_column_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextFilterInput>
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageFilterInput =
@@ -3223,20 +3289,7 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatFilterInput =
   {
-    caps_heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingFilterInput>
     text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextFilterInput>
-  }
-
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingFilterInput =
-  {
-    type?: Maybe<StringQueryOperatorInput>
-    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfigFilterInput>
-  }
-
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfigFilterInput =
-  {
-    single?: Maybe<StringQueryOperatorInput>
-    label?: Maybe<StringQueryOperatorInput>
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextFilterInput =
@@ -3246,6 +3299,48 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextConfigFilterInput =
+  {
+    multi?: Maybe<StringQueryOperatorInput>
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    fieldset?: Maybe<StringQueryOperatorInput>
+    description?: Maybe<StringQueryOperatorInput>
+    icon?: Maybe<StringQueryOperatorInput>
+    display?: Maybe<StringQueryOperatorInput>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatFilterInput =
+  {
+    right_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_TextFilterInput>
+    left_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_TextFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_TextFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_TextConfigFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatRight_TextConfigFilterInput =
+  {
+    multi?: Maybe<StringQueryOperatorInput>
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_TextFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_TextConfigFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTwo_Column_TextNon_RepeatLeft_TextConfigFilterInput =
   {
     multi?: Maybe<StringQueryOperatorInput>
     allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
@@ -4284,7 +4379,6 @@ export type PrismicPageBodyPageIntroSortInput = {
 }
 
 export type PrismicPageBodyCenteredTextPrimaryTypeFilterInput = {
-  caps_heading?: Maybe<PrismicStructuredTextTypeFilterInput>
   text?: Maybe<PrismicStructuredTextTypeFilterInput>
 }
 
@@ -4331,9 +4425,6 @@ export type PrismicPageBodyCenteredTextEdge = {
 export enum PrismicPageBodyCenteredTextFieldsEnum {
   SliceType = 'slice_type',
   SliceLabel = 'slice_label',
-  PrimaryCapsHeadingHtml = 'primary___caps_heading___html',
-  PrimaryCapsHeadingText = 'primary___caps_heading___text',
-  PrimaryCapsHeadingRaw = 'primary___caps_heading___raw',
   PrimaryTextHtml = 'primary___text___html',
   PrimaryTextText = 'primary___text___text',
   PrimaryTextRaw = 'primary___text___raw',
@@ -4446,6 +4537,172 @@ export type PrismicPageBodyCenteredTextFilterInput = {
 
 export type PrismicPageBodyCenteredTextSortInput = {
   fields?: Maybe<Array<Maybe<PrismicPageBodyCenteredTextFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type PrismicPageBodyTwoColumnTextPrimaryTypeFilterInput = {
+  right_text?: Maybe<PrismicStructuredTextTypeFilterInput>
+  left_text?: Maybe<PrismicStructuredTextTypeFilterInput>
+}
+
+export type PrismicPageBodyTwoColumnTextConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<PrismicPageBodyTwoColumnTextEdge>
+  nodes: Array<PrismicPageBodyTwoColumnText>
+  pageInfo: PageInfo
+  distinct: Array<Scalars['String']>
+  max?: Maybe<Scalars['Float']>
+  min?: Maybe<Scalars['Float']>
+  sum?: Maybe<Scalars['Float']>
+  group: Array<PrismicPageBodyTwoColumnTextGroupConnection>
+}
+
+export type PrismicPageBodyTwoColumnTextConnectionDistinctArgs = {
+  field: PrismicPageBodyTwoColumnTextFieldsEnum
+}
+
+export type PrismicPageBodyTwoColumnTextConnectionMaxArgs = {
+  field: PrismicPageBodyTwoColumnTextFieldsEnum
+}
+
+export type PrismicPageBodyTwoColumnTextConnectionMinArgs = {
+  field: PrismicPageBodyTwoColumnTextFieldsEnum
+}
+
+export type PrismicPageBodyTwoColumnTextConnectionSumArgs = {
+  field: PrismicPageBodyTwoColumnTextFieldsEnum
+}
+
+export type PrismicPageBodyTwoColumnTextConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  field: PrismicPageBodyTwoColumnTextFieldsEnum
+}
+
+export type PrismicPageBodyTwoColumnTextEdge = {
+  next?: Maybe<PrismicPageBodyTwoColumnText>
+  node: PrismicPageBodyTwoColumnText
+  previous?: Maybe<PrismicPageBodyTwoColumnText>
+}
+
+export enum PrismicPageBodyTwoColumnTextFieldsEnum {
+  SliceType = 'slice_type',
+  SliceLabel = 'slice_label',
+  PrimaryRightTextHtml = 'primary___right_text___html',
+  PrimaryRightTextText = 'primary___right_text___text',
+  PrimaryRightTextRaw = 'primary___right_text___raw',
+  PrimaryLeftTextHtml = 'primary___left_text___html',
+  PrimaryLeftTextText = 'primary___left_text___text',
+  PrimaryLeftTextRaw = 'primary___left_text___raw',
+  Id = 'id',
+  ParentId = 'parent___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentParentId = 'parent___parent___parent___id',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  Children = 'children',
+  ChildrenId = 'children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+}
+
+export type PrismicPageBodyTwoColumnTextGroupConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<PrismicPageBodyTwoColumnTextEdge>
+  nodes: Array<PrismicPageBodyTwoColumnText>
+  pageInfo: PageInfo
+  field: Scalars['String']
+  fieldValue?: Maybe<Scalars['String']>
+}
+
+export type PrismicPageBodyTwoColumnTextFilterInput = {
+  slice_type?: Maybe<StringQueryOperatorInput>
+  slice_label?: Maybe<StringQueryOperatorInput>
+  primary?: Maybe<PrismicPageBodyTwoColumnTextPrimaryTypeFilterInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type PrismicPageBodyTwoColumnTextSortInput = {
+  fields?: Maybe<Array<Maybe<PrismicPageBodyTwoColumnTextFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
@@ -5636,6 +5893,11 @@ export type NotFoundPageQuery = {
                     'id'
                   > &
                     SlicesPageBody_PrismicPageBodyCenteredText_Fragment)
+                | ({ __typename: 'PrismicPageBodyTwoColumnText' } & Pick<
+                    PrismicPageBodyTwoColumnText,
+                    'id'
+                  > &
+                    SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment)
               >
             >
           >
@@ -5651,15 +5913,20 @@ type SlicesPageBody_PrismicPageBodyTexturedImage_Fragment =
 type SlicesPageBody_PrismicPageBodyPageIntro_Fragment =
   PageBodyPageIntroFragment
 
+type SlicesPageBody_PrismicPageBodyCenteredText_Fragment =
+  PageBodyCenteredTextFragment
+
+type SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment =
+  PageBodyTwoColumnTextFragment
+
 export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTexturedImage_Fragment
   | SlicesPageBody_PrismicPageBodyPageIntro_Fragment
+  | SlicesPageBody_PrismicPageBodyCenteredText_Fragment
+  | SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment
 
 export type PageBodyCenteredTextFragment = {
-  primary?: Maybe<{
-    caps_heading?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
-    text?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
-  }>
+  primary?: Maybe<{ text?: Maybe<Pick<PrismicStructuredTextType, 'html'>> }>
 }
 
 export type PageBodyPageIntroFragment = {
@@ -5692,6 +5959,13 @@ export type PageBodyTexturedImageFragment = {
   }>
 }
 
+export type PageBodyTwoColumnTextFragment = {
+  primary?: Maybe<{
+    left_text?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+    right_text?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+  }>
+}
+
 export type PageTemplateQueryVariables = Exact<{
   uid: Scalars['String']
 }>
@@ -5720,6 +5994,11 @@ export type PageTemplateQuery = {
                     'id'
                   > &
                     SlicesPageBody_PrismicPageBodyCenteredText_Fragment)
+                | ({ __typename: 'PrismicPageBodyTwoColumnText' } & Pick<
+                    PrismicPageBodyTwoColumnText,
+                    'id'
+                  > &
+                    SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment)
               >
             >
           >
