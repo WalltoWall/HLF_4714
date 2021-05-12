@@ -20,6 +20,8 @@ import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 
 import './index.css'
+import '@reach/skip-nav/styles.css'
+import '@fontsource/pt-serif/400.css'
 
 export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
   element,

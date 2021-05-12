@@ -6,34 +6,25 @@ import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
 import { PageTemplateEnhancerProps } from '../../templates/page'
 import { BoundedBox } from '../../components/BoundedBox'
 import { PageBodyCenteredTextFragment } from '../../types.generated'
-import * as typo from '../../lib/typography'
 import { HTMLContent } from '../../components/HTMLContent'
 
 export type PageBodyCenteredTextProps = ReturnType<typeof mapDataToProps> &
   PageTemplateEnhancerProps
 
-const PageBodyCenteredText = ({
-  capsHeading,
-  textHTML,
-}: PageBodyCenteredTextProps) => {
+const PageBodyCenteredText = ({ textHTML }: PageBodyCenteredTextProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-centered-text
       className={clsx('relative bg-white', 'py-10 lg:py-20')}
     >
-      <div className="text-center space-y-7">
-        {capsHeading && (
-          <h4 className={clsx(typo.capsText, 'text-gray-17')}>{capsHeading}</h4>
-        )}
-        {textHTML && (
-          <HTMLContent
-            html={textHTML}
-            variant="centeredText"
-            className="max-w-2xl mx-auto text-gray-38"
-          />
-        )}
-      </div>
+      {textHTML && (
+        <HTMLContent
+          html={textHTML}
+          variant="centeredText"
+          className="max-w-2xl mx-auto text-center"
+        />
+      )}
     </BoundedBox>
   )
 }
@@ -44,7 +35,6 @@ export const mapDataToProps = ({
   PageBodyCenteredTextFragment,
   typeof mapDataToContext
 >) => ({
-  capsHeading: data.primary?.caps_heading?.text,
   textHTML: data.primary?.text?.html,
 })
 
@@ -55,9 +45,6 @@ export const mapDataToContext = () => ({
 export const fragment = graphql`
   fragment PageBodyCenteredText on PrismicPageBodyCenteredText {
     primary {
-      caps_heading {
-        text
-      }
       text {
         html
       }

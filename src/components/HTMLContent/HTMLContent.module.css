@@ -1,5 +1,20 @@
+/** 
+ * Normally we'd just extend the utilities in typography.css, but due to a bug
+ * in TW we are unable to do so. 
+ */
 .centeredText {
+  h4 {
+    @apply uppercase 
+    sans-11-1_25 lg:sans-12-1_25 
+    my-7 last:mb-0 first:mt-0
+    tracking-caps 
+    font-bold 
+    text-gray-17;
+  }
+
   p {
-    @apply sans-16-1_55 mb-4 md:sans-20-1_55 lg:sans-24-1_55 last:mb-0;
+    @apply sans-16-1_55 md:sans-20-1_55 lg:sans-24-1_55
+    mb-4 last:mb-0 
+    text-gray-38;
   }
 }
