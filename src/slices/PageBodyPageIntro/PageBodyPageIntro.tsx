@@ -102,7 +102,7 @@ export const mapDataToProps = ({
 })
 
 export const mapDataToContext = () => ({
-  bg: Symbol('Dynamic Color'),
+  bg: Symbol('Background image'),
 })
 
 export const fragment = graphql`

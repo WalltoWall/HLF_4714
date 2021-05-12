@@ -278,7 +278,6 @@ export type SitePage = Node & {
   context?: Maybe<SitePageContext>
   pluginCreator?: Maybe<SitePlugin>
   pluginCreatorId?: Maybe<Scalars['String']>
-  componentPath?: Maybe<Scalars['String']>
 }
 
 export type SitePageContext = {
@@ -323,9 +322,26 @@ export type PrismicPageBodyPageIntro = PrismicSliceType &
     internal: Internal
   }
 
+export type PrismicPageBodyCenteredTextPrimaryType = {
+  caps_heading?: Maybe<PrismicStructuredTextType>
+  text?: Maybe<PrismicStructuredTextType>
+}
+
+export type PrismicPageBodyCenteredText = PrismicSliceType &
+  Node & {
+    slice_type: Scalars['String']
+    slice_label?: Maybe<Scalars['String']>
+    primary?: Maybe<PrismicPageBodyCenteredTextPrimaryType>
+    id: Scalars['ID']
+    parent?: Maybe<Node>
+    children: Array<Node>
+    internal: Internal
+  }
+
 export type PrismicPageBodySlicesType =
   | PrismicPageBodyTexturedImage
   | PrismicPageBodyPageIntro
+  | PrismicPageBodyCenteredText
 
 export type PrismicPageDataType = {
   title?: Maybe<PrismicStructuredTextType>
@@ -1339,13 +1355,14 @@ export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_Permanent = {
   config?: Maybe<SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfig>
 }
 
-export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfig = {
-  placeholder_false?: Maybe<Scalars['String']>
-  placeholder_true?: Maybe<Scalars['String']>
-  default_value?: Maybe<Scalars['Boolean']>
-  label?: Maybe<Scalars['String']>
-  placeholder?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfig =
+  {
+    placeholder_false?: Maybe<Scalars['String']>
+    placeholder_true?: Maybe<Scalars['String']>
+    default_value?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+    placeholder?: Maybe<Scalars['String']>
+  }
 
 export type SitePluginPluginOptionsSchemasPageBody = {
   body?: Maybe<SitePluginPluginOptionsSchemasPageBodyBody>
@@ -1364,64 +1381,116 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfig = {
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoices = {
   textured_image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_Image>
   page_intro?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_Intro>
+  centered_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text>
 }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_Image = {
-  type?: Maybe<Scalars['String']>
-  fieldset?: Maybe<Scalars['String']>
-  description?: Maybe<Scalars['String']>
-  icon?: Maybe<Scalars['String']>
-  display?: Maybe<Scalars['String']>
-  non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_Repeat>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_Image =
+  {
+    type?: Maybe<Scalars['String']>
+    fieldset?: Maybe<Scalars['String']>
+    description?: Maybe<Scalars['String']>
+    icon?: Maybe<Scalars['String']>
+    display?: Maybe<Scalars['String']>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_Repeat>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_Repeat = {
-  image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImage>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_Repeat =
+  {
+    image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImage>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImage = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfig>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImage =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfig = {
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfig =
+  {
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_Intro = {
-  type?: Maybe<Scalars['String']>
-  fieldset?: Maybe<Scalars['String']>
-  description?: Maybe<Scalars['String']>
-  icon?: Maybe<Scalars['String']>
-  display?: Maybe<Scalars['String']>
-  non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_Repeat>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_Intro =
+  {
+    type?: Maybe<Scalars['String']>
+    fieldset?: Maybe<Scalars['String']>
+    description?: Maybe<Scalars['String']>
+    icon?: Maybe<Scalars['String']>
+    display?: Maybe<Scalars['String']>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_Repeat>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_Repeat = {
-  heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeading>
-  navigation?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigation>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_Repeat =
+  {
+    heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeading>
+    navigation?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigation>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeading = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfig>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeading =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfig = {
-  single?: Maybe<Scalars['String']>
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfig =
+  {
+    single?: Maybe<Scalars['String']>
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigation = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfig>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigation =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfig = {
-  select?: Maybe<Scalars['String']>
-  customtypes?: Maybe<Array<Maybe<Scalars['String']>>>
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfig =
+  {
+    select?: Maybe<Scalars['String']>
+    customtypes?: Maybe<Array<Maybe<Scalars['String']>>>
+    label?: Maybe<Scalars['String']>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_Text =
+  {
+    type?: Maybe<Scalars['String']>
+    fieldset?: Maybe<Scalars['String']>
+    description?: Maybe<Scalars['String']>
+    icon?: Maybe<Scalars['String']>
+    display?: Maybe<Scalars['String']>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_Repeat>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_Repeat =
+  {
+    caps_heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_Heading>
+    text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatText>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_Heading =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfig>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfig =
+  {
+    single?: Maybe<Scalars['String']>
+    label?: Maybe<Scalars['String']>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatText =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextConfig>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextConfig =
+  {
+    multi?: Maybe<Scalars['String']>
+    allowTargetBlank?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+  }
 
 export type SitePluginPluginOptionsSchemasNavigation = {
   Main?: Maybe<SitePluginPluginOptionsSchemasNavigationMain>
@@ -1452,30 +1521,35 @@ export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfig = {
   label?: Maybe<Scalars['String']>
 }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFields = {
-  label?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabel>
-  link?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLink>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFields =
+  {
+    label?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabel>
+    link?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLink>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabel = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfig>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabel =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfig = {
-  single?: Maybe<Scalars['String']>
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfig =
+  {
+    single?: Maybe<Scalars['String']>
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLink = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfig>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLink =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfig = {
-  allowTargetBlank?: Maybe<Scalars['Boolean']>
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfig =
+  {
+    allowTargetBlank?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+  }
 
 export type SitePluginPluginOptionsSchemasSettings = {
   Main?: Maybe<SitePluginPluginOptionsSchemasSettingsMain>
@@ -1577,41 +1651,48 @@ export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfig = {
   label?: Maybe<Scalars['String']>
 }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFields = {
-  from_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_Path>
-  to_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_Path>
-  is_permanent?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_Permanent>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFields =
+  {
+    from_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_Path>
+    to_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_Path>
+    is_permanent?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_Permanent>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_Path = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfig>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_Path =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfig = {
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfig =
+  {
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_Path = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfig>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_Path =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfig = {
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfig =
+  {
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_Permanent = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfig>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_Permanent =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfig = {
-  placeholder_false?: Maybe<Scalars['String']>
-  placeholder_true?: Maybe<Scalars['String']>
-  default_value?: Maybe<Scalars['Boolean']>
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfig =
+  {
+    placeholder_false?: Maybe<Scalars['String']>
+    placeholder_true?: Maybe<Scalars['String']>
+    default_value?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+  }
 
 export type SitePluginPluginOptionsSchemasSettingsDeveloper_Only = {
   preview_map?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_Map>
@@ -1622,33 +1703,39 @@ export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_Map = {
   config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfig>
 }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfig = {
-  fields?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFields>
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfig =
+  {
+    fields?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFields>
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFields = {
-  api_id?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_Id>
-  page?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPage>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFields =
+  {
+    api_id?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_Id>
+    page?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPage>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_Id = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfig>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_Id =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfig = {
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfig =
+  {
+    label?: Maybe<Scalars['String']>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPage = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfig>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPage =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfig>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfig = {
-  label?: Maybe<Scalars['String']>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfig =
+  {
+    label?: Maybe<Scalars['String']>
+  }
 
 export type SitePluginPackageJson = {
   name?: Maybe<Scalars['String']>
@@ -1693,6 +1780,8 @@ export type Query = {
   allPrismicPageBodyTexturedImage: PrismicPageBodyTexturedImageConnection
   prismicPageBodyPageIntro?: Maybe<PrismicPageBodyPageIntro>
   allPrismicPageBodyPageIntro: PrismicPageBodyPageIntroConnection
+  prismicPageBodyCenteredText?: Maybe<PrismicPageBodyCenteredText>
+  allPrismicPageBodyCenteredText: PrismicPageBodyCenteredTextConnection
   prismicPage?: Maybe<PrismicPage>
   allPrismicPage: PrismicPageConnection
   prismicNavigation?: Maybe<PrismicNavigation>
@@ -1849,7 +1938,6 @@ export type QuerySitePageArgs = {
   context?: Maybe<SitePageContextFilterInput>
   pluginCreator?: Maybe<SitePluginFilterInput>
   pluginCreatorId?: Maybe<StringQueryOperatorInput>
-  componentPath?: Maybe<StringQueryOperatorInput>
 }
 
 export type QueryAllSitePageArgs = {
@@ -1889,6 +1977,23 @@ export type QueryPrismicPageBodyPageIntroArgs = {
 export type QueryAllPrismicPageBodyPageIntroArgs = {
   filter?: Maybe<PrismicPageBodyPageIntroFilterInput>
   sort?: Maybe<PrismicPageBodyPageIntroSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryPrismicPageBodyCenteredTextArgs = {
+  slice_type?: Maybe<StringQueryOperatorInput>
+  slice_label?: Maybe<StringQueryOperatorInput>
+  primary?: Maybe<PrismicPageBodyCenteredTextPrimaryTypeFilterInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type QueryAllPrismicPageBodyCenteredTextArgs = {
+  filter?: Maybe<PrismicPageBodyCenteredTextFilterInput>
+  sort?: Maybe<PrismicPageBodyCenteredTextSortInput>
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
 }
@@ -2962,20 +3067,23 @@ export type SitePluginPluginOptionsSchemasPageMainMeta_TitleFilterInput = {
   config?: Maybe<SitePluginPluginOptionsSchemasPageMainMeta_TitleConfigFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasPageMainMeta_TitleConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-  placeholder?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageMainMeta_TitleConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+    placeholder?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageMainMeta_DescriptionFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageMainMeta_DescriptionConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageMainMeta_DescriptionFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageMainMeta_DescriptionConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageMainMeta_DescriptionConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-  placeholder?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageMainMeta_DescriptionConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+    placeholder?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasPageMainParentFilterInput = {
   type?: Maybe<StringQueryOperatorInput>
@@ -2994,23 +3102,26 @@ export type SitePluginPluginOptionsSchemasPageMainRedirect_ToFilterInput = {
   config?: Maybe<SitePluginPluginOptionsSchemasPageMainRedirect_ToConfigFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasPageMainRedirect_ToConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-  placeholder?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageMainRedirect_ToConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+    placeholder?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfigFilterInput = {
-  placeholder_false?: Maybe<StringQueryOperatorInput>
-  placeholder_true?: Maybe<StringQueryOperatorInput>
-  default_value?: Maybe<BooleanQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-  placeholder?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageMainRedirect_Is_PermanentConfigFilterInput =
+  {
+    placeholder_false?: Maybe<StringQueryOperatorInput>
+    placeholder_true?: Maybe<StringQueryOperatorInput>
+    default_value?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+    placeholder?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasPageBodyFilterInput = {
   body?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyFilterInput>
@@ -3026,67 +3137,120 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigFilterInput = {
   choices?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesFilterInput = {
-  textured_image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageFilterInput>
-  page_intro?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesFilterInput =
+  {
+    textured_image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageFilterInput>
+    page_intro?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroFilterInput>
+    centered_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  fieldset?: Maybe<StringQueryOperatorInput>
-  description?: Maybe<StringQueryOperatorInput>
-  icon?: Maybe<StringQueryOperatorInput>
-  display?: Maybe<StringQueryOperatorInput>
-  non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    fieldset?: Maybe<StringQueryOperatorInput>
+    description?: Maybe<StringQueryOperatorInput>
+    icon?: Maybe<StringQueryOperatorInput>
+    display?: Maybe<StringQueryOperatorInput>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatFilterInput = {
-  image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatFilterInput =
+  {
+    image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesTextured_ImageNon_RepeatImageConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  fieldset?: Maybe<StringQueryOperatorInput>
-  description?: Maybe<StringQueryOperatorInput>
-  icon?: Maybe<StringQueryOperatorInput>
-  display?: Maybe<StringQueryOperatorInput>
-  non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    fieldset?: Maybe<StringQueryOperatorInput>
+    description?: Maybe<StringQueryOperatorInput>
+    icon?: Maybe<StringQueryOperatorInput>
+    display?: Maybe<StringQueryOperatorInput>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatFilterInput = {
-  heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingFilterInput>
-  navigation?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatFilterInput =
+  {
+    heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingFilterInput>
+    navigation?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatHeadingConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfigFilterInput = {
-  select?: Maybe<StringQueryOperatorInput>
-  customtypes?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesPage_IntroNon_RepeatNavigationConfigFilterInput =
+  {
+    select?: Maybe<StringQueryOperatorInput>
+    customtypes?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    fieldset?: Maybe<StringQueryOperatorInput>
+    description?: Maybe<StringQueryOperatorInput>
+    icon?: Maybe<StringQueryOperatorInput>
+    display?: Maybe<StringQueryOperatorInput>
+    non_repeat?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatFilterInput =
+  {
+    caps_heading?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingFilterInput>
+    text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfigFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatCaps_HeadingConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextConfigFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesCentered_TextNon_RepeatTextConfigFilterInput =
+  {
+    multi?: Maybe<StringQueryOperatorInput>
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasNavigationFilterInput = {
   Main?: Maybe<SitePluginPluginOptionsSchemasNavigationMainFilterInput>
@@ -3102,45 +3266,52 @@ export type SitePluginPluginOptionsSchemasNavigationMainTitleFilterInput = {
   config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainTitleConfigFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasNavigationMainTitleConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainTitleConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsFilterInput = {
   type?: Maybe<StringQueryOperatorInput>
   config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFilterInput = {
-  fields?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsFilterInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFilterInput =
+  {
+    fields?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsFilterInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsFilterInput = {
-  label?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelFilterInput>
-  link?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkFilterInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsFilterInput =
+  {
+    label?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelFilterInput>
+    link?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLabelConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfigFilterInput = {
-  allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsConfigFieldsLinkConfigFilterInput =
+  {
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasSettingsFilterInput = {
   Main?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFilterInput>
@@ -3173,147 +3344,174 @@ export type SitePluginPluginOptionsSchemasSettingsMainSite_NameFilterInput = {
   config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_NameConfigFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasSettingsMainSite_NameConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainSite_NameConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasSettingsRedirectsFilterInput = {
   redirects?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFilterInput = {
-  fields?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFilterInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFilterInput =
+  {
+    fields?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFilterInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFilterInput = {
-  from_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathFilterInput>
-  to_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathFilterInput>
-  is_permanent?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFilterInput =
+  {
+    from_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathFilterInput>
+    to_path?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathFilterInput>
+    is_permanent?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsFrom_PathConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsTo_PathConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfigFilterInput = {
-  placeholder_false?: Maybe<StringQueryOperatorInput>
-  placeholder_true?: Maybe<StringQueryOperatorInput>
-  default_value?: Maybe<BooleanQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsRedirectsRedirectsConfigFieldsIs_PermanentConfigFilterInput =
+  {
+    placeholder_false?: Maybe<StringQueryOperatorInput>
+    placeholder_true?: Maybe<StringQueryOperatorInput>
+    default_value?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyFilterInput = {
   preview_map?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFilterInput = {
-  fields?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsFilterInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFilterInput =
+  {
+    fields?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsFilterInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsFilterInput = {
-  api_id?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdFilterInput>
-  page?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsFilterInput =
+  {
+    api_id?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdFilterInput>
+    page?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsApi_IdConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageFilterInput = {
-  type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfigFilterInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfigFilterInput>
+  }
 
-export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfigFilterInput = {
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasSettingsDeveloper_OnlyPreview_MapConfigFieldsPageConfigFilterInput =
+  {
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
 export type SitePluginPackageJsonFilterInput = {
   name?: Maybe<StringQueryOperatorInput>
@@ -3577,7 +3775,6 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
   PluginCreatorId = 'pluginCreatorId',
-  ComponentPath = 'componentPath',
 }
 
 export type SitePageGroupConnection = {
@@ -3603,7 +3800,6 @@ export type SitePageFilterInput = {
   context?: Maybe<SitePageContextFilterInput>
   pluginCreator?: Maybe<SitePluginFilterInput>
   pluginCreatorId?: Maybe<StringQueryOperatorInput>
-  componentPath?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageSortInput = {
@@ -4084,6 +4280,172 @@ export type PrismicPageBodyPageIntroFilterInput = {
 
 export type PrismicPageBodyPageIntroSortInput = {
   fields?: Maybe<Array<Maybe<PrismicPageBodyPageIntroFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type PrismicPageBodyCenteredTextPrimaryTypeFilterInput = {
+  caps_heading?: Maybe<PrismicStructuredTextTypeFilterInput>
+  text?: Maybe<PrismicStructuredTextTypeFilterInput>
+}
+
+export type PrismicPageBodyCenteredTextConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<PrismicPageBodyCenteredTextEdge>
+  nodes: Array<PrismicPageBodyCenteredText>
+  pageInfo: PageInfo
+  distinct: Array<Scalars['String']>
+  max?: Maybe<Scalars['Float']>
+  min?: Maybe<Scalars['Float']>
+  sum?: Maybe<Scalars['Float']>
+  group: Array<PrismicPageBodyCenteredTextGroupConnection>
+}
+
+export type PrismicPageBodyCenteredTextConnectionDistinctArgs = {
+  field: PrismicPageBodyCenteredTextFieldsEnum
+}
+
+export type PrismicPageBodyCenteredTextConnectionMaxArgs = {
+  field: PrismicPageBodyCenteredTextFieldsEnum
+}
+
+export type PrismicPageBodyCenteredTextConnectionMinArgs = {
+  field: PrismicPageBodyCenteredTextFieldsEnum
+}
+
+export type PrismicPageBodyCenteredTextConnectionSumArgs = {
+  field: PrismicPageBodyCenteredTextFieldsEnum
+}
+
+export type PrismicPageBodyCenteredTextConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  field: PrismicPageBodyCenteredTextFieldsEnum
+}
+
+export type PrismicPageBodyCenteredTextEdge = {
+  next?: Maybe<PrismicPageBodyCenteredText>
+  node: PrismicPageBodyCenteredText
+  previous?: Maybe<PrismicPageBodyCenteredText>
+}
+
+export enum PrismicPageBodyCenteredTextFieldsEnum {
+  SliceType = 'slice_type',
+  SliceLabel = 'slice_label',
+  PrimaryCapsHeadingHtml = 'primary___caps_heading___html',
+  PrimaryCapsHeadingText = 'primary___caps_heading___text',
+  PrimaryCapsHeadingRaw = 'primary___caps_heading___raw',
+  PrimaryTextHtml = 'primary___text___html',
+  PrimaryTextText = 'primary___text___text',
+  PrimaryTextRaw = 'primary___text___raw',
+  Id = 'id',
+  ParentId = 'parent___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentParentId = 'parent___parent___parent___id',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  Children = 'children',
+  ChildrenId = 'children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+}
+
+export type PrismicPageBodyCenteredTextGroupConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<PrismicPageBodyCenteredTextEdge>
+  nodes: Array<PrismicPageBodyCenteredText>
+  pageInfo: PageInfo
+  field: Scalars['String']
+  fieldValue?: Maybe<Scalars['String']>
+}
+
+export type PrismicPageBodyCenteredTextFilterInput = {
+  slice_type?: Maybe<StringQueryOperatorInput>
+  slice_label?: Maybe<StringQueryOperatorInput>
+  primary?: Maybe<PrismicPageBodyCenteredTextPrimaryTypeFilterInput>
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+}
+
+export type PrismicPageBodyCenteredTextSortInput = {
+  fields?: Maybe<Array<Maybe<PrismicPageBodyCenteredTextFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
@@ -5269,6 +5631,11 @@ export type NotFoundPageQuery = {
                     'id'
                   > &
                     SlicesPageBody_PrismicPageBodyPageIntro_Fragment)
+                | ({ __typename: 'PrismicPageBodyCenteredText' } & Pick<
+                    PrismicPageBodyCenteredText,
+                    'id'
+                  > &
+                    SlicesPageBody_PrismicPageBodyCenteredText_Fragment)
               >
             >
           >
@@ -5278,13 +5645,22 @@ export type NotFoundPageQuery = {
   >
 }
 
-type SlicesPageBody_PrismicPageBodyTexturedImage_Fragment = PageBodyTexturedImageFragment
+type SlicesPageBody_PrismicPageBodyTexturedImage_Fragment =
+  PageBodyTexturedImageFragment
 
-type SlicesPageBody_PrismicPageBodyPageIntro_Fragment = PageBodyPageIntroFragment
+type SlicesPageBody_PrismicPageBodyPageIntro_Fragment =
+  PageBodyPageIntroFragment
 
 export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTexturedImage_Fragment
   | SlicesPageBody_PrismicPageBodyPageIntro_Fragment
+
+export type PageBodyCenteredTextFragment = {
+  primary?: Maybe<{
+    caps_heading?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+    text?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+  }>
+}
 
 export type PageBodyPageIntroFragment = {
   primary?: Maybe<{
@@ -5339,6 +5715,11 @@ export type PageTemplateQuery = {
                     'id'
                   > &
                     SlicesPageBody_PrismicPageBodyPageIntro_Fragment)
+                | ({ __typename: 'PrismicPageBodyCenteredText' } & Pick<
+                    PrismicPageBodyCenteredText,
+                    'id'
+                  > &
+                    SlicesPageBody_PrismicPageBodyCenteredText_Fragment)
               >
             >
           >

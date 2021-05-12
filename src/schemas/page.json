@@ -64,7 +64,8 @@
           "text": [],
           "embed": [],
           "textured_image": [],
-          "page_intro": []
+          "page_intro": [],
+          "centered_text": []
         },
         "choices": {
           "textured_image": {
@@ -105,6 +106,31 @@
                   "select": "document",
                   "customtypes": ["navigation"],
                   "label": "Navigation"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "centered_text": {
+            "type": "Slice",
+            "fieldset": "Centered Text",
+            "description": "Large center-aligned text block",
+            "icon": "format_align_center",
+            "display": "list",
+            "non-repeat": {
+              "caps_heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading5",
+                  "label": "Caps Heading"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Text"
                 }
               }
             },
