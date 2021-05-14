@@ -8,15 +8,13 @@ import { BoundedBox } from '../../components/BoundedBox'
 import { PageBodyTwoColumnTextFragment } from '../../types.generated'
 import { HTMLContent } from '../../components/HTMLContent'
 
-export type PageBodyTwoColumnText = ReturnType<typeof mapDataToProps> &
+export type PageBodyTwoColumnTextProps = ReturnType<typeof mapDataToProps> &
   PageTemplateEnhancerProps
-
-console.count('hmradklja')
 
 const PageBodyTwoColumnText = ({
   leftHTML,
   rightHTML,
-}: PageBodyTwoColumnText) => {
+}: PageBodyTwoColumnTextProps) => {
   return (
     <BoundedBox
       as="section"

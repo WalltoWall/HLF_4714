@@ -37,3 +37,23 @@
     text-gray-25;
   }
 }
+
+.textWithImage {
+  h4 {
+    @apply sans-11-1_25 lg:sans-12-1_25 
+    my-7 last:mb-0 first:mt-0
+    tracking-caps uppercase font-bold 
+    text-gray-17
+    text-center md:text-left;
+  }
+
+  p {
+    @apply sans-16-1_6
+    my-7 last:mb-0 first:mt-0
+    text-gray-25;
+  }
+
+  a {
+    @apply text-green-24 hover:underline focus:outline-none focus:ring;
+  }
+}

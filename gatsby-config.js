@@ -29,18 +29,18 @@ module.exports = {
       },
     },
 
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: siteMetadata.title,
-        short_name: siteMetadata.titleShort,
-        start_url: '/',
-        background_color: '#000000',
-        theme_color: '#ffffff',
-        display: 'minimal-ui',
-        icon: path.resolve(__dirname, 'src/assets/manifest-icon.png'),
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-manifest',
+    //   options: {
+    //     name: siteMetadata.title,
+    //     short_name: siteMetadata.titleShort,
+    //     start_url: '/',
+    //     background_color: '#000000',
+    //     theme_color: '#ffffff',
+    //     display: 'minimal-ui',
+    //     icon: path.resolve(__dirname, 'src/assets/manifest-icon.png'),
+    //   },
+    // },
 
     {
       resolve: 'gatsby-source-prismic',
