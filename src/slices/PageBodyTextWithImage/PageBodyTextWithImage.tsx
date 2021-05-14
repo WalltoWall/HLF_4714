@@ -14,10 +14,7 @@ const Section = ({
   imageAlt,
   imageFluid,
   textHTML,
-  imageDimensions,
 }: NonNullable<PageBodyTextWithImageProps['sections']>[number]) => {
-  console.log(imageDimensions)
-
   return (
     <div
       className={clsx(
@@ -47,7 +44,6 @@ export type PageBodyTextWithImageProps = ReturnType<typeof mapDataToProps> &
 // TODO: Add link to logo.
 const PageBodyTextWithImage = ({
   heading,
-  nextSharesBg,
   sections = [],
   subheading,
 }: PageBodyTextWithImageProps) => {
@@ -85,8 +81,6 @@ export const mapDataToProps = ({
   PageBodyTextWithImageFragment,
   typeof mapDataToContext
 >) => {
-  console.log(data.items)
-
   return {
     subheading: data.primary?.subheading?.text,
     heading: data.primary?.heading?.text,
@@ -94,7 +88,6 @@ export const mapDataToProps = ({
       imageFluid: item?.image?.fluid,
       imageAlt: item?.image?.alt,
       textHTML: item?.text?.html,
-      imageDimensions: item?.image?.dimensions,
     })),
   }
 }
@@ -116,10 +109,6 @@ export const fragment = graphql`
     items {
       image {
         alt
-        dimensions {
-          width
-          height
-        }
         fluid(maxWidth: 800) {
           ...GatsbyPrismicImageFluid
         }
