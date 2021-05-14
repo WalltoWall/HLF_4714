@@ -67,7 +67,10 @@
           "page_intro": [],
           "centered_text": [],
           "two_column_text": [],
-          "text_with_image": []
+          "text_with_image": [],
+          "people_with_image": [],
+          "team": [],
+          "call_to_action": []
         },
         "choices": {
           "textured_image": {
@@ -197,6 +200,47 @@
                 }
               }
             }
+          },
+          "team": {
+            "type": "Slice",
+            "fieldset": "Team",
+            "description": "Directors and Staff Team w/ bios.",
+            "icon": "account_circle",
+            "display": "list",
+            "non-repeat": {},
+            "repeat": {}
+          },
+          "call_to_action": {
+            "type": "Slice",
+            "fieldset": "Call to Action",
+            "description": "Actionable text block",
+            "icon": "comment",
+            "display": "list",
+            "non-repeat": {
+              "subheading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Subheading"
+                }
+              },
+              "heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading1",
+                  "label": "Heading"
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph, heading5, hyperlink",
+                  "allowTargetBlank": true,
+                  "label": "Text"
+                }
+              }
+            },
+            "repeat": {}
           }
         }
       }
