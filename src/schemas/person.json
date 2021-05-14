@@ -1,0 +1,48 @@
+{
+  "Main": {
+    "name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Name"
+      }
+    },
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "uid"
+      }
+    },
+    "title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "paragraph",
+        "label": "Title"
+      }
+    },
+    "position_type": {
+      "type": "Select",
+      "config": {
+        "options": ["Director", "Staff Team"],
+        "default_value": "Director",
+        "label": "Position Type"
+      }
+    },
+    "bio": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, hyperlink",
+        "allowTargetBlank": true,
+        "label": "Bio"
+      }
+    },
+    "headshot": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Headshot"
+      }
+    }
+  }
+}

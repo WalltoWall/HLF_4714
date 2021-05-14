@@ -15,9 +15,11 @@
 import * as React from 'react'
 import { GatsbyBrowser } from 'gatsby'
 import { PreviewStoreProvider } from 'gatsby-source-prismic'
+import { SkipNavLink } from '@reach/skip-nav'
 
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import { focusRing } from './lib/utilStyles'
 
 import './index.css'
 import '@reach/skip-nav/styles.css'
@@ -28,6 +30,10 @@ export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
 }) => (
   <PreviewStoreProvider>
     <div className="flex flex-col min-h-screen max-w-[1240px] mx-auto border-l-8 border-r-8">
+      <SkipNavLink className={focusRing}>
+        <p>Skip to content</p>
+      </SkipNavLink>
+
       <Header />
       {element}
       <Footer />
