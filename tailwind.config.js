@@ -25,6 +25,18 @@ module.exports = {
       black: '#000',
       transparent: 'transparent',
 
+      yellow: {
+        59: '#f9ed32',
+      },
+
+      teal: {
+        45: '#3fa896',
+      },
+
+      blue: {
+        36: '#0090b8',
+      },
+
       gray: {
         17: '#2b2b2b',
         25: '#3f3f3f',
@@ -44,6 +56,7 @@ module.exports = {
       serif: '"PT Serif", serif',
     },
     fontSize: {
+      10: 10,
       11: 11,
       12: 12,
       13: 13,

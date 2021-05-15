@@ -535,6 +535,7 @@ export type PrismicNavigation = PrismicDocument &
     type: Scalars['String']
     prismicId: Scalars['ID']
     _previewable: Scalars['ID']
+    uid?: Maybe<Scalars['String']>
     id: Scalars['ID']
     parent?: Maybe<Node>
     children: Array<Node>
@@ -1816,6 +1817,7 @@ export type SitePluginPluginOptionsSchemasNavigation = {
 
 export type SitePluginPluginOptionsSchemasNavigationMain = {
   title?: Maybe<SitePluginPluginOptionsSchemasNavigationMainTitle>
+  uid?: Maybe<SitePluginPluginOptionsSchemasNavigationMainUid>
   nav_items?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_Items>
 }
 
@@ -1826,6 +1828,15 @@ export type SitePluginPluginOptionsSchemasNavigationMainTitle = {
 
 export type SitePluginPluginOptionsSchemasNavigationMainTitleConfig = {
   single?: Maybe<Scalars['String']>
+  label?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsSchemasNavigationMainUid = {
+  type?: Maybe<Scalars['String']>
+  config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainUidConfig>
+}
+
+export type SitePluginPluginOptionsSchemasNavigationMainUidConfig = {
   label?: Maybe<Scalars['String']>
 }
 
@@ -2510,6 +2521,7 @@ export type QueryPrismicNavigationArgs = {
   type?: Maybe<StringQueryOperatorInput>
   prismicId?: Maybe<IdQueryOperatorInput>
   _previewable?: Maybe<IdQueryOperatorInput>
+  uid?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -3955,6 +3967,7 @@ export type SitePluginPluginOptionsSchemasNavigationFilterInput = {
 
 export type SitePluginPluginOptionsSchemasNavigationMainFilterInput = {
   title?: Maybe<SitePluginPluginOptionsSchemasNavigationMainTitleFilterInput>
+  uid?: Maybe<SitePluginPluginOptionsSchemasNavigationMainUidFilterInput>
   nav_items?: Maybe<SitePluginPluginOptionsSchemasNavigationMainNav_ItemsFilterInput>
 }
 
@@ -3968,6 +3981,15 @@ export type SitePluginPluginOptionsSchemasNavigationMainTitleConfigFilterInput =
     single?: Maybe<StringQueryOperatorInput>
     label?: Maybe<StringQueryOperatorInput>
   }
+
+export type SitePluginPluginOptionsSchemasNavigationMainUidFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  config?: Maybe<SitePluginPluginOptionsSchemasNavigationMainUidConfigFilterInput>
+}
+
+export type SitePluginPluginOptionsSchemasNavigationMainUidConfigFilterInput = {
+  label?: Maybe<StringQueryOperatorInput>
+}
 
 export type SitePluginPluginOptionsSchemasNavigationMainNav_ItemsFilterInput = {
   type?: Maybe<StringQueryOperatorInput>
@@ -6274,6 +6296,7 @@ export enum PrismicNavigationFieldsEnum {
   Type = 'type',
   PrismicId = 'prismicId',
   Previewable = '_previewable',
+  Uid = 'uid',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -6385,6 +6408,7 @@ export type PrismicNavigationFilterInput = {
   type?: Maybe<StringQueryOperatorInput>
   prismicId?: Maybe<IdQueryOperatorInput>
   _previewable?: Maybe<IdQueryOperatorInput>
+  uid?: Maybe<StringQueryOperatorInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -7345,6 +7369,23 @@ export type AllPrismicPersonsQuery = {
   }
 }
 
+export type PrimaryNavigationQueryVariables = Exact<{ [key: string]: never }>
+
+export type PrimaryNavigationQuery = {
+  prismicNavigation?: Maybe<{
+    data?: Maybe<{
+      nav_items?: Maybe<
+        Array<
+          Maybe<{
+            label?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+            link?: Maybe<Pick<PrismicLinkType, 'url'>>
+          }>
+        >
+      >
+    }>
+  }>
+}
+
 export type UseSiteMetadataQueryVariables = Exact<{ [key: string]: never }>
 
 export type UseSiteMetadataQuery = {
@@ -7442,6 +7483,9 @@ type SlicesPageBody_PrismicPageBodyTextWithImage_Fragment =
 
 type SlicesPageBody_PrismicPageBodyTeam_Fragment = PageBodyTeamFragment
 
+type SlicesPageBody_PrismicPageBodyCallToAction_Fragment =
+  PageBodyCallToActionFragment
+
 export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTexturedImage_Fragment
   | SlicesPageBody_PrismicPageBodyPageIntro_Fragment
@@ -7449,6 +7493,7 @@ export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment
   | SlicesPageBody_PrismicPageBodyTextWithImage_Fragment
   | SlicesPageBody_PrismicPageBodyTeam_Fragment
+  | SlicesPageBody_PrismicPageBodyCallToAction_Fragment
 
 export type PageBodyCallToActionFragment = {
   primary?: Maybe<{
