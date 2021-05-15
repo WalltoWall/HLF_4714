@@ -16,6 +16,7 @@ import * as PageBodyCenteredText from './PageBodyCenteredText/PageBodyCenteredTe
 import * as PageBodyTwoColumnText from './PageBodyTwoColumnText/PageBodyTwoColumnText'
 import * as PageBodyTextWithImage from './PageBodyTextWithImage/PageBodyTextWithImage'
 import * as PageBodyTeam from './PageBodyTeam/PageBodyTeam'
+import * as PageBodyCallToAction from './PageBodyCallToAction/PageBodyCallToAction'
 
 // 2. Add your slice
 const slices = {
@@ -25,6 +26,7 @@ const slices = {
   PageBodyTwoColumnText,
   PageBodyTextWithImage,
   PageBodyTeam,
+  PageBodyCallToAction,
 }
 
 // 3. Add your slice fragment
@@ -36,6 +38,7 @@ export const fragment = graphql`
     ...PageBodyTwoColumnText
     ...PageBodyTextWithImage
     ...PageBodyTeam
+    ...PageBodyCallToAction
 
     # The following slices do not have fragments:
   }

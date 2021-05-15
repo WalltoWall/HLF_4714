@@ -19,12 +19,11 @@ const Section = ({
     <div
       className={clsx(
         'grid justify-items-center py-7 gap-y-7',
-        'md:py-9',
-        'md:grid-cols-2 md:gap-y-0 md:gap-x-12',
+        'md:grid-cols-6 md:gap-y-0 md:gap-x-6',
       )}
     >
       {imageFluid && (
-        <div className="max-w-[150px] md:max-w-[175px] w-full">
+        <div className="max-w-[150px] md:max-w-[175px] w-full md:col-span-2 md:justify-self-center">
           <GatsbyImage
             fluid={imageFluid}
             alt={imageAlt}
@@ -33,7 +32,13 @@ const Section = ({
         </div>
       )}
 
-      {textHTML && <HTMLContent html={textHTML} variant="textWithImage" />}
+      {textHTML && (
+        <HTMLContent
+          html={textHTML}
+          variant="textWithImage"
+          className="md:col-span-4 md:pl-20"
+        />
+      )}
     </div>
   )
 }
