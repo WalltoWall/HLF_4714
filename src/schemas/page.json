@@ -207,7 +207,29 @@
             "description": "Directors and Staff Team w/ bios.",
             "icon": "account_circle",
             "display": "list",
-            "non-repeat": {},
+            "non-repeat": {
+              "directors_subheading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Directors Subheading"
+                }
+              },
+              "directors_heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Directors Heading"
+                }
+              },
+              "staff_team_heading": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading2",
+                  "label": "Staff Team Heading"
+                }
+              }
+            },
             "repeat": {}
           },
           "call_to_action": {

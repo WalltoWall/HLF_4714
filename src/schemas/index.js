@@ -9,6 +9,6 @@
 module.exports = {
   page: require('./page.json'),
   navigation: require('./navigation.json'),
-  person: require('./page.json'),
+  person: require('./person.json'),
   settings: require('./settings.json'),
 }
