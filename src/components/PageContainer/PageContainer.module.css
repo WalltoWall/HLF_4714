@@ -2,7 +2,7 @@
   background-image: linear-gradient(
     to bottom,
     theme('colors.blue.36') -20%,
-    theme('colors.yellow.59') 120%
+    theme('colors.yellow.59') 130%
   );
 }
 
@@ -10,6 +10,6 @@
   background-image: linear-gradient(
     to bottom,
     theme('colors.yellow.59') -20%,
-    theme('colors.blue.36') 120%
+    theme('colors.blue.36') 130%
   );
 }
