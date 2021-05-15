@@ -19,6 +19,7 @@ import { SkipNavLink } from '@reach/skip-nav'
 
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import { PageContainer } from './components/PageContainer'
 import { focusRing } from './lib/utilStyles'
 
 import './index.css'
@@ -29,7 +30,7 @@ export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
   element,
 }) => (
   <PreviewStoreProvider>
-    <div className="flex flex-col min-h-screen max-w-[1240px] mx-auto border-l-8 border-r-8">
+    <PageContainer>
       <SkipNavLink className={focusRing}>
         <p>Skip to content</p>
       </SkipNavLink>
@@ -37,6 +38,6 @@ export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
       <Header />
       {element}
       <Footer />
-    </div>
+    </PageContainer>
   </PreviewStoreProvider>
 )

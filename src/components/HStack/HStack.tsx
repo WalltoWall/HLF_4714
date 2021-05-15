@@ -9,6 +9,8 @@ const defaultElement = 'div'
 interface OwnProps {
   columnGap?: string
   rowGap?: string
+  smColumnGap?: string
+  smRowGap?: string
   mdColumnGap?: string
   mdRowGap?: string
 }
@@ -22,6 +24,8 @@ export const HStack = <T extends React.ElementType = typeof defaultElement>({
   style,
   columnGap = '0px',
   rowGap = '0px',
+  smColumnGap,
+  smRowGap,
   mdColumnGap,
   mdRowGap,
   ...props
@@ -35,6 +39,8 @@ export const HStack = <T extends React.ElementType = typeof defaultElement>({
         ...style,
         '--column-gap': columnGap,
         '--row-gap': rowGap,
+        '--sm-column-gap': smColumnGap,
+        '--sm-row-gap': smRowGap,
         '--md-column-gap': mdColumnGap,
         '--md-row-gap': mdRowGap,
       }}
