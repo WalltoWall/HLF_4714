@@ -1,3 +1,5 @@
 export const serifHeading = 'serif-heading'
 export const sansCaps = 'sans-caps'
 export const body = 'body-text'
+export const personName = 'person-name'
+export const personTitle = 'person-title'

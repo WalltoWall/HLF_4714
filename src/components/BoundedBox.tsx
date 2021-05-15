@@ -6,7 +6,7 @@ const defaultElement = 'div'
 
 const variants = {
   base: {
-    paddingX: 'px-8',
+    paddingX: 'px-6 md:px-8',
   },
 } as const
 
@@ -17,11 +17,11 @@ interface OwnProps extends React.ComponentProps<'div'> {
 }
 
 export type BoundedBoxProps<
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithoutRef<OwnProps, T>
 
 export const BoundedBox = <
-  T extends React.ElementType = typeof defaultElement
+  T extends React.ElementType = typeof defaultElement,
 >({
   as,
   children,

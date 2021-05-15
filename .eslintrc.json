@@ -12,7 +12,7 @@
   ],
   "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y"],
   "rules": {
-    "prefer-const": "error",
+    "prefer-const": "off",
     "newline-before-return": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
 
