@@ -19,7 +19,7 @@ const PageBodyTwoColumnText = ({
     <BoundedBox
       as="section"
       data-page-centered-text
-      className={clsx('relative bg-white', 'py-10 lg:py-20')}
+      className={clsx('relative bg-green-92', 'py-10 lg:py-20')}
     >
       <div
         className={clsx(
@@ -58,7 +58,7 @@ export const mapDataToProps = ({
 })
 
 export const mapDataToContext = () => ({
-  bg: 'bg-white',
+  bg: 'bg-green-92',
 })
 
 export const fragment = graphql`
