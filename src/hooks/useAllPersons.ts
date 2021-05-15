@@ -45,8 +45,6 @@ export function useAllPersons() {
     }
   `)
 
-  console.log(queryData)
-
   // We're intentionally ignoring the useMemo dependency here since queryData
   // will never update in practice.
   return React.useMemo(

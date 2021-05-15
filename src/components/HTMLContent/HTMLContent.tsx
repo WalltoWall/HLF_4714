@@ -9,7 +9,7 @@ const defaultElement = 'div'
 interface OwnProps
   extends Omit<React.ComponentProps<'div'>, 'dangerouslySetInnerHTML'> {
   html: string
-  variant?: 'centeredText' | 'twoColumnText' | 'textWithImage'
+  variant?: 'centeredText' | 'twoColumnText' | 'textWithImage' | 'callToAction'
 }
 
 export type HTMLContentProps<

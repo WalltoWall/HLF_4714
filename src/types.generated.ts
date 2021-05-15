@@ -7440,12 +7440,23 @@ type SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment =
 type SlicesPageBody_PrismicPageBodyTextWithImage_Fragment =
   PageBodyTextWithImageFragment
 
+type SlicesPageBody_PrismicPageBodyTeam_Fragment = PageBodyTeamFragment
+
 export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTexturedImage_Fragment
   | SlicesPageBody_PrismicPageBodyPageIntro_Fragment
   | SlicesPageBody_PrismicPageBodyCenteredText_Fragment
   | SlicesPageBody_PrismicPageBodyTwoColumnText_Fragment
   | SlicesPageBody_PrismicPageBodyTextWithImage_Fragment
+  | SlicesPageBody_PrismicPageBodyTeam_Fragment
+
+export type PageBodyCallToActionFragment = {
+  primary?: Maybe<{
+    heading?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+    subheading?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+    text?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+  }>
+}
 
 export type PageBodyCenteredTextFragment = {
   primary?: Maybe<{ text?: Maybe<Pick<PrismicStructuredTextType, 'html'>> }>
