@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { graphql } from 'gatsby'
 import clsx from 'clsx'
 import GatsbyImage from 'gatsby-image'
 
@@ -13,28 +14,42 @@ import {
   serifHeading,
 } from '../../typography'
 import { HStack } from '../../components/HStack'
-import { graphql } from 'gatsby'
 import { PageBodyTeamFragment } from '../../types.generated'
+import { focusRing } from '../../lib/utilStyles'
+import { DirectorModal } from './DirectorModal'
 
-const Director = ({
-  imageFluid,
-  name,
-}: Pick<TPerson, 'imageFluid' | 'name'>) => {
+interface DirectorProps extends Pick<TPerson, 'imageFluid' | 'name'> {
+  openModal: () => void
+}
+
+const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
   return (
-    <li className="flex flex-col items-center space-y-4 w-[90px] md:w-28 lg:w-[130px]">
-      <div className="w-full h-[90px] md:h-28 lg:h-[130px] rounded-full bg-gray-87">
-        {imageFluid && (
-          <GatsbyImage
-            fluid={imageFluid}
-            alt={name}
-            imgStyle={{ objectFit: 'cover' }}
-          />
+    <li>
+      <button
+        onClick={openModal}
+        className={clsx(
+          'flex flex-col items-center space-y-4 w-[90px] md:w-28 lg:w-[130px]',
+          focusRing,
         )}
-      </div>
+      >
+        <span className="sr-only">Open {name}'s biography.</span>
 
-      {name && (
-        <p className={clsx(personName, 'text-center text-green-24')}>{name}</p>
-      )}
+        <div className="w-full h-[90px] md:h-28 lg:h-[130px] rounded-full bg-gray-87">
+          {imageFluid && (
+            <GatsbyImage
+              fluid={imageFluid}
+              alt={name}
+              imgStyle={{ objectFit: 'cover' }}
+            />
+          )}
+        </div>
+
+        {name && (
+          <p className={clsx(personName, 'text-center text-green-24')}>
+            {name}
+          </p>
+        )}
+      </button>
     </li>
   )
 }
@@ -46,33 +61,56 @@ interface DirectorsListProps {
 }
 
 const Directors = ({ directors, subheading, heading }: DirectorsListProps) => {
-  return (
-    <div className="space-y-6 md:space-y-10 lg:space-y-14">
-      <div className="space-y-6">
-        {subheading && (
-          <h4 className={clsx(sansCaps, 'text-gray-17 text-center')}>
-            {subheading}
-          </h4>
-        )}
-        {heading && (
-          <h2 className={clsx(serifHeading, 'text-gray-25 text-center')}>
-            {heading}
-          </h2>
-        )}
-      </div>
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const [activePerson, setActivePerson] = React.useState<TPerson | undefined>()
 
-      <HStack
-        as="ul"
-        rowGap="20px"
-        columnGap="20px"
-        mdRowGap="24px"
-        className="justify-center"
-      >
-        {directors.map((director, idx) => (
-          <Director key={idx} {...director} />
-        ))}
-      </HStack>
-    </div>
+  const openModal = (person: TPerson) => {
+    setIsModalOpen(true)
+    setActivePerson(person)
+  }
+  const closeModal = () => setIsModalOpen(false)
+
+  return (
+    <>
+      <DirectorModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        name={activePerson?.name}
+        bioHTML={activePerson?.bioHTML}
+        imageFluid={activePerson?.imageFluid}
+      />
+
+      <div className="space-y-6 md:space-y-10 lg:space-y-14">
+        <div className="space-y-6">
+          {subheading && (
+            <h4 className={clsx(sansCaps, 'text-gray-17 text-center')}>
+              {subheading}
+            </h4>
+          )}
+          {heading && (
+            <h2 className={clsx(serifHeading, 'text-gray-25 text-center')}>
+              {heading}
+            </h2>
+          )}
+        </div>
+
+        <HStack
+          as="ul"
+          rowGap="20px"
+          columnGap="20px"
+          mdRowGap="24px"
+          className="justify-center"
+        >
+          {directors.map((director, idx) => (
+            <Director
+              key={idx}
+              openModal={() => openModal(director)}
+              {...director}
+            />
+          ))}
+        </HStack>
+      </div>
+    </>
   )
 }
 
