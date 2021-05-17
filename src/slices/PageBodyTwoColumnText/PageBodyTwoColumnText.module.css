@@ -1,0 +1,17 @@
+.opaqueOval {
+  --gutter-size: calc(100vw - 1224px);
+  --offset-amnt: calc(var(--gutter-size) / -2);
+
+  left: var(--offset-amnt);
+  right: var(--offset-amnt);
+}
+
+.solidOval {
+  --gutter-size: calc(100vw - 1224px);
+  --offset-amnt: calc(var(--gutter-size) / -2);
+
+  left: var(--offset-amnt);
+  right: var(--offset-amnt);
+  top: 88px;
+  bottom: 0;
+}
