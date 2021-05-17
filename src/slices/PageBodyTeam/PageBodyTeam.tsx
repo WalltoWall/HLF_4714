@@ -34,12 +34,18 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
       >
         <span className="sr-only">Open {name}'s biography.</span>
 
-        <div className="w-full h-[90px] md:h-28 lg:h-[130px] rounded-full bg-gray-87">
+        <div
+          className={clsx(
+            'w-full h-[90px] md:h-28 lg:h-[130px] rounded-full bg-gray-87',
+            'overflow-hidden',
+          )}
+        >
           {imageFluid && (
             <GatsbyImage
               fluid={imageFluid}
               alt={name}
               imgStyle={{ objectFit: 'cover' }}
+              className="filter grayscale"
             />
           )}
         </div>

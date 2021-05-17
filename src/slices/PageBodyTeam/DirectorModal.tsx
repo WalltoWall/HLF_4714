@@ -47,7 +47,7 @@ export const DirectorModal = ({
           <div
             className={clsx(
               styles.avatar,
-              'float-right rounded-full bg-gray-87 ml-3 mb-3 md:ml-5',
+              'float-right rounded-full bg-gray-87 ml-3 mb-3 md:ml-5 overflow-hidden',
               'h-[100px] md:h-28 lg:h-[130px]',
               'w-[100px] md:w-28 lg:w-[130px]',
             )}
