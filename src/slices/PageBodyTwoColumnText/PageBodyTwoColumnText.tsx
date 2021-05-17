@@ -7,6 +7,9 @@ import { PageTemplateEnhancerProps } from '../../templates/page'
 import { BoundedBox } from '../../components/BoundedBox'
 import { PageBodyTwoColumnTextFragment } from '../../types.generated'
 import { HTMLContent } from '../../components/HTMLContent'
+import { Oval } from '../../components/Oval'
+
+import * as styles from './PageBodyTwoColumnText.module.css'
 
 export type PageBodyTwoColumnTextProps = ReturnType<typeof mapDataToProps> &
   PageTemplateEnhancerProps
@@ -19,11 +22,25 @@ const PageBodyTwoColumnText = ({
     <BoundedBox
       as="section"
       data-page-centered-text
-      className={clsx('relative bg-green-92', 'py-10 lg:py-20')}
+      className={clsx('relative', 'py-10 lg:py-20')}
     >
+      <Oval
+        className={clsx(
+          styles.opaqueOval,
+          'absolute inset-y-0 pointer-events-none text-green-92 z-[-1]',
+          'opacity-60',
+        )}
+      />
+      <Oval
+        className={clsx(
+          styles.solidOval,
+          'absolute pointer-events-none text-green-92 z-[-1]',
+        )}
+      />
+
       <div
         className={clsx(
-          'grid gap-y-8',
+          'isolate grid gap-y-8',
           'md:grid-flow-col-dense md:grid-cols-2 md:gap-x-16 md:gap-y-0',
           'lg:gap-x-36',
         )}
