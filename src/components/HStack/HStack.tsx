@@ -39,10 +39,10 @@ export const HStack = <T extends React.ElementType = typeof defaultElement>({
         ...style,
         '--column-gap': columnGap,
         '--row-gap': rowGap,
-        '--sm-column-gap': smColumnGap,
-        '--sm-row-gap': smRowGap,
-        '--md-column-gap': mdColumnGap,
-        '--md-row-gap': mdRowGap,
+        '--sm-column-gap': smColumnGap ?? columnGap,
+        '--sm-row-gap': smRowGap ?? rowGap,
+        '--md-column-gap': mdColumnGap ?? smColumnGap ?? columnGap,
+        '--md-row-gap': mdRowGap ?? smRowGap ?? rowGap,
       }}
       {...props}
     />

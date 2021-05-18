@@ -9,22 +9,18 @@
   }
 
   @screen sm {
-    margin: calc(var(--sm-row-gap, var(--row-gap)) / -2)
-      calc(var(--sm-column-gap, var(--column-gap)) / -2);
+    margin: calc(var(--sm-row-gap) / -2) calc(var(--sm-column-gap) / -2);
 
     > * {
-      margin: calc(var(--sm-row-gap, var(--row-gap)) / 2)
-        calc(var(--sm-column-gap, var(--column-gap)) / 2);
+      margin: calc(var(--sm-row-gap) / 2) calc(var(--sm-column-gap) / 2);
     }
   }
 
   @screen md {
-    margin: calc(var(--md-row-gap, var(--sm-row-gap, var(--row-gap))) / -2)
-      calc(var(--md-column-gap, var(--sm-column-gap, var(--column-gap))) / -2);
+    margin: calc(var(--md-row-gap) / -2) calc(var(--md-column-gap) / -2);
 
     > * {
-      margin: calc(var(--md-row-gap, var(--sm-row-gap, var(--row-gap))) / 2)
-        calc(var(--md-column-gap, var(--sm-column-gap, var(--column-gap))) / 2);
+      margin: calc(var(--md-row-gap) / 2) calc(var(--md-column-gap) / 2);
     }
   }
 }
