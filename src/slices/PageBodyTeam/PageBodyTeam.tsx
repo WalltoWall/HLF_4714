@@ -17,6 +17,7 @@ import { HStack } from '../../components/HStack'
 import { PageBodyTeamFragment } from '../../types.generated'
 import { focusRing } from '../../lib/utilStyles'
 import { DirectorModal } from './DirectorModal'
+import { Oval } from '../../components/Oval'
 
 interface DirectorProps extends Pick<TPerson, 'imageFluid' | 'name'> {
   openModal: () => void
@@ -166,6 +167,7 @@ const PageBodyTeam = ({
   staffTeamHeading,
   directorsHeading,
   directorsSubeading,
+  index,
 }: PageBodyTeamProps) => {
   const { directors, staffTeam } = useAllPersons()
 
@@ -173,9 +175,31 @@ const PageBodyTeam = ({
     <BoundedBox
       as="section"
       data-page-team
-      className={clsx('relative bg-green-92', 'py-10 lg:py-20')}
+      style={{ zIndex: index }}
+      className={clsx(
+        'relative',
+        'bg-white md:bg-green-92',
+        'pt-16 md:pt-10',
+        'pb-10 lg:py-20',
+      )}
     >
-      <div className="space-y-9 md:space-y-16">
+      <Oval
+        variant="opaque"
+        className={clsx(
+          'absolute pointer-events-none text-green-92 z-[-1]',
+          'md:hidden',
+          'opacity-60',
+        )}
+      />
+      <Oval
+        variant="solid"
+        className={clsx(
+          'md:hidden',
+          'absolute pointer-events-none text-green-92 z-[-1]',
+        )}
+      />
+
+      <div className="space-y-9 md:space-y-16 isolate">
         <Directors
           directors={directors}
           heading={directorsHeading}
@@ -190,11 +214,13 @@ const PageBodyTeam = ({
 
 export const mapDataToProps = ({
   data,
-}: MapDataToPropsArgs<PageBodyTeamFragment, typeof mapDataToContext>) => ({
-  directorsSubeading: data.primary?.directors_subheading?.text,
-  directorsHeading: data.primary?.directors_heading?.text,
-  staffTeamHeading: data.primary?.staff_team_heading?.text,
-})
+}: MapDataToPropsArgs<PageBodyTeamFragment, typeof mapDataToContext>) => {
+  return {
+    directorsSubeading: data.primary?.directors_subheading?.text,
+    directorsHeading: data.primary?.directors_heading?.text,
+    staffTeamHeading: data.primary?.staff_team_heading?.text,
+  }
+}
 
 export const mapDataToContext = () => ({
   bg: 'bg-green-92',
