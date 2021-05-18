@@ -24,7 +24,7 @@ const PageBodyTwoColumnText = ({
       style={{ zIndex: index }}
       className={clsx(
         'relative',
-        'pt-16 md:pt-32 container:pt-56',
+        'pt-24 md:pt-32 container:pt-56',
         'pb-10 lg:pb-20',
       )}
     >

@@ -162,7 +162,6 @@ const StaffTeam = ({ staffTeam, heading }: StaffTeamProps) => {
 export type PageBodyTeamProps = ReturnType<typeof mapDataToProps> &
   PageTemplateEnhancerProps
 
-// TODO: Modals & Heading fields
 const PageBodyTeam = ({
   staffTeamHeading,
   directorsHeading,
@@ -179,12 +178,12 @@ const PageBodyTeam = ({
       className={clsx(
         'relative',
         'bg-white md:bg-green-92',
-        'pt-16 md:pt-10',
+        'pt-24 md:pt-10',
         'pb-10 lg:py-20',
       )}
     >
       <Oval
-        variant="opaque"
+        variant="opaqueReverse"
         className={clsx(
           'absolute pointer-events-none text-green-92 z-[-1]',
           'md:hidden',
@@ -192,7 +191,7 @@ const PageBodyTeam = ({
         )}
       />
       <Oval
-        variant="solid"
+        variant="solidReverse"
         className={clsx(
           'md:hidden',
           'absolute pointer-events-none text-green-92 z-[-1]',

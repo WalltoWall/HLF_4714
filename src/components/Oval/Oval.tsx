@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import * as styles from './Oval.module.css'
 
 interface OvalProps extends React.ComponentProps<'svg'> {
-  variant: 'opaque' | 'solid'
+  variant: 'opaque' | 'solid' | 'opaqueReverse' | 'solidReverse'
 }
 
 export const Oval = ({ variant, className, ...props }: OvalProps) => {
