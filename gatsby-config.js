@@ -1,5 +1,3 @@
-const path = require('path')
-
 require('dotenv').config()
 
 const siteMetadata = {
@@ -10,12 +8,6 @@ const siteMetadata = {
 }
 
 module.exports = {
-  flags: {
-    FAST_DEV: false,
-    DEV_SSR: false,
-    PRESERVE_WEBPACK_CACHE: true,
-    PRESERVE_FILE_DOWNLOAD_CACHE: true,
-  },
   siteMetadata,
   plugins: [
     'gatsby-plugin-react-helmet-async',
