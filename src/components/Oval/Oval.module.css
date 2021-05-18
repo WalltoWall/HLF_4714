@@ -28,3 +28,34 @@
     right: var(--offset-amnt);
   }
 }
+
+.opaqueReverse {
+  right: 0;
+  left: -150px;
+  top: 0;
+  bottom: 0;
+
+  @screen container {
+    --gutter-size: calc(100vw - 1224px);
+    --offset-amnt: calc(var(--gutter-size) / -2);
+
+    right: var(--offset-amnt);
+    left: calc(var(--offset-amnt) - 1500px);
+  }
+}
+
+.solidReverse {
+  right: -150px;
+  left: 0;
+  top: 36px;
+  bottom: 0;
+
+  @screen container {
+    --gutter-size: calc(100vw - 1224px);
+    --offset-amnt: calc(var(--gutter-size) / -2);
+
+    top: 120px;
+    right: calc(var(--offset-amnt) - 350px);
+    left: var(--offset-amnt);
+  }
+}
