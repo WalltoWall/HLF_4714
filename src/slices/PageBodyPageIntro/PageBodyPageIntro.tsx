@@ -39,11 +39,13 @@ export type PageBodyPageIntroProps = ReturnType<typeof mapDataToProps> &
 const PageBodyPageIntro = ({
   heading,
   navItems = [],
+  index,
 }: PageBodyPageIntroProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-intro
+      style={{ zIndex: index }}
       className={clsx(
         'relative pt-[72px] pb-6',
         'md:pt-20 md:pb-7',

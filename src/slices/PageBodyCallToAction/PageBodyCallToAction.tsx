@@ -16,11 +16,13 @@ const PageBodyCallToAction = ({
   heading,
   subheading,
   textHTML,
+  index,
 }: PageBodyTeamProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-cta
+      style={{ zIndex: index }}
       className={clsx('relative bg-white md:bg-green-92', 'py-10 lg:py-20')}
     >
       <div className="grid gap-y-8 md:grid-cols-6 md:gap-y-0 md:gap-x-6">

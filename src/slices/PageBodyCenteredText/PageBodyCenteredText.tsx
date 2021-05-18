@@ -11,11 +11,15 @@ import { HTMLContent } from '../../components/HTMLContent'
 export type PageBodyCenteredTextProps = ReturnType<typeof mapDataToProps> &
   PageTemplateEnhancerProps
 
-const PageBodyCenteredText = ({ textHTML }: PageBodyCenteredTextProps) => {
+const PageBodyCenteredText = ({
+  textHTML,
+  index,
+}: PageBodyCenteredTextProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-centered-text
+      style={{ zIndex: index }}
       className={clsx('relative bg-white', 'py-10 lg:py-20')}
     >
       {textHTML && (

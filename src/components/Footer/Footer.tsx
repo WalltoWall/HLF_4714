@@ -60,7 +60,7 @@ export const Footer = () => {
   const siteSettings = useSiteSettings()
 
   return (
-    <footer className="mt-auto space-y-6 bg-white md:bg-green-92">
+    <footer className="relative z-40 mt-auto space-y-6 bg-white md:bg-green-92">
       <BoundedBox>
         <p
           className={clsx(

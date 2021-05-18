@@ -1,0 +1,30 @@
+.opaque {
+  left: 0;
+  right: -450px;
+  top: 0;
+  bottom: 0;
+
+  @screen container {
+    --gutter-size: calc(100vw - 1224px);
+    --offset-amnt: calc(var(--gutter-size) / -2);
+
+    left: var(--offset-amnt);
+    right: calc(var(--offset-amnt) - 1500px);
+  }
+}
+
+.solid {
+  left: -50px;
+  right: 0;
+  top: 36px;
+  bottom: 0;
+
+  @screen container {
+    --gutter-size: calc(100vw - 1224px);
+    --offset-amnt: calc(var(--gutter-size) / -2);
+
+    top: 120px;
+    left: calc(var(--offset-amnt) - 350px);
+    right: var(--offset-amnt);
+  }
+}

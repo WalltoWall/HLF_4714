@@ -12,11 +12,12 @@ export type PageBodyTexturedImageProps = ReturnType<typeof mapDataToProps> &
 const PageBodyTexturedImage = ({
   imageAlt,
   imageFluid,
+  index,
 }: PageBodyTexturedImageProps) => {
   if (!imageFluid) return
 
   return (
-    <section data-textured-image>
+    <section data-textured-image style={{ zIndex: index }} className="relative">
       <GatsbyImage
         className="h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px]"
         fluid={imageFluid}

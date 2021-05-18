@@ -9,6 +9,7 @@ const SCREENS = {
   sm: '30rem',
   md: '48rem',
   lg: '64rem',
+  container: '1240px',
   xl: '90rem',
 }
 

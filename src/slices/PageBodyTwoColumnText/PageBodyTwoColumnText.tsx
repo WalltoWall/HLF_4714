@@ -9,33 +9,35 @@ import { PageBodyTwoColumnTextFragment } from '../../types.generated'
 import { HTMLContent } from '../../components/HTMLContent'
 import { Oval } from '../../components/Oval'
 
-import * as styles from './PageBodyTwoColumnText.module.css'
-
 export type PageBodyTwoColumnTextProps = ReturnType<typeof mapDataToProps> &
   PageTemplateEnhancerProps
 
 const PageBodyTwoColumnText = ({
   leftHTML,
   rightHTML,
+  index,
 }: PageBodyTwoColumnTextProps) => {
   return (
     <BoundedBox
       as="section"
-      data-page-centered-text
-      className={clsx('relative', 'py-10 lg:py-20')}
+      data-page-two-column-text
+      style={{ zIndex: index }}
+      className={clsx(
+        'relative',
+        'pt-16 md:pt-32 container:pt-56',
+        'pb-10 lg:pb-20',
+      )}
     >
       <Oval
+        variant="opaque"
         className={clsx(
-          styles.opaqueOval,
-          'absolute inset-y-0 pointer-events-none text-green-92 z-[-1]',
+          'absolute pointer-events-none text-green-92 z-[-1]',
           'opacity-60',
         )}
       />
       <Oval
-        className={clsx(
-          styles.solidOval,
-          'absolute pointer-events-none text-green-92 z-[-1]',
-        )}
+        variant="solid"
+        className={clsx('absolute pointer-events-none text-green-92 z-[-1]')}
       />
 
       <div
@@ -69,10 +71,12 @@ export const mapDataToProps = ({
 }: MapDataToPropsArgs<
   PageBodyTwoColumnTextFragment,
   typeof mapDataToContext
->) => ({
-  leftHTML: data.primary?.left_text?.html,
-  rightHTML: data.primary?.right_text?.html,
-})
+>) => {
+  return {
+    leftHTML: data.primary?.left_text?.html,
+    rightHTML: data.primary?.right_text?.html,
+  }
+}
 
 export const mapDataToContext = () => ({
   bg: 'bg-green-92',
