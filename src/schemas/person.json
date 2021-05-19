@@ -1,10 +1,17 @@
 {
   "Main": {
-    "name": {
+    "first_name": {
       "type": "StructuredText",
       "config": {
         "single": "heading1",
-        "label": "Name"
+        "label": "First Name"
+      }
+    },
+    "last_name": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Last Name"
       }
     },
     "uid": {
