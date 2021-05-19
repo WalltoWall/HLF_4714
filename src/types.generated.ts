@@ -3711,7 +3711,8 @@ export type PrismicPersonConnectionGroupArgs = {
 }
 
 export type PrismicPersonDataType = {
-  name?: Maybe<PrismicStructuredTextType>
+  first_name?: Maybe<PrismicStructuredTextType>
+  last_name?: Maybe<PrismicStructuredTextType>
   title?: Maybe<PrismicStructuredTextType>
   position_type?: Maybe<Scalars['String']>
   bio?: Maybe<PrismicStructuredTextType>
@@ -3719,7 +3720,8 @@ export type PrismicPersonDataType = {
 }
 
 export type PrismicPersonDataTypeFilterInput = {
-  name?: Maybe<PrismicStructuredTextTypeFilterInput>
+  first_name?: Maybe<PrismicStructuredTextTypeFilterInput>
+  last_name?: Maybe<PrismicStructuredTextTypeFilterInput>
   title?: Maybe<PrismicStructuredTextTypeFilterInput>
   position_type?: Maybe<StringQueryOperatorInput>
   bio?: Maybe<PrismicStructuredTextTypeFilterInput>
@@ -3733,9 +3735,12 @@ export type PrismicPersonEdge = {
 }
 
 export enum PrismicPersonFieldsEnum {
-  DataNameHtml = 'data___name___html',
-  DataNameText = 'data___name___text',
-  DataNameRaw = 'data___name___raw',
+  DataFirstNameHtml = 'data___first_name___html',
+  DataFirstNameText = 'data___first_name___text',
+  DataFirstNameRaw = 'data___first_name___raw',
+  DataLastNameHtml = 'data___last_name___html',
+  DataLastNameText = 'data___last_name___text',
+  DataLastNameRaw = 'data___last_name___raw',
   DataTitleHtml = 'data___title___html',
   DataTitleText = 'data___title___text',
   DataTitleRaw = 'data___title___raw',
@@ -6935,7 +6940,8 @@ export type SitePluginPluginOptionsSchemasPersonFilterInput = {
 }
 
 export type SitePluginPluginOptionsSchemasPersonMain = {
-  name?: Maybe<SitePluginPluginOptionsSchemasPersonMainName>
+  first_name?: Maybe<SitePluginPluginOptionsSchemasPersonMainFirst_Name>
+  last_name?: Maybe<SitePluginPluginOptionsSchemasPersonMainLast_Name>
   uid?: Maybe<SitePluginPluginOptionsSchemasPersonMainUid>
   title?: Maybe<SitePluginPluginOptionsSchemasPersonMainTitle>
   position_type?: Maybe<SitePluginPluginOptionsSchemasPersonMainPosition_Type>
@@ -6966,12 +6972,34 @@ export type SitePluginPluginOptionsSchemasPersonMainBioFilterInput = {
 }
 
 export type SitePluginPluginOptionsSchemasPersonMainFilterInput = {
-  name?: Maybe<SitePluginPluginOptionsSchemasPersonMainNameFilterInput>
+  first_name?: Maybe<SitePluginPluginOptionsSchemasPersonMainFirst_NameFilterInput>
+  last_name?: Maybe<SitePluginPluginOptionsSchemasPersonMainLast_NameFilterInput>
   uid?: Maybe<SitePluginPluginOptionsSchemasPersonMainUidFilterInput>
   title?: Maybe<SitePluginPluginOptionsSchemasPersonMainTitleFilterInput>
   position_type?: Maybe<SitePluginPluginOptionsSchemasPersonMainPosition_TypeFilterInput>
   bio?: Maybe<SitePluginPluginOptionsSchemasPersonMainBioFilterInput>
   headshot?: Maybe<SitePluginPluginOptionsSchemasPersonMainHeadshotFilterInput>
+}
+
+export type SitePluginPluginOptionsSchemasPersonMainFirst_Name = {
+  type?: Maybe<Scalars['String']>
+  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainFirst_NameConfig>
+}
+
+export type SitePluginPluginOptionsSchemasPersonMainFirst_NameConfig = {
+  single?: Maybe<Scalars['String']>
+  label?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsSchemasPersonMainFirst_NameConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPersonMainFirst_NameFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainFirst_NameConfigFilterInput>
 }
 
 export type SitePluginPluginOptionsSchemasPersonMainHeadshot = {
@@ -6993,24 +7021,25 @@ export type SitePluginPluginOptionsSchemasPersonMainHeadshotFilterInput = {
   config?: Maybe<SitePluginPluginOptionsSchemasPersonMainHeadshotConfigFilterInput>
 }
 
-export type SitePluginPluginOptionsSchemasPersonMainName = {
+export type SitePluginPluginOptionsSchemasPersonMainLast_Name = {
   type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainNameConfig>
+  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainLast_NameConfig>
 }
 
-export type SitePluginPluginOptionsSchemasPersonMainNameConfig = {
+export type SitePluginPluginOptionsSchemasPersonMainLast_NameConfig = {
   single?: Maybe<Scalars['String']>
   label?: Maybe<Scalars['String']>
 }
 
-export type SitePluginPluginOptionsSchemasPersonMainNameConfigFilterInput = {
-  single?: Maybe<StringQueryOperatorInput>
-  label?: Maybe<StringQueryOperatorInput>
-}
+export type SitePluginPluginOptionsSchemasPersonMainLast_NameConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
 
-export type SitePluginPluginOptionsSchemasPersonMainNameFilterInput = {
+export type SitePluginPluginOptionsSchemasPersonMainLast_NameFilterInput = {
   type?: Maybe<StringQueryOperatorInput>
-  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainNameConfigFilterInput>
+  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainLast_NameConfigFilterInput>
 }
 
 export type SitePluginPluginOptionsSchemasPersonMainPosition_Type = {
@@ -7588,7 +7617,8 @@ export type AllPrismicPersonsQuery = {
     nodes: Array<{
       data?: Maybe<
         Pick<PrismicPersonDataType, 'position_type'> & {
-          name?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+          first_name?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+          last_name?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
           title?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
           headshot?: Maybe<{ fluid?: Maybe<GatsbyPrismicImageFluidFragment> }>
           bio?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
@@ -7720,6 +7750,8 @@ type SlicesPageBody_PrismicPageBodyTeam_Fragment = PageBodyTeamFragment
 type SlicesPageBody_PrismicPageBodyCallToAction_Fragment =
   PageBodyCallToActionFragment
 
+type SlicesPageBody_PrismicPageBodyAnchor_Fragment = PageBodyAnchorFragment
+
 export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTexturedImage_Fragment
   | SlicesPageBody_PrismicPageBodyPageIntro_Fragment
@@ -7728,6 +7760,7 @@ export type SlicesPageBodyFragment =
   | SlicesPageBody_PrismicPageBodyTextWithImage_Fragment
   | SlicesPageBody_PrismicPageBodyTeam_Fragment
   | SlicesPageBody_PrismicPageBodyCallToAction_Fragment
+  | SlicesPageBody_PrismicPageBodyAnchor_Fragment
 
 export type PageBodyAnchorFragment = {
   primary?: Maybe<Pick<PrismicPageBodyAnchorPrimaryType, 'anchor'>>
