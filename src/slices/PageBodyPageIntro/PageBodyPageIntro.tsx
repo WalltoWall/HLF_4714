@@ -56,6 +56,8 @@ const PageBodyPageIntro = ({
           src={heroBgUrl}
           loading="lazy"
           decoding="async"
+          width={2400}
+          height={624}
           alt=""
         />
       </div>
