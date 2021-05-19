@@ -20,7 +20,7 @@ const PageBodyTexturedImage = ({
       <GatsbyImage
         className="h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px]"
         fluid={imageFluid}
-        alt={imageAlt}
+        alt={imageAlt ?? ''}
         imgStyle={{ objectFit: 'cover' }}
       />
     </section>
