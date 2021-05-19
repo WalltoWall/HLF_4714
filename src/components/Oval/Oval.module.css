@@ -9,7 +9,7 @@
     --offset-amnt: calc(var(--gutter-size) / -2);
 
     left: var(--offset-amnt);
-    right: calc(var(--offset-amnt) - 1500px);
+    right: calc(var(--offset-amnt) - 1200px);
   }
 }
 
@@ -40,7 +40,7 @@
     --offset-amnt: calc(var(--gutter-size) / -2);
 
     right: var(--offset-amnt);
-    left: calc(var(--offset-amnt) - 1500px);
+    left: calc(var(--offset-amnt) - 1200px);
   }
 }
 

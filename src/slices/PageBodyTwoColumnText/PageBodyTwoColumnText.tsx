@@ -15,15 +15,13 @@ export type PageBodyTwoColumnTextProps = ReturnType<typeof mapDataToProps> &
 const PageBodyTwoColumnText = ({
   leftHTML,
   rightHTML,
-  index,
 }: PageBodyTwoColumnTextProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-two-column-text
-      style={{ zIndex: index }}
       className={clsx(
-        'relative',
+        'relative overflow-hidden',
         'pt-24 md:pt-32 container:pt-56',
         'pb-10 lg:pb-20',
       )}

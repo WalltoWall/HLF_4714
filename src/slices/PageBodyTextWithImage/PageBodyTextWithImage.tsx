@@ -51,14 +51,12 @@ const PageBodyTextWithImage = ({
   heading,
   sections = [],
   subheading,
-  index,
 }: PageBodyTextWithImageProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-text-with-image
-      style={{ zIndex: index }}
-      className={clsx('relative bg-white md:bg-green-92', 'py-10 lg:py-20')}
+      className={clsx('relative bg-white', 'py-10 lg:py-20')}
     >
       <div className="grid gap-y-6 md:gap-y-9">
         {subheading && (
@@ -100,7 +98,7 @@ export const mapDataToProps = ({
 }
 
 export const mapDataToContext = () => ({
-  bg: Symbol('multi'),
+  bg: 'bg-white',
 })
 
 export const fragment = graphql`
