@@ -12,7 +12,7 @@ export const Oval = ({ variant, className, ...props }: OvalProps) => {
 
   return (
     <svg
-      className={clsx(variantClassName, className)}
+      className={clsx(variantClassName, className, 'safari-only')}
       viewBox="0 0 1440 3047"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
