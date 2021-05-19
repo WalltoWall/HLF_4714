@@ -71,8 +71,8 @@ export const PageTemplate = ({
     <Layout>
       <Helmet>
         <title>
-          {page?.data?.meta_title ?? page?.data?.title?.text ?? ''}
-          {page?.uid === 'home' ? '' : ` | ${siteSettings.siteName}`}
+          {page?.data?.meta_title ?? page?.data?.title?.text ?? ''} |{' '}
+          {siteSettings.siteName}
         </title>
         {page?.data?.meta_description && (
           <meta name="description" content={page?.data?.meta_description} />
