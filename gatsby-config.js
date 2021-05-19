@@ -1,10 +1,10 @@
 require('dotenv').config()
 
 const siteMetadata = {
-  title: 'SITE_TITLE',
-  titleShort: 'SITE_TITLE_SHORT',
+  title: 'Hawaii Leadership Forum',
+  titleShort: 'HLF',
   description: 'SITE_DESCRIPTION',
-  siteUrl: 'https://example.com',
+  siteUrl: 'https://www.hawaiileadershipforum.org/',
 }
 
 module.exports = {
@@ -20,19 +20,6 @@ module.exports = {
         id: process.env.GOOGLE_TAGMANAGER_ID,
       },
     },
-
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: siteMetadata.title,
-    //     short_name: siteMetadata.titleShort,
-    //     start_url: '/',
-    //     background_color: '#000000',
-    //     theme_color: '#ffffff',
-    //     display: 'minimal-ui',
-    //     icon: path.resolve(__dirname, 'src/assets/manifest-icon.png'),
-    //   },
-    // },
 
     {
       resolve: 'gatsby-source-prismic',
