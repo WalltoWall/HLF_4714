@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const siteMetadata = {
-  title: 'Hawaii Leadership Forum',
+  title: 'Hawai‘i Leadership Forum',
   titleShort: 'HLF',
   description: 'SITE_DESCRIPTION',
   siteUrl: 'https://www.hawaiileadershipforum.org/',
