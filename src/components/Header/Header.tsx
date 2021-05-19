@@ -17,8 +17,8 @@ export const Header = () => {
             loading="lazy"
             decoding="async"
             className="w-[200px] md:w-[230px] lg:w-[260px]"
-            width={200}
-            height={62}
+            width={300}
+            height={92}
           />
         </Link>
       </div>
