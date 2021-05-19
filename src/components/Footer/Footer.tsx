@@ -31,6 +31,8 @@ const Navigation = () => {
               src={logoSmUrl}
               className="w-5 sm:w-[26px] md:w-9"
               alt="Hawaii Leadership Forum"
+              width={36}
+              height={36}
             />
           </Link>
         </li>

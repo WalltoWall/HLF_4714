@@ -21,10 +21,13 @@ export interface TPerson {
 export function useAllPersons() {
   const queryData = useStaticQuery<AllPrismicPersonsQuery>(graphql`
     query AllPrismicPersons {
-      allPrismicPerson {
+      allPrismicPerson(sort: { fields: data___last_name___text, order: ASC }) {
         nodes {
           data {
-            name {
+            first_name {
+              text
+            }
+            last_name {
               text
             }
             position_type
@@ -54,7 +57,7 @@ export function useAllPersons() {
 
       queryData.allPrismicPerson.nodes.forEach((node) => {
         const person: TPerson = {
-          name: node.data?.name?.text,
+          name: `${node.data?.first_name?.text} ${node.data?.last_name?.text}`,
           positionType: node.data?.position_type as PositionType,
           title: node.data?.title?.text,
           imageFluid: node.data?.headshot?.fluid,
