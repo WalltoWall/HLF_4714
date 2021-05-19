@@ -1,61 +1,70 @@
 .opaque {
   left: 0;
-  right: -250px;
+  right: 0;
   top: 0;
   bottom: 0;
+
+  margin-right: -250px;
 
   @screen container {
     --gutter-size: calc(100vw - 1224px);
     --offset-amnt: calc(var(--gutter-size) / -2);
 
-    left: var(--offset-amnt);
-    right: calc(var(--offset-amnt) - 1200px);
+    margin-left: var(--offset-amnt);
+    margin-right: calc(var(--offset-amnt) - 1200px);
   }
 }
 
 .solid {
-  left: -50px;
+  left: 0;
   right: 0;
   top: 36px;
   bottom: 0;
+
+  margin-left: -50px;
 
   @screen container {
     --gutter-size: calc(100vw - 1224px);
     --offset-amnt: calc(var(--gutter-size) / -2);
 
     top: 120px;
-    left: calc(var(--offset-amnt) - 350px);
-    right: var(--offset-amnt);
+    margin-left: calc(var(--offset-amnt) - 350px);
+    margin-right: var(--offset-amnt);
   }
 }
 
 .opaqueReverse {
   right: 0;
-  left: -250px;
+  left: 0;
   top: 0;
   bottom: 0;
+
+  margin-left: -250px;
 
   @screen container {
     --gutter-size: calc(100vw - 1224px);
     --offset-amnt: calc(var(--gutter-size) / -2);
 
-    right: var(--offset-amnt);
-    left: calc(var(--offset-amnt) - 1200px);
+    margin-right: var(--offset-amnt);
+    margin-left: calc(var(--offset-amnt) - 1200px);
   }
 }
 
 .solidReverse {
-  right: -50px;
+  right: 0;
   left: 0;
   top: 36px;
   bottom: 0;
+
+  margin-right: -50px;
 
   @screen container {
     --gutter-size: calc(100vw - 1224px);
     --offset-amnt: calc(var(--gutter-size) / -2);
 
     top: 120px;
-    right: calc(var(--offset-amnt) - 350px);
-    left: var(--offset-amnt);
+
+    margin-right: calc(var(--offset-amnt) - 350px);
+    margin-left: var(--offset-amnt);
   }
 }
