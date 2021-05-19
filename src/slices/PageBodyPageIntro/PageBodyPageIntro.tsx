@@ -39,13 +39,11 @@ export type PageBodyPageIntroProps = ReturnType<typeof mapDataToProps> &
 const PageBodyPageIntro = ({
   heading,
   navItems = [],
-  index,
 }: PageBodyPageIntroProps) => {
   return (
     <BoundedBox
       as="section"
       data-page-intro
-      style={{ zIndex: index }}
       className={clsx(
         'relative pt-[72px] pb-6',
         'md:pt-20 md:pb-7',
@@ -74,7 +72,7 @@ const PageBodyPageIntro = ({
         )}
 
         <nav>
-          <HStack as="ul" columnGap="24px" rowGap="16px" mdColumnGap="42px">
+          <HStack as="ul" columnGap="30px" rowGap="16px" mdColumnGap="42px">
             {navItems.map((item, idx) => {
               if (!item.label || !item.href) return
 

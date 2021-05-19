@@ -30,6 +30,7 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
         onClick={openModal}
         className={clsx(
           'flex flex-col items-center space-y-4 w-[90px] md:w-28 lg:w-[130px]',
+          'group',
           focusRing,
         )}
       >
@@ -46,7 +47,10 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
               fluid={imageFluid}
               alt={name}
               imgStyle={{ objectFit: 'cover' }}
-              className="filter grayscale"
+              className={clsx(
+                'transition filter grayscale group-hover:grayscale-0',
+                'group-focus-within:grayscale-0',
+              )}
             />
           )}
         </div>
@@ -166,7 +170,6 @@ const PageBodyTeam = ({
   staffTeamHeading,
   directorsHeading,
   directorsSubeading,
-  index,
 }: PageBodyTeamProps) => {
   const { directors, staffTeam } = useAllPersons()
 
@@ -174,28 +177,22 @@ const PageBodyTeam = ({
     <BoundedBox
       as="section"
       data-page-team
-      style={{ zIndex: index }}
       className={clsx(
-        'relative',
-        'bg-white md:bg-green-92',
-        'pt-24 md:pt-10',
-        'pb-10 lg:py-20',
+        'relative overflow-hidden',
+        'pt-24',
+        'pb-10 container:pt-56',
       )}
     >
       <Oval
         variant="opaqueReverse"
         className={clsx(
           'absolute pointer-events-none text-green-92 z-[-1]',
-          'md:hidden',
           'opacity-60',
         )}
       />
       <Oval
         variant="solidReverse"
-        className={clsx(
-          'md:hidden',
-          'absolute pointer-events-none text-green-92 z-[-1]',
-        )}
+        className={clsx('absolute pointer-events-none text-green-92 z-[-1]')}
       />
 
       <div className="space-y-9 md:space-y-16 isolate">

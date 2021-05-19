@@ -25,7 +25,6 @@ export const mapDataToPropsEnhancer = (
     nextContext,
     previousType,
     previousData,
-    index,
   }: MapDataToPropsEnhancerArgs,
 ) => {
   return {
@@ -35,7 +34,6 @@ export const mapDataToPropsEnhancer = (
         ? (previousData?.primary?.id as string)
         : undefined,
     ...props,
-    index: index + 1,
   }
 }
 

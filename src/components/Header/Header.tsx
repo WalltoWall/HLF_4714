@@ -7,10 +7,7 @@ import logoUrl from '../../assets/logo.svg'
 
 export const Header = () => {
   return (
-    <BoundedBox
-      as="header"
-      className="relative z-40 py-4 bg-white md:py-5 lg:py-6"
-    >
+    <BoundedBox as="header" className="relative py-4 bg-white md:py-5 lg:py-6">
       <div className="flex justify-center">
         <Link href="/">
           <span className="sr-only">Navigate to home</span>
