@@ -70,7 +70,8 @@
           "text_with_image": [],
           "people_with_image": [],
           "team": [],
-          "call_to_action": []
+          "call_to_action": [],
+          "anchor": []
         },
         "choices": {
           "textured_image": {
@@ -259,6 +260,23 @@
                   "multi": "paragraph, heading5, hyperlink",
                   "allowTargetBlank": true,
                   "label": "Text"
+                }
+              }
+            },
+            "repeat": {}
+          },
+          "anchor": {
+            "type": "Slice",
+            "fieldset": "Anchor",
+            "description": "Linkable anchor section",
+            "icon": "insert_link",
+            "display": "list",
+            "non-repeat": {
+              "anchor": {
+                "type": "Text",
+                "config": {
+                  "label": "Anchor",
+                  "placeholder": "Example: about-us"
                 }
               }
             },
