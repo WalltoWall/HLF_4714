@@ -58,7 +58,7 @@ const Section = ({
               layout="position"
               html={textHTML}
               variant="textWithImage"
-              className={clsx(isExpanded && 'pb-1')}
+              className={clsx(isExpanded && 'pb-1', 'pt-[2px]')}
             />
             <motion.div
               layout="position"
