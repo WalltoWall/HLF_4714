@@ -22,7 +22,10 @@ module.exports = {
 
     colors: {
       debug: '#f0f',
+
       white: '#fff',
+      'transparent-white': 'rgba(255, 255, 255, 0)',
+
       black: '#000',
       transparent: 'transparent',
 

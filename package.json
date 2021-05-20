@@ -24,6 +24,7 @@
     "capsize": "^2.0.0",
     "clsx": "^1.1.1",
     "dotenv": "^9.0.2",
+    "framer-motion": "^4.1.17",
     "gatsby": "3.5.0",
     "gatsby-image": "^3.5.0",
     "just-map-values": "^1.2.1",

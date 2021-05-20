@@ -2,11 +2,11 @@
 import React from 'react'
 import GatsbyLink, { GatsbyLinkProps } from 'gatsby-link'
 import { isInternal, isAnchorOnly, extractAnchor } from '@walltowall/helpers'
-
-import { focusRing } from '../lib/utilStyles'
 import clsx from 'clsx'
 
-interface LinkProps extends Omit<GatsbyLinkProps<any>, 'to'> {
+import { focusRing } from '../lib/utilStyles'
+
+export interface LinkProps extends Omit<GatsbyLinkProps<any>, 'to'> {
   href: string
 }
 
