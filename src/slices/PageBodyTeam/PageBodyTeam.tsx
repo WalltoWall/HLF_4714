@@ -19,8 +19,6 @@ import { focusRing } from '../../lib/utilStyles'
 import { DirectorModal } from './DirectorModal'
 import { Oval } from '../../components/Oval'
 
-import * as styles from './PageBodyTeam.module.css'
-
 interface DirectorProps extends Pick<TPerson, 'imageFluid' | 'name'> {
   openModal: () => void
 }
@@ -140,17 +138,7 @@ interface StaffTeamProps {
   heading?: string
 }
 
-interface StaffTeamProperties extends React.CSSProperties {
-  '--md-num-rows': number
-  '--num-rows': number
-}
-
 const StaffTeam = ({ staffTeam, heading }: StaffTeamProps) => {
-  const style: StaffTeamProperties = {
-    '--num-rows': Math.ceil(staffTeam.length / 2),
-    '--md-num-rows': Math.ceil(staffTeam.length / 3),
-  }
-
   return (
     <div className="space-y-6 md:space-y-10 lg:space-y-14">
       {heading && (
@@ -160,10 +148,8 @@ const StaffTeam = ({ staffTeam, heading }: StaffTeamProps) => {
       )}
 
       <ul
-        style={style}
         className={clsx(
-          styles.staffTeamGrid,
-          'grid grid-cols-2 gap-y-8 gap-x-6 grid-flow-col-dense',
+          'grid grid-cols-2 gap-y-8 gap-x-6',
           'md:grid-cols-3 md:gap-x-8 md:gap-y-10',
           'lg:gap-x-10',
         )}
