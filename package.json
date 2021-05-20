@@ -2,6 +2,7 @@
   "name": "HLF_4714",
   "private": true,
   "license": "UNLICENSED",
+  "version": "0.1.0",
   "scripts": {
     "format": "prettier --write 'src/**/*.{js,ts,tsx,md,mdx}' 'gatsby-*.js' 'docs/**/*.md'",
     "clean": "gatsby clean",
