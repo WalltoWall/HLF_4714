@@ -2855,6 +2855,21 @@ export enum PrismicPageBodyTextWithImageFieldsEnum {
   ItemsTextHtml = 'items___text___html',
   ItemsTextText = 'items___text___text',
   ItemsTextRaw = 'items___text___raw',
+  ItemsButtonTextHtml = 'items___button_text___html',
+  ItemsButtonTextText = 'items___button_text___text',
+  ItemsButtonTextRaw = 'items___button_text___raw',
+  ItemsButtonLinkLinkType = 'items___button_link___link_type',
+  ItemsButtonLinkIsBroken = 'items___button_link___isBroken',
+  ItemsButtonLinkUrl = 'items___button_link___url',
+  ItemsButtonLinkTarget = 'items___button_link___target',
+  ItemsButtonLinkSize = 'items___button_link___size',
+  ItemsButtonLinkId = 'items___button_link___id',
+  ItemsButtonLinkType = 'items___button_link___type',
+  ItemsButtonLinkTags = 'items___button_link___tags',
+  ItemsButtonLinkLang = 'items___button_link___lang',
+  ItemsButtonLinkSlug = 'items___button_link___slug',
+  ItemsButtonLinkUid = 'items___button_link___uid',
+  ItemsButtonLinkRaw = 'items___button_link___raw',
   Id = 'id',
   ParentId = 'parent___id',
   ParentParentId = 'parent___parent___id',
@@ -2966,11 +2981,15 @@ export type PrismicPageBodyTextWithImageGroupConnection = {
 export type PrismicPageBodyTextWithImageItemType = {
   image?: Maybe<PrismicImageType>
   text?: Maybe<PrismicStructuredTextType>
+  button_text?: Maybe<PrismicStructuredTextType>
+  button_link?: Maybe<PrismicLinkType>
 }
 
 export type PrismicPageBodyTextWithImageItemTypeFilterInput = {
   image?: Maybe<PrismicImageTypeFilterInput>
   text?: Maybe<PrismicStructuredTextTypeFilterInput>
+  button_text?: Maybe<PrismicStructuredTextTypeFilterInput>
+  button_link?: Maybe<PrismicLinkTypeFilterInput>
 }
 
 export type PrismicPageBodyTextWithImageItemTypeFilterListInput = {
@@ -6545,12 +6564,64 @@ export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_Ima
   {
     image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatImage>
     text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatText>
+    button_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_Text>
+    button_link?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_Link>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_Link =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_LinkConfig>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_LinkConfig =
+  {
+    allowTargetBlank?: Maybe<Scalars['Boolean']>
+    label?: Maybe<Scalars['String']>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_LinkConfigFilterInput =
+  {
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_LinkFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_LinkConfigFilterInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_Text =
+  {
+    type?: Maybe<Scalars['String']>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_TextConfig>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_TextConfig =
+  {
+    single?: Maybe<Scalars['String']>
+    label?: Maybe<Scalars['String']>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_TextConfigFilterInput =
+  {
+    single?: Maybe<StringQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_TextFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_TextConfigFilterInput>
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatFilterInput =
   {
     image?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatImageFilterInput>
     text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatTextFilterInput>
+    button_text?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_TextFilterInput>
+    button_link?: Maybe<SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatButton_LinkFilterInput>
   }
 
 export type SitePluginPluginOptionsSchemasPageBodyBodyConfigChoicesText_With_ImageRepeatImage =
@@ -7820,6 +7891,8 @@ export type PageBodyTextWithImageFragment = {
           }
         >
         text?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+        button_text?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+        button_link?: Maybe<Pick<PrismicLinkType, 'url'>>
       }>
     >
   >
