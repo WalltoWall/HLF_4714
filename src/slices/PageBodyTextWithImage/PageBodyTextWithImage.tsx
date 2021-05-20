@@ -2,7 +2,7 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import clsx from 'clsx'
 import GatsbyImage from 'gatsby-image'
-import { AnimateSharedLayout, motion as m } from 'framer-motion'
+import { AnimateSharedLayout, motion } from 'framer-motion'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
 import { PageTemplateEnhancerProps } from '../../templates/page'
@@ -13,7 +13,7 @@ import { HTMLContent } from '../../components/HTMLContent'
 import { ButtonLink } from '../../components/ButtonLink'
 import { focusRing } from '../../lib/utilStyles'
 
-const MotionHTMLContent = m(HTMLContent)
+const MotionHTMLContent = motion(HTMLContent)
 
 const Section = ({
   imageAlt,
@@ -25,7 +25,7 @@ const Section = ({
   const [isExpanded, toggleExpanded] = React.useReducer((val) => !val, false)
 
   return (
-    <m.div
+    <motion.div
       layout
       className={clsx(
         'grid justify-items-center py-7 gap-y-7',
@@ -33,7 +33,7 @@ const Section = ({
       )}
     >
       {imageFluid && (
-        <m.div
+        <motion.div
           layout="position"
           className="max-w-[150px] md:max-w-[175px] w-full md:col-span-2 md:justify-self-center"
         >
@@ -42,12 +42,12 @@ const Section = ({
             alt={imageAlt}
             imgStyle={{ objectFit: 'contain' }}
           />
-        </m.div>
+        </motion.div>
       )}
 
-      <m.div layout className="md:col-span-4 md:pl-20 space-y-7">
+      <motion.div layout className="md:col-span-4 md:pl-20 space-y-7">
         {textHTML && (
-          <m.div
+          <motion.div
             layout="position"
             className={clsx(
               'relative overflow-hidden',
@@ -60,7 +60,7 @@ const Section = ({
               variant="textWithImage"
               className={clsx(isExpanded && 'pb-1', 'pt-[2px]')}
             />
-            <m.div
+            <motion.div
               layout="position"
               className={clsx(
                 'absolute inset-x-0 bottom-0 h-24 pointer-events-none max-w-full',
@@ -68,26 +68,30 @@ const Section = ({
                 isExpanded && 'opacity-0 yot',
               )}
             />
-          </m.div>
+          </motion.div>
         )}
 
-        <m.div
+        <motion.div
           layout
           className="flex items-center justify-center space-x-5 md:space-x-6 md:justify-start"
         >
           {buttonLink && buttonText && (
             <ButtonLink href={buttonLink}>{buttonText}</ButtonLink>
           )}
-          <m.button
+          <motion.button
             layout
-            className={clsx(focusRing, 'sans-caps text-green-24 py-px')}
+            className={clsx(
+              focusRing,
+              'sans-caps text-green-24 py-px',
+              'select-none',
+            )}
             onClick={toggleExpanded}
           >
             {isExpanded ? 'Read Less' : 'Read More'}
-          </m.button>
-        </m.div>
-      </m.div>
-    </m.div>
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -119,14 +123,14 @@ const PageBodyTextWithImage = ({
         )}
 
         <AnimateSharedLayout>
-          <m.div
+          <motion.div
             layout
             className="border-t border-b divide-y divide-gray-87 border-gray-87"
           >
             {sections.map((section, idx) => (
               <Section key={idx} {...section} />
             ))}
-          </m.div>
+          </motion.div>
         </AnimateSharedLayout>
       </div>
     </BoundedBox>
