@@ -39,6 +39,7 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
         <div
           className={clsx(
             'w-full h-[90px] md:h-28 lg:h-[130px] rounded-full bg-gray-87',
+            'flex-shrink-0',
           )}
         >
           {imageFluid && (
@@ -48,7 +49,7 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
               imgStyle={{ objectFit: 'cover' }}
               className={clsx(
                 'transition filter grayscale group-hover:grayscale-0',
-                'group-focus-within:grayscale-0 rounded-full',
+                'group-focus-within:grayscale-0 rounded-full h-full w-full',
               )}
             />
           )}
