@@ -65,3 +65,18 @@
     @apply text-green-24 hover:underline focus:outline-none focus:ring;
   }
 }
+
+.disclaimer {
+  p {
+    @apply sans-11-1_45 md:sans-12-1_45 lg:sans-13-1_45
+  text-gray-51 py-px;
+  }
+
+  em {
+    @apply italic;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+}

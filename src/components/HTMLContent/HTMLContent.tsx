@@ -13,13 +13,19 @@ const defaultElement = 'div'
 interface OwnProps
   extends Omit<React.ComponentProps<'div'>, 'dangerouslySetInnerHTML'> {
   html: string
-  variant?: 'centeredText' | 'twoColumnText' | 'textWithImage' | 'callToAction'
+  variant?:
+    | 'centeredText'
+    | 'twoColumnText'
+    | 'textWithImage'
+    | 'callToAction'
+    | 'disclaimer'
 }
 
 export type HTMLContentProps<
   T extends React.ElementType = typeof defaultElement,
 > = PolymorphicPropsWithRef<OwnProps, T>
 
+//@ts-ignore
 export const HTMLContent: PolymorphicForwardRefExoticComponent<
   OwnProps,
   typeof defaultElement

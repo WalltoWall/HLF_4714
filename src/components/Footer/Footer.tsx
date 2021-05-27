@@ -8,6 +8,7 @@ import logoSmUrl from '../../assets/logo-sm.svg'
 import { Link } from '../Link'
 import { HStack } from '../HStack'
 import * as styles from './Footer.module.css'
+import { HTMLContent } from '../HTMLContent'
 
 const Navigation = () => {
   const navigation = usePrimaryNavigation()
@@ -64,17 +65,13 @@ export const Footer = () => {
   return (
     <footer className="relative mt-auto space-y-6 bg-white">
       <BoundedBox>
-        <p
-          className={clsx(
-            'py-px',
-            'text-center text-gray-51',
-            'sans-11-1_45 md:sans-12-1_45 lg:sans-13-1_45',
-          )}
-        >
-          * Hawai‘i Leadership Forum is a nonprofit organization and receives
-          funding from the Omidyar ‘Ohana Fund of the Hawai‘i Community
-          Foundation.
-        </p>
+        {siteSettings.siteDisclaimerHTML && (
+          <HTMLContent
+            html={siteSettings.siteDisclaimerHTML}
+            className="text-center"
+            variant="disclaimer"
+          />
+        )}
       </BoundedBox>
 
       <BoundedBox className={clsx('py-5', styles.gradientBg)}>
