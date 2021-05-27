@@ -4043,9 +4043,7 @@ export type PrismicSettingsDataType = {
   site_name?: Maybe<PrismicStructuredTextType>
   site_description?: Maybe<PrismicStructuredTextType>
   site_copyright?: Maybe<PrismicStructuredTextType>
-  facebook_handle?: Maybe<PrismicStructuredTextType>
-  twitter_handle?: Maybe<PrismicStructuredTextType>
-  instagram_handle?: Maybe<PrismicStructuredTextType>
+  site_disclaimer?: Maybe<PrismicStructuredTextType>
   redirects?: Maybe<Array<Maybe<PrismicSettingsRedirectsGroupType>>>
   preview_map?: Maybe<Array<Maybe<PrismicSettingsPreviewMapGroupType>>>
 }
@@ -4055,9 +4053,7 @@ export type PrismicSettingsDataTypeFilterInput = {
   site_name?: Maybe<PrismicStructuredTextTypeFilterInput>
   site_description?: Maybe<PrismicStructuredTextTypeFilterInput>
   site_copyright?: Maybe<PrismicStructuredTextTypeFilterInput>
-  facebook_handle?: Maybe<PrismicStructuredTextTypeFilterInput>
-  twitter_handle?: Maybe<PrismicStructuredTextTypeFilterInput>
-  instagram_handle?: Maybe<PrismicStructuredTextTypeFilterInput>
+  site_disclaimer?: Maybe<PrismicStructuredTextTypeFilterInput>
   redirects?: Maybe<PrismicSettingsRedirectsGroupTypeFilterListInput>
   preview_map?: Maybe<PrismicSettingsPreviewMapGroupTypeFilterListInput>
 }
@@ -4081,15 +4077,9 @@ export enum PrismicSettingsFieldsEnum {
   DataSiteCopyrightHtml = 'data___site_copyright___html',
   DataSiteCopyrightText = 'data___site_copyright___text',
   DataSiteCopyrightRaw = 'data___site_copyright___raw',
-  DataFacebookHandleHtml = 'data___facebook_handle___html',
-  DataFacebookHandleText = 'data___facebook_handle___text',
-  DataFacebookHandleRaw = 'data___facebook_handle___raw',
-  DataTwitterHandleHtml = 'data___twitter_handle___html',
-  DataTwitterHandleText = 'data___twitter_handle___text',
-  DataTwitterHandleRaw = 'data___twitter_handle___raw',
-  DataInstagramHandleHtml = 'data___instagram_handle___html',
-  DataInstagramHandleText = 'data___instagram_handle___text',
-  DataInstagramHandleRaw = 'data___instagram_handle___raw',
+  DataSiteDisclaimerHtml = 'data___site_disclaimer___html',
+  DataSiteDisclaimerText = 'data___site_disclaimer___text',
+  DataSiteDisclaimerRaw = 'data___site_disclaimer___raw',
   DataRedirects = 'data___redirects',
   DataRedirectsFromPath = 'data___redirects___from_path',
   DataRedirectsToPath = 'data___redirects___to_path',
@@ -5508,6 +5498,19 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsCreateLinkInHead = 'pluginCreator___pluginOptions___createLinkInHead',
   PluginCreatorPluginOptionsEntryLimit = 'pluginCreator___pluginOptions___entryLimit',
   PluginCreatorPluginOptionsQuery = 'pluginCreator___pluginOptions___query',
+  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
+  PluginCreatorPluginOptionsShortName = 'pluginCreator___pluginOptions___short_name',
+  PluginCreatorPluginOptionsStartUrl = 'pluginCreator___pluginOptions___start_url',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___background_color',
+  PluginCreatorPluginOptionsThemeColor = 'pluginCreator___pluginOptions___theme_color',
+  PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
+  PluginCreatorPluginOptionsIcon = 'pluginCreator___pluginOptions___icon',
+  PluginCreatorPluginOptionsLegacy = 'pluginCreator___pluginOptions___legacy',
+  PluginCreatorPluginOptionsThemeColorInHead = 'pluginCreator___pluginOptions___theme_color_in_head',
+  PluginCreatorPluginOptionsCacheBustingMode = 'pluginCreator___pluginOptions___cache_busting_mode',
+  PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
+  PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
+  PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
@@ -5720,6 +5723,19 @@ export enum SitePluginFieldsEnum {
   PluginOptionsCreateLinkInHead = 'pluginOptions___createLinkInHead',
   PluginOptionsEntryLimit = 'pluginOptions___entryLimit',
   PluginOptionsQuery = 'pluginOptions___query',
+  PluginOptionsName = 'pluginOptions___name',
+  PluginOptionsShortName = 'pluginOptions___short_name',
+  PluginOptionsStartUrl = 'pluginOptions___start_url',
+  PluginOptionsBackgroundColor = 'pluginOptions___background_color',
+  PluginOptionsThemeColor = 'pluginOptions___theme_color',
+  PluginOptionsDisplay = 'pluginOptions___display',
+  PluginOptionsIcon = 'pluginOptions___icon',
+  PluginOptionsLegacy = 'pluginOptions___legacy',
+  PluginOptionsThemeColorInHead = 'pluginOptions___theme_color_in_head',
+  PluginOptionsCacheBustingMode = 'pluginOptions___cache_busting_mode',
+  PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
+  PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
+  PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
@@ -5849,6 +5865,19 @@ export type SitePluginPluginOptions = {
   createLinkInHead?: Maybe<Scalars['Boolean']>
   entryLimit?: Maybe<Scalars['Int']>
   query?: Maybe<Scalars['String']>
+  name?: Maybe<Scalars['String']>
+  short_name?: Maybe<Scalars['String']>
+  start_url?: Maybe<Scalars['String']>
+  background_color?: Maybe<Scalars['String']>
+  theme_color?: Maybe<Scalars['String']>
+  display?: Maybe<Scalars['String']>
+  icon?: Maybe<Scalars['String']>
+  legacy?: Maybe<Scalars['Boolean']>
+  theme_color_in_head?: Maybe<Scalars['Boolean']>
+  cache_busting_mode?: Maybe<Scalars['String']>
+  crossOrigin?: Maybe<Scalars['String']>
+  include_favicon?: Maybe<Scalars['Boolean']>
+  cacheDigest?: Maybe<Scalars['String']>
   path?: Maybe<Scalars['String']>
   pathCheck?: Maybe<Scalars['Boolean']>
   allExtensions?: Maybe<Scalars['Boolean']>
@@ -5866,6 +5895,19 @@ export type SitePluginPluginOptionsFilterInput = {
   createLinkInHead?: Maybe<BooleanQueryOperatorInput>
   entryLimit?: Maybe<IntQueryOperatorInput>
   query?: Maybe<StringQueryOperatorInput>
+  name?: Maybe<StringQueryOperatorInput>
+  short_name?: Maybe<StringQueryOperatorInput>
+  start_url?: Maybe<StringQueryOperatorInput>
+  background_color?: Maybe<StringQueryOperatorInput>
+  theme_color?: Maybe<StringQueryOperatorInput>
+  display?: Maybe<StringQueryOperatorInput>
+  icon?: Maybe<StringQueryOperatorInput>
+  legacy?: Maybe<BooleanQueryOperatorInput>
+  theme_color_in_head?: Maybe<BooleanQueryOperatorInput>
+  cache_busting_mode?: Maybe<StringQueryOperatorInput>
+  crossOrigin?: Maybe<StringQueryOperatorInput>
+  include_favicon?: Maybe<BooleanQueryOperatorInput>
+  cacheDigest?: Maybe<StringQueryOperatorInput>
   path?: Maybe<StringQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
   allExtensions?: Maybe<BooleanQueryOperatorInput>
@@ -7278,64 +7320,16 @@ export type SitePluginPluginOptionsSchemasSettingsMain = {
   site_name?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_Name>
   site_description?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_Description>
   site_copyright?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_Copyright>
-  facebook_handle?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFacebook_Handle>
-  twitter_handle?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTwitter_Handle>
-  instagram_handle?: Maybe<SitePluginPluginOptionsSchemasSettingsMainInstagram_Handle>
+  site_disclaimer?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_Disclaimer>
 }
-
-export type SitePluginPluginOptionsSchemasSettingsMainFacebook_Handle = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfig>
-}
-
-export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfig = {
-  single?: Maybe<Scalars['String']>
-  label?: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfigFilterInput =
-  {
-    single?: Maybe<StringQueryOperatorInput>
-    label?: Maybe<StringQueryOperatorInput>
-  }
-
-export type SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleFilterInput =
-  {
-    type?: Maybe<StringQueryOperatorInput>
-    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleConfigFilterInput>
-  }
 
 export type SitePluginPluginOptionsSchemasSettingsMainFilterInput = {
   title?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTitleFilterInput>
   site_name?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_NameFilterInput>
   site_description?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionFilterInput>
   site_copyright?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_CopyrightFilterInput>
-  facebook_handle?: Maybe<SitePluginPluginOptionsSchemasSettingsMainFacebook_HandleFilterInput>
-  twitter_handle?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleFilterInput>
-  instagram_handle?: Maybe<SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleFilterInput>
+  site_disclaimer?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DisclaimerFilterInput>
 }
-
-export type SitePluginPluginOptionsSchemasSettingsMainInstagram_Handle = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfig>
-}
-
-export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfig = {
-  single?: Maybe<Scalars['String']>
-  label?: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfigFilterInput =
-  {
-    single?: Maybe<StringQueryOperatorInput>
-    label?: Maybe<StringQueryOperatorInput>
-  }
-
-export type SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleFilterInput =
-  {
-    type?: Maybe<StringQueryOperatorInput>
-    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainInstagram_HandleConfigFilterInput>
-  }
 
 export type SitePluginPluginOptionsSchemasSettingsMainSite_Copyright = {
   type?: Maybe<Scalars['String']>
@@ -7381,6 +7375,30 @@ export type SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionFilterInpu
     config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DescriptionConfigFilterInput>
   }
 
+export type SitePluginPluginOptionsSchemasSettingsMainSite_Disclaimer = {
+  type?: Maybe<Scalars['String']>
+  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DisclaimerConfig>
+}
+
+export type SitePluginPluginOptionsSchemasSettingsMainSite_DisclaimerConfig = {
+  multi?: Maybe<Scalars['String']>
+  allowTargetBlank?: Maybe<Scalars['Boolean']>
+  label?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsSchemasSettingsMainSite_DisclaimerConfigFilterInput =
+  {
+    multi?: Maybe<StringQueryOperatorInput>
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasSettingsMainSite_DisclaimerFilterInput =
+  {
+    type?: Maybe<StringQueryOperatorInput>
+    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_DisclaimerConfigFilterInput>
+  }
+
 export type SitePluginPluginOptionsSchemasSettingsMainSite_Name = {
   type?: Maybe<Scalars['String']>
   config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainSite_NameConfig>
@@ -7421,28 +7439,6 @@ export type SitePluginPluginOptionsSchemasSettingsMainTitleFilterInput = {
   type?: Maybe<StringQueryOperatorInput>
   config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTitleConfigFilterInput>
 }
-
-export type SitePluginPluginOptionsSchemasSettingsMainTwitter_Handle = {
-  type?: Maybe<Scalars['String']>
-  config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfig>
-}
-
-export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfig = {
-  single?: Maybe<Scalars['String']>
-  label?: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfigFilterInput =
-  {
-    single?: Maybe<StringQueryOperatorInput>
-    label?: Maybe<StringQueryOperatorInput>
-  }
-
-export type SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleFilterInput =
-  {
-    type?: Maybe<StringQueryOperatorInput>
-    config?: Maybe<SitePluginPluginOptionsSchemasSettingsMainTwitter_HandleConfigFilterInput>
-  }
 
 export type SitePluginPluginOptionsSchemasSettingsRedirects = {
   redirects?: Maybe<SitePluginPluginOptionsSchemasSettingsRedirectsRedirects>
@@ -7734,9 +7730,7 @@ export type PrismicSiteSettingsQuery = {
       site_name?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
       site_description?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
       site_copyright?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
-      facebook_handle?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
-      twitter_handle?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
-      instagram_handle?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+      site_disclaimer?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
     }>
   }>
 }

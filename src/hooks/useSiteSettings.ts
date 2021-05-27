@@ -18,14 +18,8 @@ export const useSiteSettings = () => {
           site_copyright {
             text
           }
-          facebook_handle {
-            text
-          }
-          twitter_handle {
-            text
-          }
-          instagram_handle {
-            text
+          site_disclaimer {
+            html
           }
         }
       }
@@ -38,8 +32,6 @@ export const useSiteSettings = () => {
     siteName: settings?.site_name?.text,
     siteDescription: settings?.site_description?.text,
     siteCopyright: settings?.site_copyright?.text?.replace?.(/\$YEAR/g, YEAR),
-    facebookHandle: settings?.facebook_handle?.text,
-    twitterHandle: settings?.twitter_handle?.text,
-    instagramHandle: settings?.instagram_handle?.text,
+    siteDisclaimerHTML: settings?.site_disclaimer?.html,
   }
 }

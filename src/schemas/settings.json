@@ -28,25 +28,12 @@
         "label": "Site Copyright"
       }
     },
-    "facebook_handle": {
+    "site_disclaimer": {
       "type": "StructuredText",
       "config": {
-        "single": "paragraph",
-        "label": "Facebook Handle"
-      }
-    },
-    "twitter_handle": {
-      "type": "StructuredText",
-      "config": {
-        "single": "paragraph",
-        "label": "Twitter Handle"
-      }
-    },
-    "instagram_handle": {
-      "type": "StructuredText",
-      "config": {
-        "single": "paragraph",
-        "label": "Instagram Handle"
+        "multi": "paragraph, em, hyperlink",
+        "allowTargetBlank": true,
+        "label": "site_disclaimer"
       }
     }
   },
