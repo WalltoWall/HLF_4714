@@ -58,7 +58,6 @@ const Navigation = () => {
   )
 }
 
-// TODO: Make footer a slice to read from context
 export const Footer = () => {
   const siteSettings = useSiteSettings()
 

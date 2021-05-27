@@ -29,8 +29,8 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
       <button
         onClick={openModal}
         className={clsx(
-          'flex flex-col items-center space-y-4 w-[90px] md:w-28 lg:w-[130px]',
-          'group',
+          'flex flex-col items-center space-y-4 group',
+          'w-[90px] sm:w-28 md:w-32 lg:w-[130px]',
           focusRing,
         )}
       >
@@ -38,7 +38,8 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
 
         <div
           className={clsx(
-            'w-full h-[90px] md:h-28 lg:h-[130px] rounded-full bg-gray-87',
+            'w-full rounded-full bg-gray-87',
+            'h-[90px] sm:h-28 md:h-32 lg:h-[130px]',
             'flex-shrink-0',
           )}
         >
@@ -105,12 +106,11 @@ const Directors = ({ directors, subheading, heading }: DirectorsListProps) => {
           )}
         </div>
 
-        <HStack
-          as="ul"
-          rowGap="20px"
-          columnGap="20px"
-          mdRowGap="24px"
-          className="justify-center"
+        <ul
+          className={clsx(
+            'grid justify-center grid-cols-[repeat(3,auto)] gap-5 justify-items-center',
+            'md:gap-x-6 lg:grid-cols-6',
+          )}
         >
           {directors.map((director, idx) => (
             <Director
@@ -119,7 +119,7 @@ const Directors = ({ directors, subheading, heading }: DirectorsListProps) => {
               {...director}
             />
           ))}
-        </HStack>
+        </ul>
       </div>
     </>
   )
