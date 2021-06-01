@@ -53,7 +53,7 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
         </div>
 
         {name && (
-          <p className={clsx(personName, 'text-center text-green-24 py-[2px]')}>
+          <p className={clsx(personName, 'text-center text-green-24 pb-1')}>
             {name}
           </p>
         )}
