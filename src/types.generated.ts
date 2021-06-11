@@ -4449,8 +4449,10 @@ export type QueryAllSiteArgs = {
 }
 
 export type QuerySiteFunctionArgs = {
-  apiRoute?: Maybe<StringQueryOperatorInput>
-  originalFilePath?: Maybe<StringQueryOperatorInput>
+  functionRoute?: Maybe<StringQueryOperatorInput>
+  pluginName?: Maybe<StringQueryOperatorInput>
+  originalAbsoluteFilePath?: Maybe<StringQueryOperatorInput>
+  originalRelativeFilePath?: Maybe<StringQueryOperatorInput>
   relativeCompiledFilePath?: Maybe<StringQueryOperatorInput>
   absoluteCompiledFilePath?: Maybe<StringQueryOperatorInput>
   matchPath?: Maybe<StringQueryOperatorInput>
@@ -5115,8 +5117,10 @@ export type SiteFilterInput = {
 }
 
 export type SiteFunction = Node & {
-  apiRoute: Scalars['String']
-  originalFilePath: Scalars['String']
+  functionRoute: Scalars['String']
+  pluginName: Scalars['String']
+  originalAbsoluteFilePath: Scalars['String']
+  originalRelativeFilePath: Scalars['String']
   relativeCompiledFilePath: Scalars['String']
   absoluteCompiledFilePath: Scalars['String']
   matchPath?: Maybe<Scalars['String']>
@@ -5167,8 +5171,10 @@ export type SiteFunctionEdge = {
 }
 
 export enum SiteFunctionFieldsEnum {
-  ApiRoute = 'apiRoute',
-  OriginalFilePath = 'originalFilePath',
+  FunctionRoute = 'functionRoute',
+  PluginName = 'pluginName',
+  OriginalAbsoluteFilePath = 'originalAbsoluteFilePath',
+  OriginalRelativeFilePath = 'originalRelativeFilePath',
   RelativeCompiledFilePath = 'relativeCompiledFilePath',
   AbsoluteCompiledFilePath = 'absoluteCompiledFilePath',
   MatchPath = 'matchPath',
@@ -5261,8 +5267,10 @@ export enum SiteFunctionFieldsEnum {
 }
 
 export type SiteFunctionFilterInput = {
-  apiRoute?: Maybe<StringQueryOperatorInput>
-  originalFilePath?: Maybe<StringQueryOperatorInput>
+  functionRoute?: Maybe<StringQueryOperatorInput>
+  pluginName?: Maybe<StringQueryOperatorInput>
+  originalAbsoluteFilePath?: Maybe<StringQueryOperatorInput>
+  originalRelativeFilePath?: Maybe<StringQueryOperatorInput>
   relativeCompiledFilePath?: Maybe<StringQueryOperatorInput>
   absoluteCompiledFilePath?: Maybe<StringQueryOperatorInput>
   matchPath?: Maybe<StringQueryOperatorInput>
@@ -5511,15 +5519,15 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsCrossOrigin = 'pluginCreator___pluginOptions___crossOrigin',
   PluginCreatorPluginOptionsIncludeFavicon = 'pluginCreator___pluginOptions___include_favicon',
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
+  PluginCreatorPluginOptionsRepositoryName = 'pluginCreator___pluginOptions___repositoryName',
+  PluginCreatorPluginOptionsAccessToken = 'pluginCreator___pluginOptions___accessToken',
+  PluginCreatorPluginOptionsFetchLinks = 'pluginCreator___pluginOptions___fetchLinks',
+  PluginCreatorPluginOptionsPrismicToolbar = 'pluginCreator___pluginOptions___prismicToolbar',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
   PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
   PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
-  PluginCreatorPluginOptionsRepositoryName = 'pluginCreator___pluginOptions___repositoryName',
-  PluginCreatorPluginOptionsAccessToken = 'pluginCreator___pluginOptions___accessToken',
-  PluginCreatorPluginOptionsFetchLinks = 'pluginCreator___pluginOptions___fetchLinks',
-  PluginCreatorPluginOptionsPrismicToolbar = 'pluginCreator___pluginOptions___prismicToolbar',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
   PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
@@ -5736,15 +5744,15 @@ export enum SitePluginFieldsEnum {
   PluginOptionsCrossOrigin = 'pluginOptions___crossOrigin',
   PluginOptionsIncludeFavicon = 'pluginOptions___include_favicon',
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
+  PluginOptionsRepositoryName = 'pluginOptions___repositoryName',
+  PluginOptionsAccessToken = 'pluginOptions___accessToken',
+  PluginOptionsFetchLinks = 'pluginOptions___fetchLinks',
+  PluginOptionsPrismicToolbar = 'pluginOptions___prismicToolbar',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
   PluginOptionsIsTsx = 'pluginOptions___isTSX',
   PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
-  PluginOptionsRepositoryName = 'pluginOptions___repositoryName',
-  PluginOptionsAccessToken = 'pluginOptions___accessToken',
-  PluginOptionsFetchLinks = 'pluginOptions___fetchLinks',
-  PluginOptionsPrismicToolbar = 'pluginOptions___prismicToolbar',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
   SsrApIs = 'ssrAPIs',
@@ -5878,16 +5886,16 @@ export type SitePluginPluginOptions = {
   crossOrigin?: Maybe<Scalars['String']>
   include_favicon?: Maybe<Scalars['Boolean']>
   cacheDigest?: Maybe<Scalars['String']>
+  repositoryName?: Maybe<Scalars['String']>
+  accessToken?: Maybe<Scalars['String']>
+  schemas?: Maybe<SitePluginPluginOptionsSchemas>
+  fetchLinks?: Maybe<Array<Maybe<Scalars['String']>>>
+  prismicToolbar?: Maybe<Scalars['Boolean']>
   path?: Maybe<Scalars['String']>
   pathCheck?: Maybe<Scalars['Boolean']>
   allExtensions?: Maybe<Scalars['Boolean']>
   isTSX?: Maybe<Scalars['Boolean']>
   jsxPragma?: Maybe<Scalars['String']>
-  repositoryName?: Maybe<Scalars['String']>
-  accessToken?: Maybe<Scalars['String']>
-  schemas?: Maybe<SitePluginPluginOptionsSchemas>
-  fetchLinks?: Maybe<Array<Maybe<Scalars['String']>>>
-  prismicToolbar?: Maybe<Scalars['String']>
 }
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -5908,16 +5916,16 @@ export type SitePluginPluginOptionsFilterInput = {
   crossOrigin?: Maybe<StringQueryOperatorInput>
   include_favicon?: Maybe<BooleanQueryOperatorInput>
   cacheDigest?: Maybe<StringQueryOperatorInput>
+  repositoryName?: Maybe<StringQueryOperatorInput>
+  accessToken?: Maybe<StringQueryOperatorInput>
+  schemas?: Maybe<SitePluginPluginOptionsSchemasFilterInput>
+  fetchLinks?: Maybe<StringQueryOperatorInput>
+  prismicToolbar?: Maybe<BooleanQueryOperatorInput>
   path?: Maybe<StringQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
   allExtensions?: Maybe<BooleanQueryOperatorInput>
   isTSX?: Maybe<BooleanQueryOperatorInput>
   jsxPragma?: Maybe<StringQueryOperatorInput>
-  repositoryName?: Maybe<StringQueryOperatorInput>
-  accessToken?: Maybe<StringQueryOperatorInput>
-  schemas?: Maybe<SitePluginPluginOptionsSchemasFilterInput>
-  fetchLinks?: Maybe<StringQueryOperatorInput>
-  prismicToolbar?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsSchemas = {
@@ -7871,6 +7879,22 @@ export type PageBodyTeamFragment = {
   }>
 }
 
+export type AllPersonsFragment = {
+  allPrismicPerson: {
+    nodes: Array<{
+      data?: Maybe<
+        Pick<PrismicPersonDataType, 'position_type'> & {
+          first_name?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+          last_name?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+          title?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
+          headshot?: Maybe<{ fluid?: Maybe<GatsbyPrismicImageFluidFragment> }>
+          bio?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+        }
+      >
+    }>
+  }
+}
+
 export type PageBodyTextWithImageFragment = {
   primary?: Maybe<{
     subheading?: Maybe<Pick<PrismicStructuredTextType, 'text'>>
@@ -7969,4 +7993,4 @@ export type PageTemplateQuery = {
       >
     } & PrismicPageParentRecursiveFragment
   >
-}
+} & AllPersonsFragment
