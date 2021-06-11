@@ -36,13 +36,7 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
       >
         <span className="sr-only">Open {name}'s biography.</span>
 
-        <div
-          className={clsx(
-            'w-full rounded-full bg-gray-87',
-            'h-[90px] sm:h-28 md:h-32 lg:h-[130px]',
-            'flex-shrink-0',
-          )}
-        >
+        <div className="flex-shrink-0 rounded-full bg-gray-87">
           {imageFluid && (
             <GatsbyImage
               fluid={imageFluid}
@@ -50,14 +44,16 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
               imgStyle={{ objectFit: 'cover' }}
               className={clsx(
                 'transition filter grayscale group-hover:grayscale-0',
-                'group-focus-within:grayscale-0 rounded-full h-full w-full',
+                'group-focus-within:grayscale-0 rounded-full',
+                'h-[90px] sm:h-28 md:h-32 lg:h-[130px]',
+                'w-[90px] sm:w-28 md:w-32 lg:w-[130px]',
               )}
             />
           )}
         </div>
 
         {name && (
-          <p className={clsx(personName, 'text-center text-green-24 py-px')}>
+          <p className={clsx(personName, 'text-center text-green-24 pb-1')}>
             {name}
           </p>
         )}
