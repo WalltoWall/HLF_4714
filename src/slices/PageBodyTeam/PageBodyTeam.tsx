@@ -1,20 +1,21 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import clsx from 'clsx'
-import GatsbyImage from 'gatsby-image'
+import GatsbyImage, { FluidObject } from 'gatsby-image'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
 import { PageTemplateEnhancerProps } from '../../templates/page'
 import { BoundedBox } from '../../components/BoundedBox'
-import { useAllPersons, TPerson } from '../../hooks/useAllPersons'
 import {
   personName,
   personTitle,
   sansCaps,
   serifHeading,
 } from '../../typography'
-import { HStack } from '../../components/HStack'
-import { PageBodyTeamFragment } from '../../types.generated'
+import type {
+  PageBodyTeamFragment,
+  AllPersonsFragment,
+} from '../../types.generated'
 import { focusRing } from '../../lib/utilStyles'
 import { DirectorModal } from './DirectorModal'
 import { Oval } from '../../components/Oval'
@@ -166,9 +167,8 @@ const PageBodyTeam = ({
   staffTeamHeading,
   directorsHeading,
   directorsSubeading,
+  allPersons,
 }: PageBodyTeamProps) => {
-  const { directors, staffTeam } = useAllPersons()
-
   return (
     <BoundedBox
       as="section"
@@ -193,24 +193,67 @@ const PageBodyTeam = ({
 
       <div className="space-y-9 md:space-y-16 isolate">
         <Directors
-          directors={directors}
+          directors={allPersons.directors}
           heading={directorsHeading}
           subheading={directorsSubeading}
         />
         <hr className="w-full border-t border-gray-87" />
-        <StaffTeam staffTeam={staffTeam} heading={staffTeamHeading} />
+        <StaffTeam
+          staffTeam={allPersons.staffTeam}
+          heading={staffTeamHeading}
+        />
       </div>
     </BoundedBox>
   )
 }
 
+interface TPerson {
+  name?: string
+  positionType?: string
+  title?: string
+  imageFluid?: FluidObject
+  bioHTML?: string
+}
+
 export const mapDataToProps = ({
   data,
+  meta,
 }: MapDataToPropsArgs<PageBodyTeamFragment, typeof mapDataToContext>) => {
+  let allPrismicPerson: AllPersonsFragment['allPrismicPerson'] =
+    meta?.rootData.allPrismicPerson
+
+  console.log(allPrismicPerson)
+
+  let directors: TPerson[] = []
+  let staffTeam: TPerson[] = []
+
+  allPrismicPerson.nodes.forEach((node) => {
+    const person = {
+      name: `${node.data?.first_name?.text} ${node.data?.last_name?.text}`,
+      positionType: node.data?.position_type,
+      title: node.data?.title?.text,
+      imageFluid: node.data?.headshot?.fluid,
+      bioHTML: node.data?.bio?.html,
+    }
+
+    switch (person.positionType) {
+      case 'Staff Team':
+        return staffTeam.push(person)
+      case 'Director':
+        return directors.push(person)
+      default:
+        return
+    }
+  })
+
   return {
     directorsSubeading: data.primary?.directors_subheading?.text,
     directorsHeading: data.primary?.directors_heading?.text,
     staffTeamHeading: data.primary?.staff_team_heading?.text,
+    allPersons: {
+      directors,
+      staffTeam,
+    },
   }
 }
 
@@ -229,6 +272,35 @@ export const fragment = graphql`
       }
       staff_team_heading {
         text
+      }
+    }
+  }
+
+  fragment AllPersons on Query {
+    allPrismicPerson(sort: { fields: data___last_name___text, order: ASC }) {
+      nodes {
+        _previewable
+        prismicId
+        data {
+          first_name {
+            text
+          }
+          last_name {
+            text
+          }
+          position_type
+          title {
+            text
+          }
+          headshot {
+            fluid(maxWidth: 800) {
+              ...GatsbyPrismicImageFluid
+            }
+          }
+          bio {
+            html
+          }
+        }
       }
     }
   }
