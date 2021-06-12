@@ -1,1 +1,1 @@
-exports.linkResolver = (doc) => (doc.uid === 'home' ? '/' : `/${doc.uid}`)
+exports.linkResolver = (doc) => '/'
