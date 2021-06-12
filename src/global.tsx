@@ -14,7 +14,7 @@
 
 import * as React from 'react'
 import { GatsbyBrowser } from 'gatsby'
-import { PreviewStoreProvider } from 'gatsby-source-prismic'
+import { PrismicPreviewProvider } from 'gatsby-plugin-prismic-previews'
 import { SkipNavLink } from '@reach/skip-nav'
 
 import { Header } from './components/Header'
@@ -29,7 +29,7 @@ import '@fontsource/pt-serif/400.css'
 export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
   element,
 }) => (
-  <PreviewStoreProvider>
+  <PrismicPreviewProvider>
     <PageContainer>
       <SkipNavLink className={focusRing}>
         <p>Skip to content</p>
@@ -39,5 +39,5 @@ export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
       {element}
       <Footer />
     </PageContainer>
-  </PreviewStoreProvider>
+  </PrismicPreviewProvider>
 )

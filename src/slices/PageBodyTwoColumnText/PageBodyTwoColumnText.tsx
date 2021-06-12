@@ -81,7 +81,7 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyTwoColumnText on PrismicPageBodyTwoColumnText {
+  fragment PageBodyTwoColumnText on PrismicPageDataBodyTwoColumnText {
     primary {
       left_text {
         html

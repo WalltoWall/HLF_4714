@@ -21,19 +21,19 @@ import * as PageBodyCallToAction from './PageBodyCallToAction/PageBodyCallToActi
 
 // 2. Add your slice
 const slices = {
-  PageBodyTexturedImage,
-  PageBodyPageIntro,
-  PageBodyCenteredText,
-  PageBodyTwoColumnText,
-  PageBodyTextWithImage,
-  PageBodyTeam,
-  PageBodyCallToAction,
-  PageBodyAnchor,
+  PageDataBodyTexturedImage: PageBodyTexturedImage,
+  PageDataBodyPageIntro: PageBodyPageIntro,
+  PageDataBodyCenteredText: PageBodyCenteredText,
+  PageDataBodyTwoColumnText: PageBodyTwoColumnText,
+  PageDataBodyTextWithImage: PageBodyTextWithImage,
+  PageDataBodyTeam: PageBodyTeam,
+  PageDataBodyCallToAction: PageBodyCallToAction,
+  PageDataBodyAnchor: PageBodyAnchor,
 }
 
 // 3. Add your slice fragment
 export const fragment = graphql`
-  fragment SlicesPageBody on PrismicPageBodySlicesType {
+  fragment SlicesPageBody on PrismicPageDataBodySlicesType {
     ...PageBodyTexturedImage
     ...PageBodyPageIntro
     ...PageBodyCenteredText

@@ -57,7 +57,7 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyCallToAction on PrismicPageBodyCallToAction {
+  fragment PageBodyCallToAction on PrismicPageDataBodyCallToAction {
     primary {
       heading {
         text

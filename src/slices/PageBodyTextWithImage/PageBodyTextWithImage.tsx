@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import clsx from 'clsx'
-import GatsbyImage from 'gatsby-image'
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image'
 import { AnimateSharedLayout, motion } from 'framer-motion'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
@@ -26,7 +26,7 @@ const Section = ({
 
   return (
     <motion.div
-      layout
+      layout="position"
       className={clsx(
         'grid justify-items-center py-7 gap-y-7',
         'md:grid-cols-6 md:gap-y-0 md:gap-x-6',
@@ -38,8 +38,8 @@ const Section = ({
           className="max-w-[150px] md:max-w-[175px] w-full md:col-span-2 md:justify-self-center"
         >
           <GatsbyImage
-            fluid={imageFluid}
-            alt={imageAlt}
+            image={imageFluid}
+            alt={imageAlt ?? ''}
             imgStyle={{ objectFit: 'contain' }}
           />
         </motion.div>
@@ -72,14 +72,14 @@ const Section = ({
         )}
 
         <motion.div
-          layout
+          layout="position"
           className="flex items-center justify-center space-x-5 md:space-x-6 md:justify-start"
         >
           {buttonLink && buttonText && (
             <ButtonLink href={buttonLink}>{buttonText}</ButtonLink>
           )}
           <motion.button
-            layout
+            layout="position"
             className={clsx(
               focusRing,
               'sans-caps text-green-24 py-px',
@@ -124,7 +124,7 @@ const PageBodyTextWithImage = ({
 
         <AnimateSharedLayout>
           <motion.div
-            layout
+            layout="position"
             className="border-t border-b divide-y divide-gray-87 border-gray-87"
           >
             {sections.map((section, idx) => (
@@ -147,7 +147,7 @@ export const mapDataToProps = ({
     subheading: data.primary?.subheading?.text,
     heading: data.primary?.heading?.text,
     sections: data.items?.map((item) => ({
-      imageFluid: item?.image?.fluid,
+      imageFluid: getImage(item?.image as ImageDataLike),
       imageAlt: item?.image?.alt,
       textHTML: item?.text?.html,
       buttonLink: item?.button_link?.url,
@@ -161,7 +161,7 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyTextWithImage on PrismicPageBodyTextWithImage {
+  fragment PageBodyTextWithImage on PrismicPageDataBodyTextWithImage {
     primary {
       subheading {
         text
@@ -173,9 +173,7 @@ export const fragment = graphql`
     items {
       image {
         alt
-        fluid(maxWidth: 800) {
-          ...GatsbyPrismicImageFluid
-        }
+        gatsbyImageData(width: 800, placeholder: BLURRED)
       }
       text {
         html

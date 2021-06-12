@@ -1,7 +1,7 @@
 const path = require('path')
 
-exports.createPages = (gatsbyContext) => {
-  const { actions, getNodesByType, reporter } = gatsbyContext
+exports.createPages = async (gatsbyContext) => {
+  const { actions, reporter, graphql } = gatsbyContext
   const { createPage, createRedirect } = actions
 
   /**
@@ -15,7 +15,25 @@ exports.createPages = (gatsbyContext) => {
    * @see https://www.gatsbyjs.org/docs/node-apis/#createPages
    * @see https://www.gatsbyjs.org/docs/actions/#createRedirect
    */
-  for (const page of getNodesByType('PrismicPage')) {
+  const pageResult = await graphql(`
+    query {
+      allPrismicPage {
+        nodes {
+          uid
+          url
+          data {
+            redirect_to {
+              url
+            }
+            redirect_is_permanent
+          }
+        }
+      }
+    }
+  `)
+  const pageNodes = pageResult.data.allPrismicPage.nodes
+
+  for (const page of pageNodes) {
     if (page.data.redirect_to.url) {
       createRedirect({
         fromPath: page.url,
@@ -39,7 +57,22 @@ exports.createPages = (gatsbyContext) => {
    *
    * @see https://www.gatsbyjs.org/docs/actions/#createRedirect
    */
-  for (const redirect of getNodesByType('PrismicSettings')[0].data.redirects)
+  const settingsResult = await graphql(`
+    query {
+      prismicSettings {
+        data {
+          redirects {
+            from_path
+            is_permanent
+            to_path
+          }
+        }
+      }
+    }
+  `)
+  const redirects = settingsResult.data.prismicSettings.data.redirects
+
+  for (const redirect of redirects)
     if (redirect.from_path && redirect.to_path)
       createRedirect({
         fromPath: redirect.from_path,

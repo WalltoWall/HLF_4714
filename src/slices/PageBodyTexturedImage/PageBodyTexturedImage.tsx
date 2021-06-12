@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image'
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image'
 
 import { PageBodyTexturedImageFragment } from '../../types.generated'
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
@@ -19,7 +19,7 @@ const PageBodyTexturedImage = ({
     <section data-textured-image className="relative">
       <GatsbyImage
         className="h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px]"
-        fluid={imageFluid}
+        image={imageFluid}
         alt={imageAlt ?? ''}
         imgStyle={{ objectFit: 'cover' }}
       />
@@ -33,7 +33,7 @@ export const mapDataToProps = ({
   PageBodyTexturedImageFragment,
   typeof mapDataToContext
 >) => ({
-  imageFluid: data.primary?.image?.fluid,
+  imageFluid: getImage(data.primary?.image as ImageDataLike),
   imageAlt: data.primary?.image?.alt,
 })
 
@@ -42,13 +42,11 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyTexturedImage on PrismicPageBodyTexturedImage {
+  fragment PageBodyTexturedImage on PrismicPageDataBodyTexturedImage {
     primary {
       image {
         alt
-        fluid(maxWidth: 1450) {
-          ...GatsbyPrismicImageFluid
-        }
+        gatsbyImageData(width: 1450, placeholder: BLURRED)
       }
     }
   }

@@ -1,7 +1,8 @@
 schema: http://localhost:8000/___graphql
 documents:
   - ./src/**/*.{ts,tsx}
-  - ./.cache/fragments/**/*.js
+  - ./.cache/fragments/*.js
+  - ./node_modules/@imgix/gatsby/*.js
 generates:
   ./src/types.generated.ts:
     plugins:

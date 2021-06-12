@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { PageProps, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet-async'
-import { withUnpublishedPreview } from 'gatsby-source-prismic'
+import {
+  componentResolverFromMap,
+  withPrismicUnpublishedPreview,
+} from 'gatsby-plugin-prismic-previews'
 import MapSlicesToComponents from '@walltowall/react-map-slices-to-components'
 
 import { NotFoundPageQuery } from '../types.generated'
@@ -10,16 +13,7 @@ import { mapDataToPropsEnhancer, PageTemplate } from '../templates/page'
 import { useSiteSettings } from '../hooks/useSiteSettings'
 
 import { Layout } from '../components/Layout'
-
-/**
- * Mapping of Prismic custom type API IDs to their templates. Add mappings here
- * as custom types and templates are created.
- *
- * @see https://github.com/angeloashmore/gatsby-source-prismic/blob/master/docs/previews.md#withUnpublishedPreview
- */
-const customTypeToTemplate = {
-  page: PageTemplate,
-}
+import { linkResolver } from '../linkResolver'
 
 export const NotFoundPage = ({
   data,
@@ -63,9 +57,15 @@ export const NotFoundPage = ({
   )
 }
 
-export default withUnpublishedPreview(NotFoundPage, {
-  templateMap: customTypeToTemplate,
-})
+export default withPrismicUnpublishedPreview(NotFoundPage, [
+  {
+    repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY_NAME!,
+    linkResolver,
+    componentResolver: componentResolverFromMap({
+      page: PageTemplate,
+    }),
+  },
+])
 
 export const query = graphql`
   query NotFoundPage {
@@ -78,8 +78,7 @@ export const query = graphql`
         meta_title
         meta_description
         body {
-          __typename
-          ... on Node {
+          ... on PrismicSliceType {
             id
           }
           ...SlicesPageBody

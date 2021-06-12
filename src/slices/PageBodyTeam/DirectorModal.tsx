@@ -1,6 +1,6 @@
 import * as React from 'react'
 import clsx from 'clsx'
-import GatsbyImage, { FluidObject } from 'gatsby-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Dialog } from '@headlessui/react'
 
 import { HTMLContent } from '../../components/HTMLContent'
@@ -14,7 +14,7 @@ import * as styles from './DirectorModal.module.css'
 
 interface Props extends Omit<ModalProps, 'children' | 'title'> {
   bioHTML?: string
-  imageFluid?: FluidObject
+  imageFluid?: IGatsbyImageData
   name?: string
 }
 
@@ -54,8 +54,8 @@ export const DirectorModal = ({
           >
             {imageFluid && (
               <GatsbyImage
-                fluid={imageFluid}
-                alt={name}
+                image={imageFluid}
+                alt={name ?? ''}
                 imgStyle={{ objectFit: 'cover' }}
               />
             )}

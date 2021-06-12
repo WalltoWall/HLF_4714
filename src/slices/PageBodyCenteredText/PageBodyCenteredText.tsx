@@ -43,7 +43,7 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyCenteredText on PrismicPageBodyCenteredText {
+  fragment PageBodyCenteredText on PrismicPageDataBodyCenteredText {
     primary {
       text {
         html
