@@ -26,6 +26,9 @@ import './index.css'
 import '@reach/skip-nav/styles.css'
 import '@fontsource/pt-serif/400.css'
 
+// Styling for the preview modals.
+import 'gatsby-plugin-prismic-previews/dist/styles.css'
+
 export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
   element,
 }) => (
