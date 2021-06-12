@@ -56,7 +56,8 @@ export const DirectorModal = ({
               <GatsbyImage
                 image={imageFluid}
                 alt={name ?? ''}
-                imgStyle={{ objectFit: 'cover' }}
+                imgStyle={{ objectFit: 'cover', borderRadius: '50%' }}
+                className="rounded-full"
               />
             )}
           </div>
