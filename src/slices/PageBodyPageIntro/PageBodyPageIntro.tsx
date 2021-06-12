@@ -108,7 +108,7 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyPageIntro on PrismicPageBodyPageIntro {
+  fragment PageBodyPageIntro on PrismicPageDataBodyPageIntro {
     primary {
       heading {
         text

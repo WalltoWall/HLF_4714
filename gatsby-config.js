@@ -14,6 +14,7 @@ module.exports = {
     'gatsby-plugin-react-helmet-async',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-image',
 
     process.env.GOOGLE_TAGMANAGER_ID && {
       resolve: 'gatsby-plugin-google-tagmanager',
@@ -43,7 +44,13 @@ module.exports = {
         schemas: require('./src/schemas'),
         linkResolver: require('./src/linkResolver').linkResolver,
         fetchLinks: ['page.parent'],
-        prismicToolbar: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-prismic-previews',
+      options: {
+        repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY_NAME,
+        accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN,
       },
     },
     'gatsby-plugin-netlify',

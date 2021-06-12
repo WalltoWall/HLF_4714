@@ -23,7 +23,8 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({})
 
 export const fragment = graphql`
-  fragment PageBodyAnchor on PrismicPageBodyAnchor {
+  fragment PageBodyAnchor on PrismicPageDataBodyAnchor {
+    id
     primary {
       anchor
     }

@@ -1,7 +1,12 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import clsx from 'clsx'
-import GatsbyImage, { FluidObject } from 'gatsby-image'
+import {
+  GatsbyImage,
+  IGatsbyImageData,
+  getImage,
+  ImageDataLike,
+} from 'gatsby-plugin-image'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
 import { PageTemplateEnhancerProps } from '../../templates/page'
@@ -40,8 +45,8 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
         <div className="flex-shrink-0 rounded-full bg-gray-87">
           {imageFluid && (
             <GatsbyImage
-              fluid={imageFluid}
-              alt={name}
+              image={imageFluid}
+              alt={name ?? ''}
               imgStyle={{ objectFit: 'cover' }}
               className={clsx(
                 'transition filter grayscale group-hover:grayscale-0',
@@ -211,7 +216,7 @@ interface TPerson {
   name?: string
   positionType?: string
   title?: string
-  imageFluid?: FluidObject
+  imageFluid?: IGatsbyImageData
   bioHTML?: string
 }
 
@@ -222,8 +227,6 @@ export const mapDataToProps = ({
   let allPrismicPerson: AllPersonsFragment['allPrismicPerson'] =
     meta?.rootData.allPrismicPerson
 
-  console.log(allPrismicPerson)
-
   let directors: TPerson[] = []
   let staffTeam: TPerson[] = []
 
@@ -232,7 +235,7 @@ export const mapDataToProps = ({
       name: `${node.data?.first_name?.text} ${node.data?.last_name?.text}`,
       positionType: node.data?.position_type,
       title: node.data?.title?.text,
-      imageFluid: node.data?.headshot?.fluid,
+      imageFluid: getImage(node.data?.headshot as ImageDataLike),
       bioHTML: node.data?.bio?.html,
     }
 
@@ -262,7 +265,7 @@ export const mapDataToContext = () => ({
 })
 
 export const fragment = graphql`
-  fragment PageBodyTeam on PrismicPageBodyTeam {
+  fragment PageBodyTeam on PrismicPageDataBodyTeam {
     primary {
       directors_subheading {
         text
@@ -293,9 +296,7 @@ export const fragment = graphql`
             text
           }
           headshot {
-            fluid(maxWidth: 800) {
-              ...GatsbyPrismicImageFluid
-            }
+            gatsbyImageData(width: 800, placeholder: BLURRED)
           }
           bio {
             html
