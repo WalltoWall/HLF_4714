@@ -48,7 +48,7 @@ export const DirectorModal = ({
         <div
           className={clsx(
             'relative overflow-scroll max-h-80',
-            'py-8 md:py-9',
+            'pt-8 md:pt-9 pb-5 md:pb-6',
             'mb-3',
             styles.hideScrollbar,
           )}
