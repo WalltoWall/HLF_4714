@@ -65,7 +65,7 @@ const Section = ({
               className={clsx(
                 'absolute inset-x-0 bottom-0 h-24 pointer-events-none max-w-full',
                 'bg-gradient-to-b to-white from-[#fff0]',
-                isExpanded && 'opacity-0 yot',
+                isExpanded && 'opacity-0',
               )}
             />
           </motion.div>
