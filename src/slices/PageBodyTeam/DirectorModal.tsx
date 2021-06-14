@@ -14,7 +14,7 @@ import * as styles from './DirectorModal.module.css'
 
 interface Props extends Omit<ModalProps, 'children' | 'title'> {
   bioHTML?: string
-  imageFluid?: IGatsbyImageData
+  gatsbyImage?: IGatsbyImageData
   name?: string
 }
 
@@ -23,7 +23,7 @@ export const DirectorModal = ({
   closeModal,
   name,
   bioHTML,
-  imageFluid,
+  gatsbyImage,
 }: Props) => {
   return (
     <Modal
@@ -61,9 +61,9 @@ export const DirectorModal = ({
               'w-[100px] md:w-28 lg:w-[130px]',
             )}
           >
-            {imageFluid && (
+            {gatsbyImage && (
               <GatsbyImage
-                image={imageFluid}
+                image={gatsbyImage}
                 alt={name ?? ''}
                 imgStyle={{ objectFit: 'cover', borderRadius: '50%' }}
                 className="rounded-full"

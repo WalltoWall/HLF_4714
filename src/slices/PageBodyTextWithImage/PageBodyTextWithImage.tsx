@@ -17,7 +17,7 @@ const MotionHTMLContent = motion(HTMLContent)
 
 const Section = ({
   imageAlt,
-  imageFluid,
+  gatsbyImage,
   textHTML,
   buttonLink,
   buttonText,
@@ -32,13 +32,13 @@ const Section = ({
         'md:grid-cols-6 md:gap-y-0 md:gap-x-6',
       )}
     >
-      {imageFluid && (
+      {gatsbyImage && (
         <motion.div
           layout="position"
           className="max-w-[150px] md:max-w-[175px] w-full md:col-span-2 md:justify-self-center"
         >
           <GatsbyImage
-            image={imageFluid}
+            image={gatsbyImage}
             alt={imageAlt ?? ''}
             imgStyle={{ objectFit: 'contain' }}
           />
@@ -147,7 +147,7 @@ export const mapDataToProps = ({
     subheading: data.primary?.subheading?.text,
     heading: data.primary?.heading?.text,
     sections: data.items?.map((item) => ({
-      imageFluid: getImage(item?.image as ImageDataLike),
+      gatsbyImage: getImage(item?.image as ImageDataLike),
       imageAlt: item?.image?.alt,
       textHTML: item?.text?.html,
       buttonLink: item?.button_link?.url,

@@ -25,11 +25,11 @@ import { focusRing } from '../../lib/utilStyles'
 import { DirectorModal } from './DirectorModal'
 import { Oval } from '../../components/Oval'
 
-interface DirectorProps extends Pick<TPerson, 'imageFluid' | 'name'> {
+interface DirectorProps extends Pick<TPerson, 'gatsbyImage' | 'name'> {
   openModal: () => void
 }
 
-const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
+const Director = ({ gatsbyImage, name, openModal }: DirectorProps) => {
   return (
     <li>
       <button
@@ -43,9 +43,9 @@ const Director = ({ imageFluid, name, openModal }: DirectorProps) => {
         <span className="sr-only">Open {name}'s biography.</span>
 
         <div className="flex-shrink-0 rounded-full bg-gray-87">
-          {imageFluid && (
+          {gatsbyImage && (
             <GatsbyImage
-              image={imageFluid}
+              image={gatsbyImage}
               alt={name ?? ''}
               imgStyle={{ objectFit: 'cover' }}
               className={clsx(
@@ -91,7 +91,7 @@ const Directors = ({ directors, subheading, heading }: DirectorsListProps) => {
         closeModal={closeModal}
         name={activePerson?.name}
         bioHTML={activePerson?.bioHTML}
-        imageFluid={activePerson?.imageFluid}
+        gatsbyImage={activePerson?.gatsbyImage}
       />
 
       <div className="space-y-6 md:space-y-10 lg:space-y-14">
@@ -216,7 +216,7 @@ interface TPerson {
   name?: string
   positionType?: string
   title?: string
-  imageFluid?: IGatsbyImageData
+  gatsbyImage?: IGatsbyImageData
   bioHTML?: string
 }
 
@@ -231,11 +231,11 @@ export const mapDataToProps = ({
   let staffTeam: TPerson[] = []
 
   allPrismicPerson.nodes.forEach((node) => {
-    const person = {
+    const person: TPerson = {
       name: `${node.data?.first_name?.text} ${node.data?.last_name?.text}`,
       positionType: node.data?.position_type,
       title: node.data?.title?.text,
-      imageFluid: getImage(node.data?.headshot as ImageDataLike),
+      gatsbyImage: getImage(node.data?.headshot as ImageDataLike),
       bioHTML: node.data?.bio?.html,
     }
 
