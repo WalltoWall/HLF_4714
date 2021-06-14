@@ -31,19 +31,28 @@ export const DirectorModal = ({
       closeModal={closeModal}
       className="bg-green-92 md:max-w-xl md:w-full"
     >
-      <div className="relative px-5 py-7 md:p-8">
+      <div className="relative px-5 md:px-8">
         <img
           src={patternUrl}
           alt=""
           loading="lazy"
           decoding="async"
           className={clsx(
-            'absolute right-0 inset-y-0 w-[95px] md:w-[135px] pointer-events-none',
+            'absolute right-0 inset-y-0',
+            'w-[95px] md:w-[135px]',
+            'pointer-events-none',
             'object-cover h-full',
           )}
         />
 
-        <div className="isolate">
+        <div
+          className={clsx(
+            'relative overflow-scroll max-h-80',
+            'pt-8 md:pt-9 pb-5',
+            'mb-3',
+            styles.hideScrollbar,
+          )}
+        >
           <div
             className={clsx(
               styles.avatar,
@@ -62,11 +71,11 @@ export const DirectorModal = ({
             )}
           </div>
 
-          <div className="space-y-5 md:space-y-6">
+          <div>
             {name && (
               <Dialog.Title
                 as="h4"
-                className="font-bold text-green-24 sans-20-1_25"
+                className="mb-5 font-bold text-green-24 sans-20-1_25 md:mb-6"
               >
                 {name}
               </Dialog.Title>
@@ -75,6 +84,20 @@ export const DirectorModal = ({
             {bioHTML && <HTMLContent variant="textWithImage" html={bioHTML} />}
           </div>
         </div>
+
+        <div
+          className={clsx(
+            'absolute inset-x-0 top-0 h-5 pointer-events-none max-w-full',
+            'bg-gradient-to-t to-green-92 from-[#e8f5e200]',
+          )}
+        />
+
+        <div
+          className={clsx(
+            'absolute inset-x-0 bottom-0 h-5 pointer-events-none max-w-full',
+            'bg-gradient-to-b to-green-92 from-[#e8f5e200]',
+          )}
+        />
       </div>
 
       <div
