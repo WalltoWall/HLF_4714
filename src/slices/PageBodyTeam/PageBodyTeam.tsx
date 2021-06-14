@@ -24,6 +24,8 @@ import type {
 import { focusRing } from '../../lib/utilStyles'
 import { DirectorModal } from './DirectorModal'
 import { Oval } from '../../components/Oval'
+import { ConditionalWrap } from '../../components/ConditionalWrap'
+import { Link } from '../../components/Link'
 
 interface DirectorProps extends Pick<TPerson, 'gatsbyImage' | 'name'> {
   openModal: () => void
@@ -38,6 +40,7 @@ const Director = ({ gatsbyImage, name, openModal }: DirectorProps) => {
           'flex flex-col items-center space-y-4 group',
           'w-[90px] sm:w-28 md:w-32 lg:w-[130px]',
           focusRing,
+          'focus:ring-offset-2 focus:ring-offset-green-92',
         )}
       >
         <span className="sr-only">Open {name}'s biography.</span>
@@ -127,11 +130,35 @@ const Directors = ({ directors, subheading, heading }: DirectorsListProps) => {
   )
 }
 
-const Member = ({ name, title }: Pick<TPerson, 'name' | 'title'>) => {
+const Member = ({
+  name,
+  title,
+  bioUrl,
+}: Pick<TPerson, 'name' | 'title' | 'bioUrl'>) => {
   return (
-    <li className="space-y-3 text-center">
-      {name && <p className={clsx(personName, 'text-green-24')}>{name}</p>}
-      {title && <p className={clsx(personTitle, 'text-gray-17')}>{title}</p>}
+    <li className="text-center">
+      <ConditionalWrap
+        condition={Boolean(bioUrl)}
+        wrap={(children) => (
+          <Link
+            href={bioUrl!}
+            className={clsx(
+              'block',
+              'focus:ring-offset-2 focus:ring-offset-green-92',
+            )}
+          >
+            <span className="sr-only">Read {name}'s biography.</span>
+            {children}
+          </Link>
+        )}
+      >
+        <>
+          {name && <p className={clsx(personName, 'text-green-24')}>{name}</p>}
+          {title && (
+            <p className={clsx(personTitle, 'text-gray-17 mt-3')}>{title}</p>
+          )}
+        </>
+      </ConditionalWrap>
     </li>
   )
 }
@@ -218,6 +245,7 @@ interface TPerson {
   title?: string
   gatsbyImage?: IGatsbyImageData
   bioHTML?: string
+  bioUrl?: string
 }
 
 export const mapDataToProps = ({
@@ -237,6 +265,7 @@ export const mapDataToProps = ({
       title: node.data?.title?.text,
       gatsbyImage: getImage(node.data?.headshot as ImageDataLike),
       bioHTML: node.data?.bio?.html,
+      bioUrl: node.data?.bio_link?.url,
     }
 
     switch (person.positionType) {
@@ -300,6 +329,9 @@ export const fragment = graphql`
           }
           bio {
             html
+          }
+          bio_link {
+            url
           }
         }
       }

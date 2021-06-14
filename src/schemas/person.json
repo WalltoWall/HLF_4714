@@ -43,6 +43,14 @@
         "label": "Bio"
       }
     },
+    "bio_link": {
+      "type": "Link",
+      "config": {
+        "allowTargetBlank": true,
+        "label": "Bio Link",
+        "placeholder": "Link for external bio"
+      }
+    },
     "headshot": {
       "type": "Image",
       "config": {
