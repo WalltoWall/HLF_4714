@@ -24,7 +24,7 @@ const Navigation = () => {
         className="items-center"
       >
         <li>
-          <Link href="/">
+          <Link href="/" className="block">
             <span className="sr-only">Navigate to home</span>
             <img
               loading="lazy"

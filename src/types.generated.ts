@@ -2461,6 +2461,7 @@ export type PrismicPersonDataHeadshotImageTypeFilterInput = {
 
 export type PrismicPersonDataType = {
   bio?: Maybe<PrismicStructuredTextType>
+  bio_link?: Maybe<PrismicLinkType>
   first_name?: Maybe<PrismicStructuredTextType>
   headshot?: Maybe<PrismicPersonDataHeadshotImageType>
   last_name?: Maybe<PrismicStructuredTextType>
@@ -2470,6 +2471,7 @@ export type PrismicPersonDataType = {
 
 export type PrismicPersonDataTypeFilterInput = {
   bio?: Maybe<PrismicStructuredTextTypeFilterInput>
+  bio_link?: Maybe<PrismicLinkTypeFilterInput>
   first_name?: Maybe<PrismicStructuredTextTypeFilterInput>
   headshot?: Maybe<PrismicPersonDataHeadshotImageTypeFilterInput>
   last_name?: Maybe<PrismicStructuredTextTypeFilterInput>
@@ -2488,6 +2490,51 @@ export enum PrismicPersonFieldsEnum {
   DataBioText = 'data___bio___text',
   DataBioHtml = 'data___bio___html',
   DataBioRaw = 'data___bio___raw',
+  DataBioLinkLinkType = 'data___bio_link___link_type',
+  DataBioLinkIsBroken = 'data___bio_link___isBroken',
+  DataBioLinkUrl = 'data___bio_link___url',
+  DataBioLinkTarget = 'data___bio_link___target',
+  DataBioLinkSize = 'data___bio_link___size',
+  DataBioLinkId = 'data___bio_link___id',
+  DataBioLinkType = 'data___bio_link___type',
+  DataBioLinkTags = 'data___bio_link___tags',
+  DataBioLinkLang = 'data___bio_link___lang',
+  DataBioLinkSlug = 'data___bio_link___slug',
+  DataBioLinkUid = 'data___bio_link___uid',
+  DataBioLinkLocalFileSourceInstanceName = 'data___bio_link___localFile___sourceInstanceName',
+  DataBioLinkLocalFileAbsolutePath = 'data___bio_link___localFile___absolutePath',
+  DataBioLinkLocalFileRelativePath = 'data___bio_link___localFile___relativePath',
+  DataBioLinkLocalFileExtension = 'data___bio_link___localFile___extension',
+  DataBioLinkLocalFileSize = 'data___bio_link___localFile___size',
+  DataBioLinkLocalFilePrettySize = 'data___bio_link___localFile___prettySize',
+  DataBioLinkLocalFileModifiedTime = 'data___bio_link___localFile___modifiedTime',
+  DataBioLinkLocalFileAccessTime = 'data___bio_link___localFile___accessTime',
+  DataBioLinkLocalFileChangeTime = 'data___bio_link___localFile___changeTime',
+  DataBioLinkLocalFileBirthTime = 'data___bio_link___localFile___birthTime',
+  DataBioLinkLocalFileRoot = 'data___bio_link___localFile___root',
+  DataBioLinkLocalFileDir = 'data___bio_link___localFile___dir',
+  DataBioLinkLocalFileBase = 'data___bio_link___localFile___base',
+  DataBioLinkLocalFileExt = 'data___bio_link___localFile___ext',
+  DataBioLinkLocalFileName = 'data___bio_link___localFile___name',
+  DataBioLinkLocalFileRelativeDirectory = 'data___bio_link___localFile___relativeDirectory',
+  DataBioLinkLocalFileDev = 'data___bio_link___localFile___dev',
+  DataBioLinkLocalFileMode = 'data___bio_link___localFile___mode',
+  DataBioLinkLocalFileNlink = 'data___bio_link___localFile___nlink',
+  DataBioLinkLocalFileUid = 'data___bio_link___localFile___uid',
+  DataBioLinkLocalFileGid = 'data___bio_link___localFile___gid',
+  DataBioLinkLocalFileRdev = 'data___bio_link___localFile___rdev',
+  DataBioLinkLocalFileIno = 'data___bio_link___localFile___ino',
+  DataBioLinkLocalFileAtimeMs = 'data___bio_link___localFile___atimeMs',
+  DataBioLinkLocalFileMtimeMs = 'data___bio_link___localFile___mtimeMs',
+  DataBioLinkLocalFileCtimeMs = 'data___bio_link___localFile___ctimeMs',
+  DataBioLinkLocalFileAtime = 'data___bio_link___localFile___atime',
+  DataBioLinkLocalFileMtime = 'data___bio_link___localFile___mtime',
+  DataBioLinkLocalFileCtime = 'data___bio_link___localFile___ctime',
+  DataBioLinkLocalFileBirthtime = 'data___bio_link___localFile___birthtime',
+  DataBioLinkLocalFileBirthtimeMs = 'data___bio_link___localFile___birthtimeMs',
+  DataBioLinkLocalFileId = 'data___bio_link___localFile___id',
+  DataBioLinkLocalFileChildren = 'data___bio_link___localFile___children',
+  DataBioLinkRaw = 'data___bio_link___raw',
   DataFirstNameText = 'data___first_name___text',
   DataFirstNameHtml = 'data___first_name___html',
   DataFirstNameRaw = 'data___first_name___raw',
@@ -4266,22 +4313,22 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsCacheDigest = 'pluginCreator___pluginOptions___cacheDigest',
   PluginCreatorPluginOptionsRepositoryName = 'pluginCreator___pluginOptions___repositoryName',
   PluginCreatorPluginOptionsAccessToken = 'pluginCreator___pluginOptions___accessToken',
-  PluginCreatorPluginOptionsFetchLinks = 'pluginCreator___pluginOptions___fetchLinks',
+  PluginCreatorPluginOptionsPromptForAccessToken = 'pluginCreator___pluginOptions___promptForAccessToken',
   PluginCreatorPluginOptionsApiEndpoint = 'pluginCreator___pluginOptions___apiEndpoint',
-  PluginCreatorPluginOptionsCustomTypesApiEndpoint = 'pluginCreator___pluginOptions___customTypesApiEndpoint',
   PluginCreatorPluginOptionsLang = 'pluginCreator___pluginOptions___lang',
   PluginCreatorPluginOptionsImageImgixParamsAuto = 'pluginCreator___pluginOptions___imageImgixParams___auto',
   PluginCreatorPluginOptionsImageImgixParamsFit = 'pluginCreator___pluginOptions___imageImgixParams___fit',
   PluginCreatorPluginOptionsImageImgixParamsQ = 'pluginCreator___pluginOptions___imageImgixParams___q',
   PluginCreatorPluginOptionsImagePlaceholderImgixParamsW = 'pluginCreator___pluginOptions___imagePlaceholderImgixParams___w',
   PluginCreatorPluginOptionsImagePlaceholderImgixParamsBlur = 'pluginCreator___pluginOptions___imagePlaceholderImgixParams___blur',
-  PluginCreatorPluginOptionsPromptForAccessToken = 'pluginCreator___pluginOptions___promptForAccessToken',
   PluginCreatorPluginOptionsToolbar = 'pluginCreator___pluginOptions___toolbar',
   PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorPluginOptionsAllExtensions = 'pluginCreator___pluginOptions___allExtensions',
   PluginCreatorPluginOptionsIsTsx = 'pluginCreator___pluginOptions___isTSX',
   PluginCreatorPluginOptionsJsxPragma = 'pluginCreator___pluginOptions___jsxPragma',
+  PluginCreatorPluginOptionsFetchLinks = 'pluginCreator___pluginOptions___fetchLinks',
+  PluginCreatorPluginOptionsCustomTypesApiEndpoint = 'pluginCreator___pluginOptions___customTypesApiEndpoint',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
   PluginCreatorSsrApIs = 'pluginCreator___ssrAPIs',
@@ -4500,22 +4547,22 @@ export enum SitePluginFieldsEnum {
   PluginOptionsCacheDigest = 'pluginOptions___cacheDigest',
   PluginOptionsRepositoryName = 'pluginOptions___repositoryName',
   PluginOptionsAccessToken = 'pluginOptions___accessToken',
-  PluginOptionsFetchLinks = 'pluginOptions___fetchLinks',
+  PluginOptionsPromptForAccessToken = 'pluginOptions___promptForAccessToken',
   PluginOptionsApiEndpoint = 'pluginOptions___apiEndpoint',
-  PluginOptionsCustomTypesApiEndpoint = 'pluginOptions___customTypesApiEndpoint',
   PluginOptionsLang = 'pluginOptions___lang',
   PluginOptionsImageImgixParamsAuto = 'pluginOptions___imageImgixParams___auto',
   PluginOptionsImageImgixParamsFit = 'pluginOptions___imageImgixParams___fit',
   PluginOptionsImageImgixParamsQ = 'pluginOptions___imageImgixParams___q',
   PluginOptionsImagePlaceholderImgixParamsW = 'pluginOptions___imagePlaceholderImgixParams___w',
   PluginOptionsImagePlaceholderImgixParamsBlur = 'pluginOptions___imagePlaceholderImgixParams___blur',
-  PluginOptionsPromptForAccessToken = 'pluginOptions___promptForAccessToken',
   PluginOptionsToolbar = 'pluginOptions___toolbar',
   PluginOptionsPath = 'pluginOptions___path',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   PluginOptionsAllExtensions = 'pluginOptions___allExtensions',
   PluginOptionsIsTsx = 'pluginOptions___isTSX',
   PluginOptionsJsxPragma = 'pluginOptions___jsxPragma',
+  PluginOptionsFetchLinks = 'pluginOptions___fetchLinks',
+  PluginOptionsCustomTypesApiEndpoint = 'pluginOptions___customTypesApiEndpoint',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
   SsrApIs = 'ssrAPIs',
@@ -4651,20 +4698,20 @@ export type SitePluginPluginOptions = {
   cacheDigest?: Maybe<Scalars['String']>
   repositoryName?: Maybe<Scalars['String']>
   accessToken?: Maybe<Scalars['String']>
-  schemas?: Maybe<SitePluginPluginOptionsSchemas>
-  fetchLinks?: Maybe<Array<Maybe<Scalars['String']>>>
+  promptForAccessToken?: Maybe<Scalars['Boolean']>
   apiEndpoint?: Maybe<Scalars['String']>
-  customTypesApiEndpoint?: Maybe<Scalars['String']>
   lang?: Maybe<Scalars['String']>
   imageImgixParams?: Maybe<SitePluginPluginOptionsImageImgixParams>
   imagePlaceholderImgixParams?: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParams>
-  promptForAccessToken?: Maybe<Scalars['Boolean']>
   toolbar?: Maybe<Scalars['String']>
   path?: Maybe<Scalars['String']>
   pathCheck?: Maybe<Scalars['Boolean']>
   allExtensions?: Maybe<Scalars['Boolean']>
   isTSX?: Maybe<Scalars['Boolean']>
   jsxPragma?: Maybe<Scalars['String']>
+  schemas?: Maybe<SitePluginPluginOptionsSchemas>
+  fetchLinks?: Maybe<Array<Maybe<Scalars['String']>>>
+  customTypesApiEndpoint?: Maybe<Scalars['String']>
 }
 
 export type SitePluginPluginOptionsFilterInput = {
@@ -4687,20 +4734,20 @@ export type SitePluginPluginOptionsFilterInput = {
   cacheDigest?: Maybe<StringQueryOperatorInput>
   repositoryName?: Maybe<StringQueryOperatorInput>
   accessToken?: Maybe<StringQueryOperatorInput>
-  schemas?: Maybe<SitePluginPluginOptionsSchemasFilterInput>
-  fetchLinks?: Maybe<StringQueryOperatorInput>
+  promptForAccessToken?: Maybe<BooleanQueryOperatorInput>
   apiEndpoint?: Maybe<StringQueryOperatorInput>
-  customTypesApiEndpoint?: Maybe<StringQueryOperatorInput>
   lang?: Maybe<StringQueryOperatorInput>
   imageImgixParams?: Maybe<SitePluginPluginOptionsImageImgixParamsFilterInput>
   imagePlaceholderImgixParams?: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParamsFilterInput>
-  promptForAccessToken?: Maybe<BooleanQueryOperatorInput>
   toolbar?: Maybe<StringQueryOperatorInput>
   path?: Maybe<StringQueryOperatorInput>
   pathCheck?: Maybe<BooleanQueryOperatorInput>
   allExtensions?: Maybe<BooleanQueryOperatorInput>
   isTSX?: Maybe<BooleanQueryOperatorInput>
   jsxPragma?: Maybe<StringQueryOperatorInput>
+  schemas?: Maybe<SitePluginPluginOptionsSchemasFilterInput>
+  fetchLinks?: Maybe<StringQueryOperatorInput>
+  customTypesApiEndpoint?: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsImageImgixParams = {
@@ -5864,6 +5911,7 @@ export type SitePluginPluginOptionsSchemasPersonMain = {
   title?: Maybe<SitePluginPluginOptionsSchemasPersonMainTitle>
   position_type?: Maybe<SitePluginPluginOptionsSchemasPersonMainPosition_Type>
   bio?: Maybe<SitePluginPluginOptionsSchemasPersonMainBio>
+  bio_link?: Maybe<SitePluginPluginOptionsSchemasPersonMainBio_Link>
   headshot?: Maybe<SitePluginPluginOptionsSchemasPersonMainHeadshot>
 }
 
@@ -5889,6 +5937,29 @@ export type SitePluginPluginOptionsSchemasPersonMainBioFilterInput = {
   config?: Maybe<SitePluginPluginOptionsSchemasPersonMainBioConfigFilterInput>
 }
 
+export type SitePluginPluginOptionsSchemasPersonMainBio_Link = {
+  type?: Maybe<Scalars['String']>
+  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainBio_LinkConfig>
+}
+
+export type SitePluginPluginOptionsSchemasPersonMainBio_LinkConfig = {
+  allowTargetBlank?: Maybe<Scalars['Boolean']>
+  label?: Maybe<Scalars['String']>
+  placeholder?: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsSchemasPersonMainBio_LinkConfigFilterInput =
+  {
+    allowTargetBlank?: Maybe<BooleanQueryOperatorInput>
+    label?: Maybe<StringQueryOperatorInput>
+    placeholder?: Maybe<StringQueryOperatorInput>
+  }
+
+export type SitePluginPluginOptionsSchemasPersonMainBio_LinkFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>
+  config?: Maybe<SitePluginPluginOptionsSchemasPersonMainBio_LinkConfigFilterInput>
+}
+
 export type SitePluginPluginOptionsSchemasPersonMainFilterInput = {
   first_name?: Maybe<SitePluginPluginOptionsSchemasPersonMainFirst_NameFilterInput>
   last_name?: Maybe<SitePluginPluginOptionsSchemasPersonMainLast_NameFilterInput>
@@ -5896,6 +5967,7 @@ export type SitePluginPluginOptionsSchemasPersonMainFilterInput = {
   title?: Maybe<SitePluginPluginOptionsSchemasPersonMainTitleFilterInput>
   position_type?: Maybe<SitePluginPluginOptionsSchemasPersonMainPosition_TypeFilterInput>
   bio?: Maybe<SitePluginPluginOptionsSchemasPersonMainBioFilterInput>
+  bio_link?: Maybe<SitePluginPluginOptionsSchemasPersonMainBio_LinkFilterInput>
   headshot?: Maybe<SitePluginPluginOptionsSchemasPersonMainHeadshotFilterInput>
 }
 
@@ -6627,6 +6699,7 @@ export type AllPersonsFragment = {
               Pick<PrismicPersonDataHeadshotImageType, 'gatsbyImageData'>
             >
             bio?: Maybe<Pick<PrismicStructuredTextType, 'html'>>
+            bio_link?: Maybe<Pick<PrismicLinkType, 'url'>>
           }
         >
       }

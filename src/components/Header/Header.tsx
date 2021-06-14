@@ -9,7 +9,7 @@ export const Header = () => {
   return (
     <BoundedBox as="header" className="relative py-4 bg-white md:py-5 lg:py-6">
       <div className="flex justify-center">
-        <Link href="/">
+        <Link href="/" className="focus:ring-offset-2 focus:ring-offset-white">
           <span className="sr-only">Navigate to home</span>
           <img
             src={logoUrl}
