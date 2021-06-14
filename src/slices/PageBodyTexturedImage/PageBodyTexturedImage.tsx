@@ -11,15 +11,15 @@ export type PageBodyTexturedImageProps = ReturnType<typeof mapDataToProps> &
 
 const PageBodyTexturedImage = ({
   imageAlt,
-  imageFluid,
+  gatsbyImage,
 }: PageBodyTexturedImageProps) => {
-  if (!imageFluid) return
+  if (!gatsbyImage) return
 
   return (
     <section data-textured-image className="relative">
       <GatsbyImage
         className="h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px]"
-        image={imageFluid}
+        image={gatsbyImage}
         alt={imageAlt ?? ''}
         imgStyle={{ objectFit: 'cover' }}
       />
@@ -33,7 +33,7 @@ export const mapDataToProps = ({
   PageBodyTexturedImageFragment,
   typeof mapDataToContext
 >) => ({
-  imageFluid: getImage(data.primary?.image as ImageDataLike),
+  gatsbyImage: getImage(data.primary?.image as ImageDataLike),
   imageAlt: data.primary?.image?.alt,
 })
 
