@@ -1,6 +1,11 @@
 import React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import clsx from 'clsx'
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock'
 
 export interface ModalProps {
   isOpen: boolean
@@ -19,6 +24,15 @@ export const Modal = ({
   children,
   className = 'bg-white',
 }: ModalProps) => {
+  let ref = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    if (!ref.current) return clearAllBodyScrollLocks()
+
+    if (isOpen) disableBodyScroll(ref.current)
+    else enableBodyScroll(ref.current)
+  }, [isOpen])
+
   return (
     <Transition.Root show={isOpen} as={React.Fragment}>
       <Dialog
@@ -59,6 +73,7 @@ export const Modal = ({
             leaveTo="opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
           >
             <div
+              ref={ref}
               className={clsx(
                 'inline-block overflow-hidden text-left align-bottom',
                 'transition-all transform rounded-lg shadow-xl',
