@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
 import clsx from 'clsx'
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image'
 import { AnimateSharedLayout, motion } from 'framer-motion'
@@ -35,7 +34,11 @@ const Section = ({
       {gatsbyImage && (
         <motion.div
           layout="position"
-          className="max-w-[150px] md:max-w-[175px] w-full md:col-span-2 md:justify-self-center"
+          className={clsx(
+            'max-w-[150px] md:max-w-[175px] w-full',
+            'md:col-span-2 md:justify-self-center',
+            'flex-shrink-0',
+          )}
         >
           <GatsbyImage
             image={gatsbyImage}
@@ -159,33 +162,5 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({
   bg: 'bg-white',
 })
-
-export const fragment = graphql`
-  fragment PageBodyTextWithImage on PrismicPageDataBodyTextWithImage {
-    primary {
-      subheading {
-        text
-      }
-      heading {
-        text
-      }
-    }
-    items {
-      image {
-        alt
-        gatsbyImageData(width: 800, placeholder: BLURRED)
-      }
-      text {
-        html
-      }
-      button_text {
-        text
-      }
-      button_link {
-        url
-      }
-    }
-  }
-`
 
 export default PageBodyTextWithImage

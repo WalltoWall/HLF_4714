@@ -214,13 +214,13 @@ const PageBodyTeam = ({
       <Oval
         variant="opaqueReverse"
         className={clsx(
-          'absolute pointer-events-none text-green-92 z-[-1]',
+          'absolute pointer-events-none text-green-92',
           'opacity-60',
         )}
       />
       <Oval
         variant="solidReverse"
-        className={clsx('absolute pointer-events-none text-green-92 z-[-1]')}
+        className={clsx('absolute pointer-events-none text-green-92')}
       />
 
       <div className="space-y-9 md:space-y-16 isolate">

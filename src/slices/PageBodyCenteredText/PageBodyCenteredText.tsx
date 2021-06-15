@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
 import clsx from 'clsx'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
@@ -41,15 +40,5 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({
   bg: 'bg-white',
 })
-
-export const fragment = graphql`
-  fragment PageBodyCenteredText on PrismicPageDataBodyCenteredText {
-    primary {
-      text {
-        html
-      }
-    }
-  }
-`
 
 export default PageBodyCenteredText

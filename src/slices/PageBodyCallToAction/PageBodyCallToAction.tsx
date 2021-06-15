@@ -1,6 +1,5 @@
 import * as React from 'react'
 import clsx from 'clsx'
-import { graphql } from 'gatsby'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
 import { PageTemplateEnhancerProps } from '../../templates/page'
@@ -55,21 +54,5 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({
   bg: 'bg-white',
 })
-
-export const fragment = graphql`
-  fragment PageBodyCallToAction on PrismicPageDataBodyCallToAction {
-    primary {
-      heading {
-        text
-      }
-      subheading {
-        text
-      }
-      text {
-        html
-      }
-    }
-  }
-`
 
 export default PageBodyCallToAction
