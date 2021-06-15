@@ -38,7 +38,11 @@ export let NavigationGroup = ({ label, segments, closeNav }: Props) => {
                 <li key={path.href} className="leading-1 text-14">
                   <Link
                     to={path.href}
-                    className="block focus:ring-2 focus:outline-none"
+                    className={clsx(
+                      'block transition',
+                      'hover:text-docsCyan-600',
+                      'focus:ring-2 focus:outline-none',
+                    )}
                     onClick={closeNav}
                   >
                     {path.label}

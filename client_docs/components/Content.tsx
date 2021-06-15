@@ -72,7 +72,7 @@ export let Content = ({ storyModules }: Props) => {
               {story.meta?.title}
             </h1>
 
-            <div className="text-18">{story.meta?.description}</div>
+            <p className="text-16 max-w-[70ch]">{story.meta?.description}</p>
           </div>
 
           {components.map(({ Component, label }, idx) => (
