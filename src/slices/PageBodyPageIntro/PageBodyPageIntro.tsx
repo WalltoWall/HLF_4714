@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
 import clsx from 'clsx'
 
 import { PageBodyPageIntroFragment } from '../../types.generated'
@@ -106,31 +105,5 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({
   bg: Symbol('Background image'),
 })
-
-export const fragment = graphql`
-  fragment PageBodyPageIntro on PrismicPageDataBodyPageIntro {
-    primary {
-      heading {
-        text
-      }
-      navigation {
-        document {
-          ... on PrismicNavigation {
-            data {
-              nav_items {
-                label {
-                  text
-                }
-                link {
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default PageBodyPageIntro

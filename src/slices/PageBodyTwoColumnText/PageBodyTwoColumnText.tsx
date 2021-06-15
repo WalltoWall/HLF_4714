@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
 import clsx from 'clsx'
 
 import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
@@ -29,13 +28,13 @@ const PageBodyTwoColumnText = ({
       <Oval
         variant="opaque"
         className={clsx(
-          'absolute pointer-events-none text-green-92 z-[-1]',
+          'absolute pointer-events-none text-green-92',
           'opacity-60',
         )}
       />
       <Oval
         variant="solid"
-        className={clsx('absolute pointer-events-none text-green-92 z-[-1]')}
+        className={clsx('absolute pointer-events-none text-green-92')}
       />
 
       <div
@@ -79,18 +78,5 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({
   bg: 'bg-green-92',
 })
-
-export const fragment = graphql`
-  fragment PageBodyTwoColumnText on PrismicPageDataBodyTwoColumnText {
-    primary {
-      left_text {
-        html
-      }
-      right_text {
-        html
-      }
-    }
-  }
-`
 
 export default PageBodyTwoColumnText

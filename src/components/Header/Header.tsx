@@ -11,6 +11,7 @@ export const Header = () => {
       <div className="flex justify-center">
         <Link href="/" className="focus:ring-offset-2 focus:ring-offset-white">
           <span className="sr-only">Navigate to home</span>
+
           <img
             src={logoUrl}
             alt="Hawaii Leadership Forum"
