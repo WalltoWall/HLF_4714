@@ -9,7 +9,7 @@ import { titleize } from '../../lib/titleize'
 
 export let meta: StoryMetadata = {
   title: 'Call to Action',
-  description: 'Lorem ipsum sit dolor',
+  description: 'Full width block with actionable links.',
   path: [
     { label: 'Slices', href: '/slices' },
     { label: 'Call to Action', href: '/slices/call-to-action' },

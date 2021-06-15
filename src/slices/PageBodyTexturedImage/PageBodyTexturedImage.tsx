@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
 import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image'
 
 import { PageBodyTexturedImageFragment } from '../../types.generated'
@@ -13,7 +12,7 @@ const PageBodyTexturedImage = ({
   imageAlt,
   gatsbyImage,
 }: PageBodyTexturedImageProps) => {
-  if (!gatsbyImage) return
+  if (!gatsbyImage) return null
 
   return (
     <section data-textured-image className="relative">
@@ -40,16 +39,5 @@ export const mapDataToProps = ({
 export const mapDataToContext = () => ({
   bg: Symbol('Dynamic Color'),
 })
-
-export const fragment = graphql`
-  fragment PageBodyTexturedImage on PrismicPageDataBodyTexturedImage {
-    primary {
-      image {
-        alt
-        gatsbyImageData(width: 1450, placeholder: BLURRED)
-      }
-    }
-  }
-`
 
 export default PageBodyTexturedImage

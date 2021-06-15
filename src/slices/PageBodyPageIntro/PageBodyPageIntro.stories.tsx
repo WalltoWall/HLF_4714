@@ -8,7 +8,8 @@ import { titleize } from '../../lib/titleize'
 
 export let meta: StoryMetadata = {
   title: 'Page Intro',
-  description: 'Lorem ipsum sit dolor',
+  description:
+    'Large full-width block with patterned background and customizable navigation.',
   path: [
     { label: 'Slices', href: '/slices' },
     { label: 'Page Intro', href: '/slices/page-intro' },
@@ -21,10 +22,10 @@ export let Example = () => {
       <PageBodyPageIntro
         heading={titleize(faker.lorem.sentence())}
         navItems={[
-          { href: '#', label: faker.random.word() },
-          { href: '#', label: faker.random.word() },
-          { href: '#', label: faker.random.word() },
-          { href: '#', label: faker.random.word() },
+          { href: '#', label: faker.company.bsNoun() },
+          { href: '#', label: faker.company.bsNoun() },
+          { href: '#', label: faker.company.bsNoun() },
+          { href: '#', label: faker.company.bsNoun() },
         ]}
         nextSharesBg={false}
       />

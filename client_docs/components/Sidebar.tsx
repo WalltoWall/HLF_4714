@@ -22,20 +22,21 @@ export let Sidebar = ({ storyModules }: Props) => {
 
   return (
     <>
-      <div
+      <button
         className={clsx(
           isOpen ? 'block' : 'hidden',
-          'lg:hidden',
-          'fixed inset-0 bg-docsGray-900 bg-opacity-50',
-          'z-10',
+          'xl:hidden',
+          'fixed inset-0 bg-docsGray-900 bg-opacity-50 w-full',
+          'z-10 focus:outline-none',
         )}
+        onClick={closeNav}
       />
       <nav
         className={clsx(
           isOpen ? 'block' : 'hidden',
-          'lg:block',
+          'xl:block',
           'p-8 space-y-12 border-r-2 border-docsGray-200 bg-docsGray-50',
-          'fixed lg:relative z-10',
+          'fixed xl:relative z-10',
           'min-h-screen',
         )}
       >
@@ -69,8 +70,10 @@ export let Sidebar = ({ storyModules }: Props) => {
       <button
         className={clsx(
           'fixed right-8 bottom-8',
-          'block lg:hidden',
-          'shadow-xl rounded-full p-4 bg-docsCyan-500',
+          'block xl:hidden',
+          'shadow-lg rounded-full p-4 ',
+          'bg-gradient-to-t from-docsCyan-600 to-docsCyan-500',
+          'transform transition hover:translate-y-[-2px]',
           'focus:ring-2 focus:outline-none z-10',
         )}
         onClick={() => setIsOpen((prev) => !prev)}
