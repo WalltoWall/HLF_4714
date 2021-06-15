@@ -55,16 +55,18 @@ export let Sidebar = ({ storyModules }: Props) => {
           />
         </Link>
 
-        {Object.entries(navGroups).map(([groupLabel, segments]) => {
-          return (
-            <NavigationGroup
-              key={groupLabel}
-              label={groupLabel}
-              closeNav={closeNav}
-              segments={segments}
-            />
-          )
-        })}
+        <div className="space-y-5">
+          {Object.entries(navGroups).map(([groupLabel, segments]) => {
+            return (
+              <NavigationGroup
+                key={groupLabel}
+                label={groupLabel}
+                closeNav={closeNav}
+                segments={segments}
+              />
+            )
+          })}
+        </div>
       </nav>
 
       <button
