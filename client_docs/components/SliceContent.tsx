@@ -1,46 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import clsx from 'clsx'
-import {
-  ChevronRightIcon,
-  DeviceMobileIcon,
-  DesktopComputerIcon,
-} from '@heroicons/react/solid'
+import { DeviceMobileIcon, DesktopComputerIcon } from '@heroicons/react/solid'
 
 import { useActiveStory } from '../hooks/useActiveStory'
 import type { StoryModule } from '../types'
-
-interface IconButtonProps extends React.ComponentProps<'button'> {
-  isActive: boolean
-  icon: (props: React.ComponentProps<'svg'>) => JSX.Element
-}
-
-let IconButton = ({
-  icon: Icon,
-  isActive,
-  className,
-  ...props
-}: IconButtonProps) => {
-  return (
-    <button
-      className={clsx(
-        'transition relative',
-        isActive ? 'text-docsCyan-600' : 'text-docsGray-300',
-        'focus:outline-none focus:ring-2 rounded-lg',
-        className,
-      )}
-      {...props}
-    >
-      <Icon className="w-5 h-5" />
-    </button>
-  )
-}
+import { Breadcrumbs } from './Breadcrumbs'
+import { IconButton } from './IconButton'
 
 interface Props {
   storyModules: Record<string, StoryModule>
 }
 
-export let Content = ({ storyModules }: Props) => {
+export let SliceContent = ({ storyModules }: Props) => {
   let [size, setSize] = React.useState<'desktop' | 'mobile'>('desktop')
   let { story, components } = useActiveStory(storyModules)
 
@@ -49,24 +19,7 @@ export let Content = ({ storyModules }: Props) => {
       {story ? (
         <div className="space-y-12">
           <div className="space-y-1">
-            <nav className="flex items-center space-x-1">
-              {story.meta?.path.map((segment, idx) => (
-                <React.Fragment key={segment.href}>
-                  <Link
-                    to={segment.href}
-                    className={clsx(
-                      'font-medium text-14',
-                      'focus:outline-none focus:ring-2',
-                    )}
-                  >
-                    {segment.label}
-                  </Link>
-                  {idx !== 1 && (
-                    <ChevronRightIcon className="w-4 h-4 text-docsGray-300" />
-                  )}
-                </React.Fragment>
-              ))}
-            </nav>
+            {story.meta?.path && <Breadcrumbs path={story.meta.path} />}
 
             <h1 className="font-extrabold text-docsGray-900 text-32">
               {story.meta?.title}
@@ -84,11 +37,13 @@ export let Content = ({ storyModules }: Props) => {
 
                 <div className="flex space-x-2">
                   <IconButton
+                    label="Toggle Mobile View"
                     isActive={size === 'mobile'}
                     icon={DeviceMobileIcon}
                     onClick={() => setSize('mobile')}
                   />
                   <IconButton
+                    label="Toggle Desktop View"
                     isActive={size === 'desktop'}
                     icon={DesktopComputerIcon}
                     onClick={() => setSize('desktop')}
