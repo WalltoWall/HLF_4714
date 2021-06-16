@@ -52,10 +52,10 @@ export let meta: StoryMetadata = {
 
       <p>
         For more information on maintaining an accessible webpage, please see
-        the
+        the{' '}
         <a href="/admin/guides/general/accessibility-ada-compliance">
           ADA Compliance
-        </a>
+        </a>{' '}
         guide.
       </p>
     </>
