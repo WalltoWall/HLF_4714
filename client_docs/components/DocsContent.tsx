@@ -10,6 +10,7 @@ interface Props {
 
 export let DocsContent = ({ storyModules }: Props) => {
   let { story } = useActiveStory(storyModules)
+  let ContentComp = story?.meta?.content
 
   return (
     <ContentLayout
@@ -17,7 +18,9 @@ export let DocsContent = ({ storyModules }: Props) => {
       title={story?.meta?.title}
       description={story?.meta?.description}
     >
-      <div>Hello</div>
+      <div className="prose-sm prose prose-docsCyan lg:prose">
+        {ContentComp && <ContentComp />}
+      </div>
     </ContentLayout>
   )
 }

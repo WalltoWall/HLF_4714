@@ -20,4 +20,6 @@ module.exports = {
       system: '"Inter var", system-ui',
     },
   },
+
+  plugins: [...projectConfig.plugins, require('@tailwindcss/typography')],
 }

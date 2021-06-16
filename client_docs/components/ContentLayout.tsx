@@ -11,7 +11,7 @@ interface Props {
 
 export let ContentLayout = ({ children, path, title, description }: Props) => {
   return (
-    <main className="w-full p-8 mx-auto max-w-7xl">
+    <main className="w-full px-5 py-8 xl:px-8 max-w-7xl">
       <div className="space-y-12">
         <div className="space-y-1">
           {path && <Breadcrumbs path={path} />}
@@ -22,7 +22,7 @@ export let ContentLayout = ({ children, path, title, description }: Props) => {
             </h1>
           )}
 
-          {description && <p className="text-16 max-w-[70ch]">{description}</p>}
+          {description && <p className="text-16 max-w-prose">{description}</p>}
         </div>
 
         {children}
