@@ -21,7 +21,7 @@ export let SliceContent = ({ storyModules }: Props) => {
       description={story?.meta?.description}
     >
       {components.map(({ Component, label }, idx) => (
-        <div key={label + idx} className="space-y-4">
+        <div key={label + idx} className="mt-12 space-y-4">
           <div className="flex items-center space-x-4">
             <h2 className="font-extrabold text-24 text-docsGray-900">
               {label}

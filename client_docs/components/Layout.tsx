@@ -14,7 +14,7 @@ export let Layout = ({ children, storyModules }: Props) => {
     <div
       className={clsx(
         'relative',
-        'grid xl:grid-cols-[300px,1fr] min-h-screen',
+        'grid lg:grid-cols-[240px,1fr] min-h-screen',
         'text-docsGray-600 font-system antialiased',
       )}
     >

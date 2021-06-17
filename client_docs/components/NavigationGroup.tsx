@@ -2,7 +2,7 @@ import React from 'react'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import type { PathSegment } from '../types'
 
@@ -13,6 +13,8 @@ interface Props {
 }
 
 export let NavigationGroup = ({ label, segments, closeNav }: Props) => {
+  let location = useLocation()
+
   return (
     <Disclosure as="div" className="font-medium">
       {({ open }) => {
@@ -43,6 +45,8 @@ export let NavigationGroup = ({ label, segments, closeNav }: Props) => {
                       'block transition',
                       'hover:text-docsCyan-600',
                       'focus:ring-2 focus:outline-none',
+                      location.pathname === path.href &&
+                        'text-docsCyan-600 font-semibold',
                     )}
                     onClick={closeNav}
                   >

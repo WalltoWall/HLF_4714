@@ -8,10 +8,10 @@ export let meta: StoryMetadata = {
   description:
     'Guidelines to maintain an accessible website and ADA compliance when making changes in Prismic.',
   path: [
-    { label: 'Docs', href: '/docs' },
+    { label: 'General', href: '/general' },
     {
       label: 'Accessibility & ADA Compliance',
-      href: '/docs/accessibility-and-ada-compliance',
+      href: '/general/accessibility-and-ada-compliance',
     },
   ],
   content: () => (

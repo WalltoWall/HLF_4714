@@ -10,7 +10,7 @@ import { titleize } from '../../lib/titleize'
 
 export let meta: StoryMetadata = {
   title: 'Text With Image',
-  description: 'Lorem ipsum sit dolor',
+  description: 'Expandable text with accompanying image',
   path: [
     { label: 'Slices', href: '/slices' },
     { label: 'Text With Image', href: '/slices/text-with-image' },
