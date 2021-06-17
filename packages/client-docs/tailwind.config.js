@@ -1,5 +1,5 @@
 const twColors = require('tailwindcss/colors')
-const projectConfig = require('../tailwind.config')
+const projectConfig = require('gatsby-site/tailwind.config')
 
 module.exports = {
   ...projectConfig,
