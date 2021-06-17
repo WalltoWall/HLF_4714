@@ -75,8 +75,8 @@ export const Modal = ({
             <div
               ref={ref}
               className={clsx(
-                'inline-block overflow-hidden text-left align-bottom',
-                'transition-all transform rounded-lg shadow-xl',
+                'inline-block overflow-hidden text-left align-bottom relative',
+                'transition transform rounded-lg shadow-xl',
                 'md:my-8 md:align-middle',
                 className,
               )}
