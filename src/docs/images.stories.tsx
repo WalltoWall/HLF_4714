@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 
 import type { StoryMetadata } from '../../client_docs/types'
 
@@ -7,8 +8,8 @@ export let meta: StoryMetadata = {
   description:
     'Best practices and usage patterns when working with images in Prismic.',
   path: [
-    { label: 'Docs', href: '/docs' },
-    { label: 'Images', href: '/docs/images' },
+    { label: 'General', href: '/general' },
+    { label: 'Images', href: '/general/images' },
   ],
   content: () => (
     <>
@@ -53,9 +54,9 @@ export let meta: StoryMetadata = {
       <p>
         For more information on maintaining an accessible webpage, please see
         the{' '}
-        <a href="/admin/guides/general/accessibility-ada-compliance">
+        <Link to="/admin/guides/general/accessibility-and-ada-compliance">
           ADA Compliance
-        </a>{' '}
+        </Link>{' '}
         guide.
       </p>
     </>

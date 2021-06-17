@@ -8,7 +8,7 @@ import { default as PageBodyTwoColumnText } from './PageBodyTwoColumnText'
 
 export let meta: StoryMetadata = {
   title: 'Two Column Text',
-  description: 'Lorem ipsum sit dolor',
+  description: 'Large two-column text block with a variety of text styles.',
   path: [
     { label: 'Slices', href: '/slices' },
     { label: 'Two Column Text', href: '/slices/two-column-text' },

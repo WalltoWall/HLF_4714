@@ -7,7 +7,7 @@ import { default as PageBodyTexturedImage } from './PageBodyTexturedImage'
 
 export let meta: StoryMetadata = {
   title: 'Textured Image',
-  description: 'Lorem ipsum sit dolor',
+  description: 'Full-width block for narrow & decorative images',
   path: [
     { label: 'Slices', href: '/slices' },
     { label: 'Textured Image', href: '/slices/textured-image' },

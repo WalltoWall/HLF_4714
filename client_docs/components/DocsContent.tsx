@@ -3,6 +3,7 @@ import React from 'react'
 import { useActiveStory } from '../hooks/useActiveStory'
 import type { StoryModule } from '../types'
 import { ContentLayout } from './ContentLayout'
+import { RichTextContainer } from './RichTextContainer'
 
 interface Props {
   storyModules: Record<string, StoryModule>
@@ -18,9 +19,7 @@ export let DocsContent = ({ storyModules }: Props) => {
       title={story?.meta?.title}
       description={story?.meta?.description}
     >
-      <div className="prose-sm prose prose-docsCyan lg:prose">
-        {ContentComp && <ContentComp />}
-      </div>
+      <RichTextContainer>{ContentComp && <ContentComp />}</RichTextContainer>
     </ContentLayout>
   )
 }
