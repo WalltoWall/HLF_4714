@@ -12,6 +12,32 @@ export let meta: StoryMetadata = {
     { label: 'Slices', href: '/slices' },
     { label: 'Textured Image', href: '/slices/textured-image' },
   ],
+  content: () => (
+    <>
+      <h3>Fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Prismic Field</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <strong>Image</strong> <small>Image</small>
+            </td>
+            <td>Image is constrained to max height of 75px</td>
+            <td>
+              <strong>Required</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  ),
 }
 
 export let Example = () => {

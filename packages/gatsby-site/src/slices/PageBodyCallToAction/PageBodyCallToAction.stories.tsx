@@ -14,6 +14,46 @@ export let meta: StoryMetadata = {
     { label: 'Slices', href: '/slices' },
     { label: 'Call to Action', href: '/slices/call-to-action' },
   ],
+  content: () => (
+    <>
+      <h3>Fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Prismic Field</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <strong>Subheading</strong> <small>Rich Text</small>
+            </td>
+            <td>Small caps heading</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Heading</strong> <small>Rich Text</small>
+            </td>
+            <td>Large serif text displayed</td>
+            <td>
+              <strong>Required</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Text</strong> <small>Rich Text</small>
+            </td>
+            <td>Text displayed alongside the headings</td>
+            <td>Optional</td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  ),
 }
 
 export let Example = () => {

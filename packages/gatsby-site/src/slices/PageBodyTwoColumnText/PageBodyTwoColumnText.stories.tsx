@@ -13,6 +13,43 @@ export let meta: StoryMetadata = {
     { label: 'Slices', href: '/slices' },
     { label: 'Two Column Text', href: '/slices/two-column-text' },
   ],
+  content: () => (
+    <>
+      <h3>Fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Prismic Field</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <strong>Left Text</strong> <small>Rich Text</small>
+            </td>
+            <td>
+              Text present in the left column on desktop, or below on mobile.
+            </td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Right Text</strong> <small>Rich Text</small>
+            </td>
+            <td>
+              Text present in the right column on desktop, or above on mobile.
+            </td>
+            <td>
+              <strong>Required</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  ),
 }
 
 export let Example = () => {

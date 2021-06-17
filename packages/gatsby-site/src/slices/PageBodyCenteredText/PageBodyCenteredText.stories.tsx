@@ -13,6 +13,30 @@ export let meta: StoryMetadata = {
     { label: 'Slices', href: '/slices' },
     { label: 'Centered Text', href: '/slices/centered-text' },
   ],
+  content: () => (
+    <>
+      <h3>Fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Prismic Field</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <strong>Text</strong> <small>Rich Text</small>
+            </td>
+            <td>Text displayed in the slice</td>
+            <td>Optional</td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  ),
 }
 
 export let Example = () => {
