@@ -1,3 +1,3 @@
-const projectConfig = require('../postcss.config')
+const projectConfig = require('gatsby-site/postcss.config')
 
 module.exports = projectConfig
