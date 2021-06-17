@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as faker from 'faker'
 import html from 'ts-dedent'
 import { getGatsbyImageData } from '@imgix/gatsby'
+import { Link } from 'react-router-dom'
 
 import type { StoryMetadata } from '../../../client_docs/types'
 import { PageContainer } from '../../components/PageContainer'
@@ -18,6 +19,57 @@ export let meta: StoryMetadata = {
     { label: 'Slices', href: '/slices' },
     { label: 'Team', href: '/slices/team' },
   ],
+  content: () => (
+    <>
+      <h3>Fields</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Prismic Field</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <strong>Directors Subheading</strong> <small>Rich Text</small>
+            </td>
+            <td>
+              Small caps heading above all <strong>Director</strong>{' '}
+              <Link to="/types/person">Persons</Link> documents
+            </td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Directors Heading</strong> <small>Rich Text</small>
+            </td>
+            <td>
+              Serif heading above all <strong>Director</strong>{' '}
+              <Link to="/types/person">Persons</Link> documents
+            </td>
+            <td>
+              <strong>Required</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Staff Team Heading</strong> <small>Rich Text</small>
+            </td>
+            <td>
+              Serif heading above all <strong>Staff Team</strong>{' '}
+              <Link to="/types/person">Persons</Link> documents
+            </td>
+            <td>
+              <strong>Required</strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  ),
 }
 
 export let Example = () => {

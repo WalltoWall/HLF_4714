@@ -1,11 +1,10 @@
 {
-  "name": "HLF_4714_Docs",
-  "private": true,
-  "license": "UNLICENSED",
+  "name": "client-docs",
   "version": "0.1.2",
+  "license": "none",
   "scripts": {
-    "format": "prettier --write 'src/**/*.{js,ts,tsx,md,mdx}' 'gatsby-*.js' 'docs/**/*.md'",
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build"
   },
   "dependencies": {
     "@headlessui/react": "^1.2.0",
