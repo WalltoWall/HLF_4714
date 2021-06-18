@@ -1,0 +1,7 @@
+[build]
+	base = "./packages/gatsby-site/"
+	publish = './public/'
+	command = "yarn build"
+
+[build.environment]
+	NETLIFY_USE_YARN = "true"
