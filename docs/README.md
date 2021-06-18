@@ -1,5 +1,7 @@
 # Developer Documentation
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/89aab503-cb53-4951-b713-5211bd84e6d0/deploy-status)](https://app.netlify.com/sites/hawaiileadershipforum/deploys)
+
 The following collection of documents aims to provide an overview of development
 on this project.
 
