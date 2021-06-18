@@ -1,5 +1,5 @@
 [build]
-	base = "./packages/client-docs"
+	base = "./packages/client-docs/"
 	publish = './packages/client-docs/dist/'
 	command = "yarn build"
 
