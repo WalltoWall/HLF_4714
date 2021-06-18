@@ -2,3 +2,6 @@
 	base = "./"
 	publish = './dist/'
 	command = "yarn build"
+
+[build.environment]
+	NETLIFY_USE_YARN = true
