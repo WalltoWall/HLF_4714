@@ -1,6 +1,9 @@
 # Developer Documentation
 
+**Main Site** -
 [![Netlify Status](https://api.netlify.com/api/v1/badges/89aab503-cb53-4951-b713-5211bd84e6d0/deploy-status)](https://app.netlify.com/sites/hawaiileadershipforum/deploys)
+**Docs Site** -
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ecadce57-b94a-4f5d-9885-add1e8747055/deploy-status)](https://app.netlify.com/sites/hawaiileadershipforum-docs/deploys)
 
 The following collection of documents aims to provide an overview of development
 on this project.
