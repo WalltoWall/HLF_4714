@@ -1,7 +1,7 @@
 {
   "name": "gatsby-site",
   "version": "0.1.2",
-  "license": "none",
+  "license": "UNLICENSED",
   "scripts": {
     "clean": "gatsby clean",
     "dev": "ENABLE_GATSBY_REFRESH_ENDPOINT=true gatsby develop",
