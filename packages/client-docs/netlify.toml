@@ -1,6 +1,6 @@
 [build]
-	base = "./"
-	publish = './dist/'
+	base = "./packages/client-docs"
+	publish = './packages/client-docs/dist/'
 	command = "yarn build"
 
 [build.environment]

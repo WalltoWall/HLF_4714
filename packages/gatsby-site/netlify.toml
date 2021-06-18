@@ -1,6 +1,6 @@
 [build]
-	base = "./"
-	publish = './public/'
+	base = "./packages/gatsby-site/"
+	publish = './packages/gatsby-site/public'
 	command = "yarn build"
 
 [build.environment]
