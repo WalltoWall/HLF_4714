@@ -32,7 +32,7 @@ export const fragment = graphql`
             text
           }
           headshot {
-            gatsbyImageData(width: 800, placeholder: BLURRED)
+            gatsbyImageData(width: 400, placeholder: BLURRED)
           }
           bio {
             html
