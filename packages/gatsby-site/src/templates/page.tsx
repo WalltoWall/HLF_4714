@@ -76,9 +76,10 @@ export const PageTemplate = ({
           {page?.data?.meta_title ?? page?.data?.title?.text ?? ''} |{' '}
           {siteSettings.siteName}
         </title>
-        {page?.data?.meta_description && (
-          <meta name="description" content={page?.data?.meta_description} />
-        )}
+        <meta
+          name="description"
+          content={siteSettings.siteDescription ?? page?.data?.meta_description}
+        />
       </Helmet>
 
       <MapSlicesToComponents

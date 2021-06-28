@@ -4,7 +4,8 @@ require('dotenv').config()
 const siteMetadata = {
   title: 'Hawai‘i Leadership Forum',
   titleShort: 'HLF',
-  description: 'SITE_DESCRIPTION',
+  description:
+    'The Hawai‘i Leadership Forum serves as a catalyst and convener for initiatives that improve leadership throughout the state.',
   siteUrl: 'https://www.hawaiileadershipforum.org/',
 }
 
