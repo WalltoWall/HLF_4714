@@ -16,6 +16,7 @@ import * as React from 'react'
 import { GatsbyBrowser } from 'gatsby'
 import { PrismicPreviewProvider } from 'gatsby-plugin-prismic-previews'
 import { SkipNavLink } from '@reach/skip-nav'
+import { LazyMotion } from 'framer-motion'
 
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
@@ -29,18 +30,26 @@ import '@fontsource/pt-serif/400.css'
 // Styling for the preview modals.
 import 'gatsby-plugin-prismic-previews/dist/styles.css'
 
+async function loadFeatures() {
+  const mod = await import('./lib/framerFeatures')
+
+  return mod.default
+}
+
 export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
   element,
 }) => (
-  <PrismicPreviewProvider>
-    <PageContainer>
-      <SkipNavLink className={focusRing}>
-        <p>Skip to content</p>
-      </SkipNavLink>
+  <LazyMotion features={loadFeatures} strict>
+    <PrismicPreviewProvider>
+      <PageContainer>
+        <SkipNavLink className={focusRing}>
+          <p>Skip to content</p>
+        </SkipNavLink>
 
-      <Header />
-      {element}
-      <Footer />
-    </PageContainer>
-  </PrismicPreviewProvider>
+        <Header />
+        {element}
+        <Footer />
+      </PageContainer>
+    </PrismicPreviewProvider>
+  </LazyMotion>
 )
