@@ -12,15 +12,18 @@ const siteMetadata = {
 module.exports = {
   siteMetadata,
   plugins: [
+    process.env.ANALYZE === 'true' &&
+      'gatsby-plugin-webpack-bundle-analyser-v2',
     'gatsby-plugin-react-helmet-async',
     'gatsby-plugin-catch-links',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-image',
 
-    process.env.GOOGLE_TAGMANAGER_ID && {
-      resolve: 'gatsby-plugin-google-tagmanager',
+    process.env.GOOGLE_ANALYTICS_TRACKING_ID && {
+      resolve: 'gatsby-plugin-google-gtag',
       options: {
-        id: process.env.GOOGLE_TAGMANAGER_ID,
+        trackingIds: [process.env.GOOGLE_ANALYTICS_TRACKING_ID],
+        exclude: ['/preview/**', '/admin/**', '/docs/**'],
       },
     },
 
