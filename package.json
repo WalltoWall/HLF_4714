@@ -33,6 +33,8 @@
     "singleQuote": true,
     "trailingComma": "all",
     "printWidth": 80,
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "useTabs": true,
+    "tabWidth": 4
   }
 }
