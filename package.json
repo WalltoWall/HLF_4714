@@ -1,40 +1,31 @@
 {
-  "name": "hlf-4714",
-  "private": true,
-  "license": "UNLICENSED",
-  "version": "0.1.2",
-  "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "format": "prettier --write 'src/**/*.{js,ts,tsx,md,mdx}' 'gatsby-*.js' 'docs/**/*.md'",
-    "postinstall": "husky install"
-  },
-  "devDependencies": {
-    "prettier": "^2.3.1",
-    "husky": "^6.0.0",
-    "@commitlint/cli": "^12.1.4",
-    "@commitlint/config-conventional": "^12.1.4",
-    "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.27.0",
-    "eslint": "^7.28.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "printWidth": 80,
-    "proseWrap": "always",
-    "useTabs": true,
-    "tabWidth": 4
-  }
+	"name": "hlf-4714",
+	"private": true,
+	"license": "UNLICENSED",
+	"version": "0.1.2",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"format": "prettier --write 'src/**/*.{js,ts,tsx,md,mdx}' 'gatsby-*.js' 'docs/**/*.md'"
+	},
+	"devDependencies": {
+		"prettier": "^2.3.1",
+		"@typescript-eslint/eslint-plugin": "^4.27.0",
+		"@typescript-eslint/parser": "^4.27.0",
+		"eslint": "^7.28.0",
+		"eslint-config-react-app": "^6.0.0",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-react": "^7.24.0",
+		"eslint-plugin-react-hooks": "^4.2.0"
+	},
+	"prettier": {
+		"semi": false,
+		"singleQuote": true,
+		"trailingComma": "all",
+		"printWidth": 80,
+		"proseWrap": "always",
+		"useTabs": true,
+		"tabWidth": 4
+	}
 }
