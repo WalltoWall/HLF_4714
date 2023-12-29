@@ -22,9 +22,7 @@ import {
 	type RepositoryConfig,
 } from 'gatsby-plugin-prismic-previews'
 
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
-import { PageContainer } from './components/PageContainer'
+import { linkResolver } from './linkResolver'
 
 const repositoryConfigs: RepositoryConfig[] = [
 	{
@@ -32,6 +30,7 @@ const repositoryConfigs: RepositoryConfig[] = [
 		componentResolver: {
 			page: React.lazy(() => import('./pages/{PrismicPage.url}')),
 		},
+		linkResolver,
 	},
 ]
 
@@ -39,10 +38,6 @@ export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
 	element,
 }) => (
 	<PrismicPreviewProvider repositoryConfigs={repositoryConfigs}>
-		<PageContainer>
-			<Header />
-			{element}
-			<Footer />
-		</PageContainer>
+		{element}
 	</PrismicPreviewProvider>
 )

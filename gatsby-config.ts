@@ -1,6 +1,7 @@
 import path from 'node:path'
 import 'dotenv/config'
 import { type GatsbyConfig, type PluginRef } from 'gatsby'
+import { linkResolver } from './src/linkResolver'
 
 const siteMetadata = {
 	title: 'Hawai‘i Leadership Forum',
@@ -9,19 +10,6 @@ const siteMetadata = {
 		'The Hawai‘i Leadership Forum serves as a catalyst and convener for initiatives that improve leadership throughout the state.',
 	siteUrl: 'https://www.hawaiileadershipforum.org/',
 }
-
-// Defines the way that document URLs are created in Prismic.
-const routes = [
-	{
-		type: 'page',
-		path: '/:uid',
-	},
-	{
-		type: 'page',
-		uid: 'home',
-		path: '/',
-	},
-]
 
 const config: GatsbyConfig = {
 	siteMetadata,
@@ -69,7 +57,7 @@ const config: GatsbyConfig = {
 				customTypesApiToken:
 					process.env.GATSBY_PRISMIC_CUSTOM_TYPES_TOKEN,
 				fetchLinks: ['page.parent'],
-				routes,
+				linkResolver,
 			},
 		},
 		{
@@ -77,7 +65,7 @@ const config: GatsbyConfig = {
 			options: {
 				repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY_NAME,
 				accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN,
-				routes,
+				linkResolver,
 			},
 		},
 		'gatsby-plugin-netlify',
