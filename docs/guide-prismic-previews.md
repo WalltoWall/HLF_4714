@@ -39,9 +39,11 @@ Below is an example of what this would look like:
 import { Image } from '@walltowall/system'
 
 const MySlice = ({ imageFluid, imageURL, ...props }) => (
-  <Box {...props}>
-    {(imageFluid || imageURL) && <Image fluid={imageFluid} src={imageURL} />}
-  </Box>
+	<Box {...props}>
+		{(imageFluid || imageURL) && (
+			<Image fluid={imageFluid} src={imageURL} />
+		)}
+	</Box>
 )
 ```
 
@@ -50,8 +52,8 @@ If `imageURL` is available, such as during a preview, `Image` will render an
 
 [gatsby-source-prismic]: https://github.com/angeloashmore/gatsby-source-prismic
 [gatsby-source-prismic-use-prismic-preview]:
-  https://github.com/angeloashmore/gatsby-source-prismic/blob/master/docs/previews.md#useprismicpreview-1
+	https://github.com/angeloashmore/gatsby-source-prismic/blob/master/docs/previews.md#useprismicpreview-1
 [gatsby-source-prismic-previews]:
-  https://github.com/angeloashmore/gatsby-source-prismic/blob/master/docs/previews.md
+	https://github.com/angeloashmore/gatsby-source-prismic/blob/master/docs/previews.md
 [system]: https://github.com/WalltoWall/system
 [gatsby-image]: https://www.gatsbyjs.org/packages/gatsby-image/

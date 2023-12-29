@@ -57,9 +57,9 @@ Before explaining the process and benefits of Standards Driven Development,
 imagine a world where every web project was built using a different
 architecture.
 
-- **Project A**: Gulp, Sass, Jade, JSON
-- **Project B**: Webpack, PostCSS, Pug, WordPress
-- **Project C**: Gatsby, Styled Components, JSX, Prismic
+-   **Project A**: Gulp, Sass, Jade, JSON
+-   **Project B**: Webpack, PostCSS, Pug, WordPress
+-   **Project C**: Gatsby, Styled Components, JSX, Prismic
 
 Moving between projects would require huge mental context shifts and requires
 you to have a deep understanding of each project's abstractions. Unfortunately,
@@ -147,5 +147,5 @@ direct project-specific code.
 [ruby-on-rails]: https://rubyonrails.org/
 [react]: https://reactjs.org
 [slices-docs]:
-  https://user-guides.prismic.io/content-modeling-and-custom-types/field-reference/slices
+	https://user-guides.prismic.io/content-modeling-and-custom-types/field-reference/slices
 [xkcd-standards]: https://xkcd.com/927/

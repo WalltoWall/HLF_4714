@@ -1,0 +1,65 @@
+/** 
+ * Normally we'd just extend the utilities in typography.css, but due to a bug
+ * in TW we are unable to do so. 
+ */
+.centeredText {
+	h4 {
+		@apply capsize text-11 leading-1_25 font-sans lg:text-12 my-7 last:mb-0 first:mt-0 uppercase tracking-caps font-bold text-gray-17;
+	}
+
+	p {
+		@apply font-sans text-16 capsize leading-1_55 md:text-20 lg:text-24 my-7 last:mb-0 first:mt-0 text-gray-38;
+	}
+}
+
+.twoColumnText {
+	h2 {
+		@apply font-serif text-24 leading-1_45 capsize md:text-32 md:leading-1_35 lg:text-40 lg:leading-1_25 my-7 last:mb-0 first:mt-0 text-gray-25;
+	}
+
+	h4 {
+		@apply font-sans text-11 leading-1_25 capsize lg:text-12 my-7 last:mb-0 first:mt-0 tracking-caps uppercase font-bold text-gray-17;
+	}
+
+	p {
+		@apply text-16 leading-1_6 font-sans capsize my-7 last:mb-0 first:mt-0 text-gray-25;
+	}
+}
+
+.textWithImage {
+	p {
+		@apply text-16 leading-1_6 font-sans capsize my-7 last:mb-0 first:mt-0 text-gray-25;
+	}
+
+	a {
+		@apply text-green-24 hover:underline focus:outline-none focus:ring;
+	}
+}
+
+.callToAction {
+	h5 {
+		@apply text-14 leading-1_25 font-sans capsize md:text-16 lg:text-18 font-bold my-4 md:my-6 first:mt-0 last:mb-0;
+	}
+
+	p {
+		@apply font-serif text-13 leading-1_55 capsize md:text-14 lg:text-16 text-gray-17 my-4 md:my-6 first:mt-0 last:mb-0;
+	}
+
+	a {
+		@apply text-green-24 hover:underline focus:outline-none focus:ring;
+	}
+}
+
+.disclaimer {
+	p {
+		@apply font-sans text-11 leading-1_45 capsize md:text-12 lg:text-13 text-gray-51 py-px;
+	}
+
+	em {
+		@apply italic;
+	}
+
+	strong {
+		@apply font-semibold;
+	}
+}

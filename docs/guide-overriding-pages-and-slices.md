@@ -33,7 +33,7 @@ recognize it as a template. Your template probably looks something like this:
 
 ```js
 const PageTemplate = ({ data }) => {
-  // Your template logic here
+	// Your template logic here
 }
 
 export default PageTemplate
@@ -52,7 +52,7 @@ the explicit name.
 ```js
 // Note the `export` before const
 export const PageTemplate = ({ data }) => {
-  // Your template logic here
+	// Your template logic here
 }
 
 // This export should remain as it is used in gatsby-node.js
@@ -71,7 +71,7 @@ the component and rendering it if available.
 
 ```js
 export const PageTemplate = ({ children, data }) => (
-  <Layout>{children || <MapSlicesToComponents />}</Layout>
+	<Layout>{children || <MapSlicesToComponents />}</Layout>
 )
 ```
 
@@ -115,26 +115,26 @@ This should be done by moving the page's fields into a fragment like such:
 
 ```js
 export const query = graphql`
-  query($uid: String!) {
-    prismicPage(uid: { eq: $uid }) {
-      ...PageTemplate
-    }
-    ...SlicesPageBody
-  }
+	query ($uid: String!) {
+		prismicPage(uid: { eq: $uid }) {
+			...PageTemplate
+		}
+		...SlicesPageBody
+	}
 
-  fragment PageTemplate on PrismicPage {
-    uid
-    data {
-      title {
-        text
-      }
-      meta_title
-      meta_description
-      body {
-        __typename
-      }
-    }
-  }
+	fragment PageTemplate on PrismicPage {
+		uid
+		data {
+			title {
+				text
+			}
+			meta_title
+			meta_description
+			body {
+				__typename
+			}
+		}
+	}
 `
 ```
 
@@ -155,7 +155,7 @@ be updated as necessary.
 
 ## Template overrides
 
-- TODO: determine how to perform template overrides
+-   TODO: determine how to perform template overrides
 
 ## Strategies for manipulating slices
 
@@ -177,21 +177,21 @@ here is the same as `<PageBodyImageBlurb>`.
 
 ```js
 const HomePage = ({ data, ...props }) => (
-  <PageTemplate data={data}>
-    <PageTemplate.MapSlicesToComponents
-      rootData={data}
-      mapOverrides={{
-        PageBodyImageBlurb: (Comp) => (props) => {
-          const overrideProps = {}
+	<PageTemplate data={data}>
+		<PageTemplate.MapSlicesToComponents
+			rootData={data}
+			mapOverrides={{
+				PageBodyImageBlurb: (Comp) => (props) => {
+					const overrideProps = {}
 
-          if (props.previousType === 'PageBodyHeroImage')
-            overrideProps.bg = 'red'
+					if (props.previousType === 'PageBodyHeroImage')
+						overrideProps.bg = 'red'
 
-          return <Comp {...props} {...overrideProps} />
-        },
-      }}
-    />
-  </PageTemplate>
+					return <Comp {...props} {...overrideProps} />
+				},
+			}}
+		/>
+	</PageTemplate>
 )
 ```
 
@@ -202,15 +202,15 @@ before it will be replaced if present in `overrideProps`.
 
 `props` contains the following helpful properties:
 
-- `data` - The slice's content data from its GraphQL fragment.
-- `index` - The slice's index in `list`.
-- `list` - The array of all the page's slices.
-- `previous` - The previous slice's data.
-- `previousType` - The previous slice's type.
-- `previousKey` - The previous slice's key (i.e. GraphQL ID).
-- `next` - The next slice's data.
-- `nextType` - The next slice's type.
-- `nextKey` - The next slice's key (i.e. GraphQL ID).
+-   `data` - The slice's content data from its GraphQL fragment.
+-   `index` - The slice's index in `list`.
+-   `list` - The array of all the page's slices.
+-   `previous` - The previous slice's data.
+-   `previousType` - The previous slice's type.
+-   `previousKey` - The previous slice's key (i.e. GraphQL ID).
+-   `next` - The next slice's data.
+-   `nextType` - The next slice's type.
+-   `nextKey` - The next slice's key (i.e. GraphQL ID).
 
 With this data, we can modify the props of the returned component or return a
 different component altogether.
@@ -225,19 +225,21 @@ prop. If we wanted to manipulate that data before it gets to
 
 ```js
 const HomePage = ({ data, ...props }) => (
-  <PageTemplate data={data}>
-    <PageTemplate.MapSlicesToComponents
-      rootData={data}
-      mapOverrides={{
-        PageBodyImageBlurb: ({ heading, ...props }) => {
-          // mockingcase returns a mOcKiNgCaSe version of its input
-          const newHeading = mockingcase(heading)
+	<PageTemplate data={data}>
+		<PageTemplate.MapSlicesToComponents
+			rootData={data}
+			mapOverrides={{
+				PageBodyImageBlurb: ({ heading, ...props }) => {
+					// mockingcase returns a mOcKiNgCaSe version of its input
+					const newHeading = mockingcase(heading)
 
-          return <PageBodyImageBlurb {...props} heading={newHeading} />
-        },
-      }}
-    />
-  </PageTemplate>
+					return (
+						<PageBodyImageBlurb {...props} heading={newHeading} />
+					)
+				},
+			}}
+		/>
+	</PageTemplate>
 )
 ```
 

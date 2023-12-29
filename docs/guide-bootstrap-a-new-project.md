@@ -18,10 +18,10 @@ Client needs to create the following accounts:
 
 ### Netlify
 
-- **Sign Up URL**: <https://app.netlify.com/signup/email>
-- **Billing URL**: <https://app.netlify.com/account/settings/billing> (available
-  after sign up)
-- **Cost**: $45/month for Pro ($65/month with Forms Pro)
+-   **Sign Up URL**: <https://app.netlify.com/signup/email>
+-   **Billing URL**: <https://app.netlify.com/account/settings/billing>
+    (available after sign up)
+-   **Cost**: $45/month for Pro ($65/month with Forms Pro)
 
 Client will not be charged for forms until form submissions surpass the free
 tier (100 submissions/month).
@@ -30,8 +30,8 @@ Credentials should be shared with Wall-to-Wall for configuration.
 
 ### Prismic
 
-- **Sign Up URL**: <https://prismic.io/signup>
-- **Cost**: $7/month for Starter to $100/month for Medium
+-   **Sign Up URL**: <https://prismic.io/signup>
+-   **Cost**: $7/month for Starter to $100/month for Medium
 
 Billing will be setup after Wall-to-Wall creates the repository.
 

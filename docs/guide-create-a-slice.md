@@ -55,35 +55,35 @@ All registration is handled in `src/slices/index.js`.
 
 1. Import your Slice at the top of the file:
 
-   ```js
-   import { PageBodyText } from './PageBodyText'
-   ```
+    ```js
+    import { PageBodyText } from './PageBodyText'
+    ```
 
 1. Add your Slice to the `slices` constant:
 
-   ```js
-   export const slices = {
-     // ...
+    ```js
+    export const slices = {
+    	// ...
 
-     PageBodyText,
+    	PageBodyText,
 
-     // ...
-   }
-   ```
+    	// ...
+    }
+    ```
 
 1. Add your Slice to the `fragment` constant:
 
-   ```js
-   export const fragment = graphql`
-     fragment Slices on Query {
-       # ...
+    ```js
+    export const fragment = graphql`
+    	fragment Slices on Query {
+    		# ...
 
-       ...PageBodyText
+    		...PageBodyText
 
-       # ...
-     }
-   `
-   ```
+    		# ...
+    	}
+    `
+    ```
 
 ## Add to a page in Prismic
 
@@ -122,6 +122,6 @@ See other documents in the `docs` folder to use as a template.
 
 [arch-sdd]: concept-architecture.md#sdd-slice-driven-development
 [prismic-slices]:
-  https://intercom.help/prismicio/content-modeling-and-custom-types/field-reference/slices
+	https://intercom.help/prismicio/content-modeling-and-custom-types/field-reference/slices
 [gatsby-source-prismic-slices]:
-  https://github.com/angeloashmore/gatsby-source-prismic#query-slices
+	https://github.com/angeloashmore/gatsby-source-prismic#query-slices
