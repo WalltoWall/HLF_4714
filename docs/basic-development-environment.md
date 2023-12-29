@@ -15,11 +15,11 @@ instructions need to be followed in the order they appear in this document.
 
 We'll be installing the following software:
 
-- Xcode Command Line Tools
-- [Homebrew][homebrew]
-- [Node.js][node] via [`n`][n]
-- [Yarn][yarn]
-- [Git][git]
+-   Xcode Command Line Tools
+-   [Homebrew][homebrew]
+-   [Node.js][node] via [`n`][n]
+-   [Yarn][yarn]
+-   [Git][git]
 
 Some of these may already be installed on your computer, so we'll check if we
 can skip some steps in each section.

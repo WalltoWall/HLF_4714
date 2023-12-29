@@ -14,12 +14,12 @@ better the site will function and look down the road.
 
 Documentation should cover the following:
 
-- How to use Prismic
-- How to build and update pages with Slices
-- What Slices are available
-- What content types are available and how they interact with eachother
-- How to perform tailored common workflows for their site. (think: How to update
-  news posts, etc.)
+-   How to use Prismic
+-   How to build and update pages with Slices
+-   What Slices are available
+-   What content types are available and how they interact with eachother
+-   How to perform tailored common workflows for their site. (think: How to
+    update news posts, etc.)
 
 ## A living client reference
 

@@ -17,11 +17,11 @@ individual projects to include or override what the project needs.
 
 ## Features
 
-- Common Gatsby plugins from
-  [`@walltowall/gatsby-theme-ww-base`][gatsby-theme-ww-base]
-- IE 11-specific polyfills from
-  [`@walltowall/gatsby-theme-ww-base`][gatsby-theme-ww-base]
-- Git commit linting to ensure [Conventional Commits][conventional-commits]
+-   Common Gatsby plugins from
+    [`@walltowall/gatsby-theme-ww-base`][gatsby-theme-ww-base]
+-   IE 11-specific polyfills from
+    [`@walltowall/gatsby-theme-ww-base`][gatsby-theme-ww-base]
+-   Git commit linting to ensure [Conventional Commits][conventional-commits]
 
 ## Changelog File
 
@@ -42,6 +42,6 @@ latest version.
 [conventional-commits]: https://www.conventionalcommits.org
 [system]: https://github.com/WalltoWall/gatsby-ww/tree/master/packages/system
 [gatsby-theme-ww-base]:
-  https://github.com/WalltoWall/gatsby-ww/tree/master/packages/gatsby-theme-ww-base
+	https://github.com/WalltoWall/gatsby-ww/tree/master/packages/gatsby-theme-ww-base
 [gatsby-starter-ww]:
-  https://github.com/WalltoWall/gatsby-ww/tree/master/packages/gatsby-starter-ww
+	https://github.com/WalltoWall/gatsby-ww/tree/master/packages/gatsby-starter-ww

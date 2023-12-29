@@ -1,0 +1,15 @@
+.leftBorderGradient {
+	background-image: linear-gradient(
+		to bottom,
+		theme('colors.blue.36') -20%,
+		theme('colors.yellow.59') 130%
+	);
+}
+
+.rightBorderGradient {
+	background-image: linear-gradient(
+		to bottom,
+		theme('colors.yellow.59') -20%,
+		theme('colors.blue.36') 130%
+	);
+}

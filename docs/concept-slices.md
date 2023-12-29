@@ -61,4 +61,4 @@ programatically and not in Prismic. See
 details.
 
 [slices-docs]:
-  https://user-guides.prismic.io/content-modeling-and-custom-types/field-reference/slices
+	https://user-guides.prismic.io/content-modeling-and-custom-types/field-reference/slices

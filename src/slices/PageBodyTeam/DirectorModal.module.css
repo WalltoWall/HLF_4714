@@ -1,0 +1,11 @@
+.avatar {
+	shape-outside: circle(50%);
+}
+
+.hideScrollbar {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

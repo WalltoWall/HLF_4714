@@ -64,10 +64,10 @@ cd <PROJECT_CODE>
 
 The following primary branches have special uses:
 
-- `master` - Production code pushed to the live site.
-- `development` - Development code to develop locally and create staging builds.
-  This branch is optional and may only make sense when developing large sections
-  of a site with multiple developers.
+-   `master` - Production code pushed to the live site.
+-   `development` - Development code to develop locally and create staging
+    builds. This branch is optional and may only make sense when developing
+    large sections of a site with multiple developers.
 
 To keep each developer's code separate and easily auditable, your branches
 should start with your initials followed by a "`/`".
@@ -179,4 +179,4 @@ See the official GitHub documentation for details on creating a Pull Request:
 [environment-variables]: https://en.wikipedia.org/wiki/Environment_variable#Unix
 [continuous-integration]: https://www.netlify.com/docs/continuous-deployment/
 [pull-request]:
-  https://help.github.com/articles/creating-a-pull-request/#creating-the-pull-request
+	https://help.github.com/articles/creating-a-pull-request/#creating-the-pull-request

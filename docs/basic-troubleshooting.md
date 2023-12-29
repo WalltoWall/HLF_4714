@@ -33,13 +33,13 @@ Consider a data object that we get back from Prismic:
 
 ```javascript
 const data = {
-  prismicPage: {
-    data: {
-      body: {
-        textSlice: { text: 'Home' },
-      },
-    },
-  },
+	prismicPage: {
+		data: {
+			body: {
+				textSlice: { text: 'Home' },
+			},
+		},
+	},
 }
 
 const title = data.prismicPage.data.body.textSlice.text
@@ -53,13 +53,13 @@ Consider another object that we may get back from Prismic.
 
 ```javascript
 const data = {
-  prismicPage: {
-    data: {
-      body: {
-        textSlice: undefined,
-      },
-    },
-  },
+	prismicPage: {
+		data: {
+			body: {
+				textSlice: undefined,
+			},
+		},
+	},
 }
 
 const title = data.prismicPage.data.body.textSlice.title
@@ -82,4 +82,4 @@ depending on this project's setup, will automatically convert the optional
 chaining syntax to a backwards-compatible version.
 
 [mdn-optional-chaining]:
-  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining

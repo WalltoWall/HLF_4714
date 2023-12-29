@@ -1,0 +1,21 @@
+@layer utilities {
+	.serif-heading {
+		@apply serif-24-1_45 md:serif-32-1_35 lg:serif-40-1_25;
+	}
+
+	.sans-caps {
+		@apply uppercase sans-11-1_25 lg:sans-12-1_25 tracking-caps font-bold;
+	}
+
+	.body-text {
+		@apply sans-16-1_55;
+	}
+
+	.person-name {
+		@apply sans-14-1_25 md:sans-16-1_25 lg:sans-18-1_25 font-bold;
+	}
+
+	.person-title {
+		@apply serif-13-1_3 md:serif-14-1_3 lg:serif-16-1_3;
+	}
+}
