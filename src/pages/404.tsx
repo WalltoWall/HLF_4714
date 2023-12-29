@@ -1,44 +1,50 @@
 import * as React from 'react'
-import { type PageProps, graphql } from 'gatsby'
+import clsx from 'clsx'
+import { type PageProps, type HeadProps } from 'gatsby'
 import { withPrismicUnpublishedPreview } from 'gatsby-plugin-prismic-previews'
 import { Layout } from '../components/Layout'
-import { SliceRenderer, type SliceContext } from '../components/SliceRenderer'
+import { ButtonLink } from '../components/ButtonLink'
+import { sansCaps, serifHeading } from '../typography'
+import { useSiteSettings } from '../hooks/useSiteSettings'
 
-type Props = PageProps<Queries.NotFoundPageQuery>
-
-export const NotFoundPage = ({ data }: Props) => {
-	const context: SliceContext = { allPersons: data.allPrismicPerson }
-
+export const NotFoundPage = (_props: PageProps) => {
 	return (
 		<Layout>
-			<SliceRenderer
-				slices={data.prismicPage?.data.body}
-				context={context}
-			/>
+			<div className="min-h-[50svh] flex flex-col justify-center items-center space-y-6 md:space-y-9">
+				<p
+					className={clsx(
+						sansCaps,
+						'text-gray-17 text-center md:-mb-3',
+					)}
+				>
+					Not Found
+				</p>
+
+				<h1
+					className={clsx(
+						serifHeading,
+						'text-gray-25 text-center text-balance max-w-[40ch]',
+					)}
+				>
+					Sorry, we weren't able to find anything for the requested
+					page.
+				</h1>
+				<ButtonLink href="/">Back to Home</ButtonLink>
+			</div>
 		</Layout>
 	)
 }
 
-export { Head } from './{PrismicPage.url}'
+export const Head = (_props: HeadProps) => {
+	const siteSettings = useSiteSettings()
+	const description = siteSettings.siteDescription ?? ''
+
+	return (
+		<>
+			<title>Not Found | {siteSettings.siteName}</title>
+			<meta name="description" content={description} />
+		</>
+	)
+}
 
 export default withPrismicUnpublishedPreview(NotFoundPage)
-
-export const query = graphql`
-	query NotFoundPage {
-		prismicPage(uid: { eq: "404" }) {
-			_previewable
-			data {
-				title {
-					text
-				}
-				meta_title
-				meta_description
-				body {
-					...Slices
-				}
-			}
-		}
-
-		...AllPersons
-	}
-`
