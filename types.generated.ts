@@ -4102,12 +4102,12 @@ type PageTemplateQuery = { readonly prismicPage: { readonly _previewable: string
 type PrimaryNavigationQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PrimaryNavigationQuery = { readonly prismicNavigation: { readonly data: { readonly nav_items: ReadonlyArray<{ readonly label: { readonly text: string | null }, readonly link: { readonly url: string | null } | null }> } } | null };
+type PrimaryNavigationQuery = { readonly prismicNavigation: { readonly _previewable: string, readonly data: { readonly nav_items: ReadonlyArray<{ readonly label: { readonly text: string | null }, readonly link: { readonly url: string | null } | null }> } } | null };
 
 type PrismicSiteSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type PrismicSiteSettingsQuery = { readonly prismicSettings: { readonly data: { readonly site_name: { readonly text: string | null }, readonly site_description: { readonly text: string | null }, readonly site_copyright: { readonly text: string | null }, readonly site_disclaimer: { readonly html: string | null } } } | null };
+type PrismicSiteSettingsQuery = { readonly prismicSettings: { readonly _previewable: string, readonly data: { readonly site_name: { readonly text: string | null }, readonly site_description: { readonly text: string | null }, readonly site_copyright: { readonly text: string | null }, readonly site_disclaimer: { readonly html: string | null } } } | null };
 
 type Slices_PrismicPageDataBodyAnchor_Fragment = { readonly id: string, readonly slice_label: string | null, readonly slice_type: string, readonly primary: { readonly anchor: string | null } };
 
@@ -4134,11 +4134,6 @@ type TexturedImageFragment = { readonly id: string, readonly primary: { readonly
 type TextWithImageFragment = { readonly id: string, readonly primary: { readonly subheading: { readonly text: string | null }, readonly heading: { readonly text: string | null } }, readonly items: ReadonlyArray<{ readonly image: { readonly alt: string | null, readonly gatsbyImageData: Record<string, unknown> | null } | null, readonly text: { readonly html: string | null }, readonly button_text: { readonly text: string | null }, readonly button_link: { readonly url: string | null } | null }> };
 
 type TwoColumnTextFragment = { readonly id: string, readonly primary: { readonly left_text: { readonly html: string | null }, readonly right_text: { readonly html: string | null } } };
-
-type UseSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type UseSiteMetadataQuery = { readonly site: { readonly siteMetadata: { readonly title: string | null, readonly titleShort: string | null, readonly description: string | null, readonly siteUrl: string | null } | null } | null };
 
 type NodeAllPagesQueryVariables = Exact<{ [key: string]: never; }>;
 

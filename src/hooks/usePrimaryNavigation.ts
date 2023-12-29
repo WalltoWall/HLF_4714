@@ -1,11 +1,11 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import React from 'react'
-import { PrimaryNavigationQuery } from '../types.generated'
+import { useMergePrismicPreviewData } from 'gatsby-plugin-prismic-previews'
 
 export function usePrimaryNavigation() {
-	const queryData = useStaticQuery<PrimaryNavigationQuery>(graphql`
+	const staticData = useStaticQuery<Queries.PrimaryNavigationQuery>(graphql`
 		query PrimaryNavigation {
 			prismicNavigation(uid: { eq: "primary" }) {
+				_previewable
 				data {
 					nav_items {
 						label {
@@ -20,17 +20,14 @@ export function usePrimaryNavigation() {
 		}
 	`)
 
-	// We're intentionally ignoring the useMemo dependency here since queryData
-	// will never update in practice.
-	return React.useMemo(() => {
-		return (
-			queryData.prismicNavigation?.data?.nav_items
-				?.map((item) => ({
-					label: item?.label?.text,
-					url: item?.link?.url,
-				}))
-				.filter((item) => item.label && item.url) ?? []
-		)
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [])
+	const data = useMergePrismicPreviewData(staticData)
+
+	return (
+		data?.prismicNavigation?.data?.nav_items
+			?.map((item) => ({
+				label: item?.label?.text,
+				url: item?.link?.url,
+			}))
+			.filter((item) => item.label && item.url) ?? []
+	)
 }

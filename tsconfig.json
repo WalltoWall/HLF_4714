@@ -17,6 +17,11 @@
 		"jsx": "preserve",
 		"downlevelIteration": true
 	},
-	"include": ["./src/**/*.ts", "./src/**/*.tsx", "./types.generated.ts"],
+	"include": [
+		"./src/**/*.ts",
+		"./src/**/*.tsx",
+		"./types.generated.ts",
+		"./gatsby-node.ts"
+	],
 	"exclude": ["node_modules"]
 }

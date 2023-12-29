@@ -1,11 +1,13 @@
 import { useStaticQuery, graphql } from 'gatsby'
+import { useMergePrismicPreviewData } from 'gatsby-plugin-prismic-previews'
 
 const YEAR = new Date().getFullYear().toString()
 
 export const useSiteSettings = () => {
-	const queryData = useStaticQuery<Queries.PrismicSiteSettingsQuery>(graphql`
+	const staticData = useStaticQuery<Queries.PrismicSiteSettingsQuery>(graphql`
 		query PrismicSiteSettings {
 			prismicSettings {
+				_previewable
 				data {
 					site_name {
 						text
@@ -23,8 +25,8 @@ export const useSiteSettings = () => {
 			}
 		}
 	`)
-
-	const settings = queryData.prismicSettings?.data
+	const data = useMergePrismicPreviewData(staticData)
+	const settings = data?.prismicSettings?.data
 
 	return {
 		siteName: settings?.site_name?.text,

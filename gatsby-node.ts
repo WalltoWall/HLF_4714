@@ -1,4 +1,4 @@
-import { GatsbyNode } from 'gatsby'
+import { type GatsbyNode } from 'gatsby'
 
 export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	const { actions, reporter, graphql } = ctx
@@ -15,7 +15,7 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	 * @see https://www.gatsbyjs.org/docs/node-apis/#createPages
 	 * @see https://www.gatsbyjs.org/docs/actions/#createRedirect
 	 */
-	const pageResult = await graphql(`
+	const pageResult = await graphql<Queries.NodeAllPagesQuery>(`
 		query NodeAllPages {
 			allPrismicPage {
 				nodes {
@@ -31,14 +31,14 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 			}
 		}
 	`)
-	const pageNodes = pageResult.data.allPrismicPage.nodes
+	const pageNodes = pageResult.data?.allPrismicPage.nodes ?? []
 
 	for (const page of pageNodes) {
-		if (page.data.redirect_to?.url) {
+		if (page.data.redirect_to?.url && page.url) {
 			createRedirect({
 				fromPath: page.url,
 				toPath: page.data.redirect_to.url,
-				isPermanent: page.data.redirect_is_permanent,
+				isPermanent: page.data.redirect_is_permanent || false,
 				redirectInBrowser: true,
 				force: true,
 			})
@@ -51,7 +51,7 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	 *
 	 * @see https://www.gatsbyjs.org/docs/actions/#createRedirect
 	 */
-	const settingsResult = await graphql(`
+	const settingsResult = await graphql<Queries.NodeSettingsQuery>(`
 		query NodeSettings {
 			prismicSettings {
 				data {
@@ -64,14 +64,14 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 			}
 		}
 	`)
-	const redirects = settingsResult.data.prismicSettings.data.redirects
+	const redirects = settingsResult.data?.prismicSettings?.data.redirects ?? []
 
 	for (const redirect of redirects)
 		if (redirect.from_path && redirect.to_path)
 			createRedirect({
 				fromPath: redirect.from_path,
 				toPath: redirect.to_path,
-				isPermanent: redirect.is_permanent,
+				isPermanent: redirect.is_permanent || false,
 				redirectInBrowser: true,
 				force: true,
 			})

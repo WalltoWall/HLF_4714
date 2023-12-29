@@ -1,6 +1,6 @@
 import path from 'node:path'
 import 'dotenv/config'
-import { GatsbyConfig, PluginRef } from 'gatsby'
+import { type GatsbyConfig, type PluginRef } from 'gatsby'
 
 const siteMetadata = {
 	title: 'Hawai‘i Leadership Forum',
