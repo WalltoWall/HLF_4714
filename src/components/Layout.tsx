@@ -1,8 +1,7 @@
 import React from 'react'
-// import { SkipNavContent } from '@reach/skip-nav'
 
-import { value DevPanel } from './DevPanel'
-import { value useSiteSettings } from '../hooks/useSiteSettings'
+import { DevPanel } from './DevPanel'
+import { useSiteSettings } from '../hooks/useSiteSettings'
 
 export type LayoutProps = {
 	children?: React.ReactNode
@@ -23,7 +22,7 @@ export const Layout = ({ children }: LayoutProps) => {
 				/>
 			</Helmet> */}
 
-			{/* <SkipNavContent as="main">{children}</SkipNavContent> */}
+			<main id="main">{children}</main>
 
 			{process.env.NODE_ENV === 'development' && <DevPanel />}
 		</>

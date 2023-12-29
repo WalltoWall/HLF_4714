@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { PageProps } from 'gatsby'
+import { type PageProps } from 'gatsby'
 import {
 	type WithPrismicPreviewResolverProps,
 	withPrismicPreviewResolver,
 } from 'gatsby-plugin-prismic-previews'
+import { useSiteSettings } from '../hooks/useSiteSettings'
 
 type PreviewPageProps = PageProps & WithPrismicPreviewResolverProps
 
@@ -39,6 +40,18 @@ export const PreviewPage = ({ isPrismicPreview }: PreviewPageProps) => {
 				/>
 			</svg>
 		</div>
+	)
+}
+
+export const Head = () => {
+	const siteSettings = useSiteSettings()
+	const description = siteSettings.siteDescription ?? ''
+
+	return (
+		<>
+			<title>Preview | {siteSettings.siteName}</title>
+			<meta name="description" content={description} />
+		</>
 	)
 }
 

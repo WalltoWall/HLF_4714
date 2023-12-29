@@ -1,6 +1,7 @@
-const tailwindCapsize = require('@asyarb/tailwind-capsize')
-const tailwindAspectRatio = require('@tailwindcss/aspect-ratio')
-const tailwindForms = require('@tailwindcss/forms')
+import tailwindCapsize from '@asyarb/tailwind-capsize'
+import tailwindAspectRatio from '@tailwindcss/aspect-ratio'
+import tailwindForms from '@tailwindcss/forms'
+import { Config } from 'tailwindcss'
 
 /**
  * Sizes used for media queries and max-widths.
@@ -13,10 +14,8 @@ const SCREENS = {
 	xl: '90rem',
 }
 
-module.exports = {
-	purge: ['./src/**/*.{ts,tsx}'],
-	mode: 'jit',
-	darkMode: false,
+export default {
+	content: ['./src/**/*.{ts,tsx}'],
 	theme: {
 		screens: SCREENS,
 
@@ -60,40 +59,43 @@ module.exports = {
 			serif: '"PT Serif", serif',
 		},
 		fontSize: {
-			10: 10,
-			11: 11,
-			12: 12,
-			13: 13,
-			14: 14,
-			16: 16,
-			18: 18,
-			20: 20,
-			24: 24,
-			32: 32,
-			40: 40,
+			10: '10',
+			11: '11',
+			12: '12',
+			13: '13',
+			14: '14',
+			16: '16',
+			18: '18',
+			20: '20',
+			24: '24',
+			32: '32',
+			40: '40',
 		},
 		lineHeight: {
-			1: 1,
-			'1_1': 1.1,
-			'1_25': 1.25,
-			'1_3': 1.3,
-			'1_35': 1.35,
-			'1_4': 1.4,
-			'1_45': 1.45,
-			'1_55': 1.55,
-			'1_6': 1.6,
+			1: '1',
+			'1_1': '1.1',
+			'1_25': '1.25',
+			'1_3': '1.3',
+			'1_35': '1.35',
+			'1_4': '1.4',
+			'1_45': '1.45',
+			'1_55': '1.55',
+			'1_6': '1.6',
 		},
+
 		// Font metrics for @asyarb/tailwindcss-capsize to enable Capsize classnames.
 		// @see https://github.com/asyarb/tailwind-capsize
 		// @see https://seek-oss.github.io/capsize/
 		capsize: {
-			fontFamilies: {
+			metrics: {
 				sans: {
 					capHeight: 667,
 					ascent: 917,
 					descent: -285,
 					lineGap: 0,
 					unitsPerEm: 1000,
+					xHeight: 483,
+					xWidthAvg: 453,
 				},
 				serif: {
 					capHeight: 700,
@@ -101,6 +103,8 @@ module.exports = {
 					descent: -286,
 					lineGap: 0,
 					unitsPerEm: 1000,
+					xHeight: 500,
+					xWidthAvg: 624,
 				},
 			},
 		},
@@ -114,6 +118,5 @@ module.exports = {
 			},
 		},
 	},
-	variants: {},
 	plugins: [tailwindCapsize, tailwindAspectRatio, tailwindForms],
-}
+} satisfies Config

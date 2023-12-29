@@ -1,10 +1,10 @@
 import * as React from 'react'
 import clsx from 'clsx'
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { GatsbyImage, type IGatsbyImageData } from 'gatsby-plugin-image'
 import { Dialog } from '@headlessui/react'
 
 import { HTMLContent } from '../../components/HTMLContent'
-import { Modal, ModalProps } from '../../components/Modal'
+import { Modal, type ModalProps } from '../../components/Modal'
 import { focusRing } from '../../lib/utilStyles'
 import { sansCaps } from '../../typography'
 import { Close } from '../../components/icons/Close'
@@ -13,9 +13,9 @@ import patternUrl from '../../assets/pattern.jpg'
 import * as styles from './DirectorModal.module.css'
 
 interface Props extends Omit<ModalProps, 'children' | 'title'> {
-	bioHTML?: string
+	bioHTML?: string | null
 	gatsbyImage?: IGatsbyImageData
-	name?: string
+	name?: string | null
 }
 
 export const DirectorModal = ({
@@ -78,7 +78,7 @@ export const DirectorModal = ({
 						{name && (
 							<Dialog.Title
 								as="h4"
-								className="mb-5 font-bold text-green-24 sans-20-1_25 md:mb-6"
+								className="mb-5 font-bold text-green-24 md:mb-6 text-20 leading-1_25 capsize font-sans"
 							>
 								{name}
 							</Dialog.Title>

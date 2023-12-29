@@ -1,21 +1,21 @@
 @layer utilities {
 	.serif-heading {
-		@apply serif-24-1_45 md:serif-32-1_35 lg:serif-40-1_25;
+		@apply font-serif capsize text-24 leading-1_45 md:text-32 md:leading-1_35 lg:text-40 lg:leading-1_25;
 	}
 
 	.sans-caps {
-		@apply uppercase sans-11-1_25 lg:sans-12-1_25 tracking-caps font-bold;
+		@apply uppercase leading-1_25 text-11 font-sans capsize lg:text-12 tracking-caps font-bold;
 	}
 
 	.body-text {
-		@apply sans-16-1_55;
+		@apply font-sans capsize leading-1_55 text-16;
 	}
 
 	.person-name {
-		@apply sans-14-1_25 md:sans-16-1_25 lg:sans-18-1_25 font-bold;
+		@apply font-sans text-14 leading-1_25 md:text-16 lg:text-18 font-bold capsize;
 	}
 
 	.person-title {
-		@apply serif-13-1_3 md:serif-14-1_3 lg:serif-16-1_3;
+		@apply font-serif text-13 leading-1_3 capsize md:text-14 lg:text-16;
 	}
 }

@@ -2,13 +2,10 @@ import * as React from 'react'
 import clsx from 'clsx'
 import {
 	GatsbyImage,
-	IGatsbyImageData,
+	type IGatsbyImageData,
 	getImage,
-	ImageDataLike,
 } from 'gatsby-plugin-image'
-
-import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
-import { PageTemplateEnhancerProps } from '../../templates/page'
+import { graphql } from 'gatsby'
 import { BoundedBox } from '../../components/BoundedBox'
 import {
 	personName,
@@ -16,15 +13,13 @@ import {
 	sansCaps,
 	serifHeading,
 } from '../../typography'
-import type {
-	PageBodyTeamFragment,
-	AllPersonsFragment,
-} from '../../types.generated'
 import { focusRing } from '../../lib/utilStyles'
 import { DirectorModal } from './DirectorModal'
 import { Oval } from '../../components/Oval'
 import { ConditionalWrap } from '../../components/ConditionalWrap'
 import { Link } from '../../components/Link'
+import { type SliceComponentProps } from '@prismicio/react'
+import type { SliceContext } from '../../components/SliceRenderer'
 
 interface DirectorProps extends Pick<TPerson, 'gatsbyImage' | 'name'> {
 	openModal: () => void
@@ -77,8 +72,8 @@ const Director = ({ gatsbyImage, name, openModal }: DirectorProps) => {
 
 interface DirectorsListProps {
 	directors: TPerson[]
-	subheading?: string
-	heading?: string
+	subheading?: string | null
+	heading?: string | null
 }
 
 const Directors = ({ directors, subheading, heading }: DirectorsListProps) => {
@@ -190,7 +185,7 @@ const Member = ({
 
 interface StaffTeamProps {
 	staffTeam: TPerson[]
-	heading?: string
+	heading?: string | null
 }
 
 const StaffTeam = ({ staffTeam, heading }: StaffTeamProps) => {
@@ -217,15 +212,40 @@ const StaffTeam = ({ staffTeam, heading }: StaffTeamProps) => {
 	)
 }
 
-export type PageBodyTeamProps = ReturnType<typeof mapDataToProps> &
-	PageTemplateEnhancerProps
+type Slice = Queries.TeamFragment & { slice_type: 'team' }
+type Props = SliceComponentProps<Slice, SliceContext>
 
-const PageBodyTeam = ({
-	staffTeamHeading,
-	directorsHeading,
-	directorsSubeading,
-	allPersons,
-}: PageBodyTeamProps) => {
+const Team = ({ slice, context }: Props) => {
+	let allPrismicPerson: Queries.AllPersonsFragment['allPrismicPerson'] =
+		context?.allPersons
+
+	let directors: TPerson[] = []
+	let staffTeam: TPerson[] = []
+
+	allPrismicPerson.nodes.forEach((node) => {
+		const person: TPerson = {
+			name: `${node.data?.first_name?.text} ${node.data?.last_name?.text}`,
+			positionType: node.data?.position_type,
+			title: node.data?.title?.text,
+			gatsbyImage: getImage(node.data?.headshot),
+			bioHTML: node.data?.bio?.html,
+			bioUrl: node.data?.bio_link?.url,
+		}
+
+		switch (person.positionType) {
+			case 'Staff Team':
+				return staffTeam.push(person)
+			case 'Director':
+				return directors.push(person)
+			default:
+				return
+		}
+	})
+
+	const directorsSubeading = slice.primary?.directors_subheading?.text
+	const directorsHeading = slice.primary?.directors_heading?.text
+	const staffTeamHeading = slice.primary?.staff_team_heading?.text
+
 	return (
 		<BoundedBox
 			as="section"
@@ -250,74 +270,73 @@ const PageBodyTeam = ({
 
 			<div className="space-y-9 md:space-y-16 isolate">
 				<Directors
-					directors={allPersons.directors}
+					directors={directors}
 					heading={directorsHeading}
 					subheading={directorsSubeading}
 				/>
 
 				<hr className="w-full border-t border-gray-87" />
 
-				<StaffTeam
-					staffTeam={allPersons.staffTeam}
-					heading={staffTeamHeading}
-				/>
+				<StaffTeam staffTeam={staffTeam} heading={staffTeamHeading} />
 			</div>
 		</BoundedBox>
 	)
 }
 
 interface TPerson {
-	name?: string
-	positionType?: string
-	title?: string
+	name?: string | null
+	positionType?: string | null
+	title?: string | null
 	gatsbyImage?: IGatsbyImageData
-	bioHTML?: string
-	bioUrl?: string
+	bioHTML?: string | null
+	bioUrl?: string | null
 }
 
-export const mapDataToProps = ({
-	data,
-	meta,
-}: MapDataToPropsArgs<PageBodyTeamFragment, typeof mapDataToContext>) => {
-	let allPrismicPerson: AllPersonsFragment['allPrismicPerson'] =
-		meta?.rootData.allPrismicPerson
+export default Team
 
-	let directors: TPerson[] = []
-	let staffTeam: TPerson[] = []
-
-	allPrismicPerson.nodes.forEach((node) => {
-		const person: TPerson = {
-			name: `${node.data?.first_name?.text} ${node.data?.last_name?.text}`,
-			positionType: node.data?.position_type,
-			title: node.data?.title?.text,
-			gatsbyImage: getImage(node.data?.headshot as ImageDataLike),
-			bioHTML: node.data?.bio?.html,
-			bioUrl: node.data?.bio_link?.url,
+export const fragment = graphql`
+	fragment Team on PrismicPageDataBodyTeam {
+		id
+		primary {
+			directors_subheading {
+				text
+			}
+			directors_heading {
+				text
+			}
+			staff_team_heading {
+				text
+			}
 		}
-
-		switch (person.positionType) {
-			case 'Staff Team':
-				return staffTeam.push(person)
-			case 'Director':
-				return directors.push(person)
-			default:
-				return
-		}
-	})
-
-	return {
-		directorsSubeading: data.primary?.directors_subheading?.text,
-		directorsHeading: data.primary?.directors_heading?.text,
-		staffTeamHeading: data.primary?.staff_team_heading?.text,
-		allPersons: {
-			directors,
-			staffTeam,
-		},
 	}
-}
 
-export const mapDataToContext = () => ({
-	bg: 'bg-green-92',
-})
-
-export default PageBodyTeam
+	fragment AllPersons on Query {
+		allPrismicPerson(sort: { data: { last_name: { text: ASC } } }) {
+			nodes {
+				_previewable
+				prismicId
+				data {
+					first_name {
+						text
+					}
+					last_name {
+						text
+					}
+					position_type
+					title {
+						text
+					}
+					headshot {
+						gatsbyImageData(width: 400, placeholder: BLURRED)
+					}
+					bio {
+						html
+					}
+					bio_link {
+						url
+					}
+				}
+			}
+		}
+	}
+`

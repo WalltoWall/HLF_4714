@@ -44,10 +44,7 @@ const Navigation = () => {
 					return (
 						<li
 							key={item.label + idx}
-							className={clsx(
-								'sans-10-1_25 font-bold sm:sans-11-1_25 lg:sans-12-1_25',
-								'uppercase tracking-caps text-white',
-							)}
+							className="font-sans text-10 leading-1_25 capsize sm:text-11 lg:text-12 font-bold uppercase tracking-caps text-white"
 						>
 							<Link href={item.url}>{item.label}</Link>
 						</li>
@@ -77,7 +74,7 @@ export const Footer = () => {
 				<div className="flex flex-col items-center space-y-6">
 					<Navigation />
 
-					<p className="text-center text-white sans-11-1_45">
+					<p className="text-center text-white text-11 font-sans leading-1_45 capsize">
 						{siteSettings.siteCopyright} <br />
 						Website designed &amp; developed by{' '}
 						<Link

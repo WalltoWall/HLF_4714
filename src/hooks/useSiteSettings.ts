@@ -1,11 +1,9 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { PrismicSiteSettingsQuery } from '../types.generated'
-
 const YEAR = new Date().getFullYear().toString()
 
 export const useSiteSettings = () => {
-	const queryData = useStaticQuery<PrismicSiteSettingsQuery>(graphql`
+	const queryData = useStaticQuery<Queries.PrismicSiteSettingsQuery>(graphql`
 		query PrismicSiteSettings {
 			prismicSettings {
 				data {

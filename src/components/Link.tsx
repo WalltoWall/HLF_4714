@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from 'react'
-import GatsbyLink, { GatsbyLinkProps } from 'gatsby-link'
+import { Link as GatsbyLink, type GatsbyLinkProps } from 'gatsby'
 import { isInternal, isAnchorOnly, extractAnchor } from '@walltowall/helpers'
 import clsx from 'clsx'
 

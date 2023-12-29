@@ -16,14 +16,23 @@ const routes = [
 		type: 'page',
 		path: '/:uid',
 	},
+	{
+		type: 'page',
+		uid: 'home',
+		path: '/',
+	},
 ]
 
 const config: GatsbyConfig = {
 	siteMetadata,
 	graphqlTypegen: {
-		typesOutputPath: './src/types.generated.ts',
-		generateOnBuild: true,
-		documentSearchPaths: ['./src/**/*.ts', './src/**/*.tsx'],
+		typesOutputPath: './types.generated.ts',
+		generateOnBuild: false,
+		documentSearchPaths: [
+			'./src/**/*.ts',
+			'./src/**/*.tsx',
+			'./gatsby-node.ts',
+		],
 	},
 	plugins: [
 		'gatsby-plugin-sitemap',

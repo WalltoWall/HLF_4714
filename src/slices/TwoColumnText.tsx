@@ -1,20 +1,20 @@
 import * as React from 'react'
 import clsx from 'clsx'
+import { graphql } from 'gatsby'
+import { BoundedBox } from '../components/BoundedBox'
+import { HTMLContent } from '../components/HTMLContent'
+import { Oval } from '../components/Oval'
+import type { SliceComponentProps } from '@prismicio/react'
 
-import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
-import { PageTemplateEnhancerProps } from '../../templates/page'
-import { BoundedBox } from '../../components/BoundedBox'
-import { PageBodyTwoColumnTextFragment } from '../../types.generated'
-import { HTMLContent } from '../../components/HTMLContent'
-import { Oval } from '../../components/Oval'
+type Slice = Queries.TwoColumnTextFragment & {
+	slice_type: 'two_column_text'
+}
+type Props = SliceComponentProps<Slice>
 
-export type PageBodyTwoColumnTextProps = ReturnType<typeof mapDataToProps> &
-	PageTemplateEnhancerProps
+const TwoColumnText = ({ slice }: Props) => {
+	const leftHTML = slice.primary.left_text.html
+	const rightHTML = slice.primary.right_text.html
 
-const PageBodyTwoColumnText = ({
-	leftHTML,
-	rightHTML,
-}: PageBodyTwoColumnTextProps) => {
 	return (
 		<BoundedBox
 			as="section"
@@ -63,20 +63,18 @@ const PageBodyTwoColumnText = ({
 	)
 }
 
-export const mapDataToProps = ({
-	data,
-}: MapDataToPropsArgs<
-	PageBodyTwoColumnTextFragment,
-	typeof mapDataToContext
->) => {
-	return {
-		leftHTML: data.primary?.left_text?.html,
-		rightHTML: data.primary?.right_text?.html,
+export default TwoColumnText
+
+export const fragment = graphql`
+	fragment TwoColumnText on PrismicPageDataBodyTwoColumnText {
+		id
+		primary {
+			left_text {
+				html
+			}
+			right_text {
+				html
+			}
+		}
 	}
-}
-
-export const mapDataToContext = () => ({
-	bg: 'bg-green-92',
-})
-
-export default PageBodyTwoColumnText
+`

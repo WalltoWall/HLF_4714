@@ -1,9 +1,8 @@
 import { GatsbyNode } from 'gatsby'
-import path from 'node:path'
 
 export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	const { actions, reporter, graphql } = ctx
-	const { createPage, createRedirect } = actions
+	const { createRedirect } = actions
 
 	/**
 	 * Create pages for all Page documents in Prismic. The document's UID is
@@ -17,7 +16,7 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	 * @see https://www.gatsbyjs.org/docs/actions/#createRedirect
 	 */
 	const pageResult = await graphql(`
-		query {
+		query NodeAllPages {
 			allPrismicPage {
 				nodes {
 					uid
@@ -35,7 +34,7 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	const pageNodes = pageResult.data.allPrismicPage.nodes
 
 	for (const page of pageNodes) {
-		if (page.data.redirect_to.url) {
+		if (page.data.redirect_to?.url) {
 			createRedirect({
 				fromPath: page.url,
 				toPath: page.data.redirect_to.url,
@@ -45,12 +44,6 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 			})
 			continue
 		}
-
-		createPage({
-			path: page.url,
-			component: path.resolve(__dirname, 'src/templates/page.tsx'),
-			context: { uid: page.uid },
-		})
 	}
 
 	/**
@@ -59,7 +52,7 @@ export const createPages: GatsbyNode['createPages'] = async (ctx) => {
 	 * @see https://www.gatsbyjs.org/docs/actions/#createRedirect
 	 */
 	const settingsResult = await graphql(`
-		query {
+		query NodeSettings {
 			prismicSettings {
 				data {
 					redirects {

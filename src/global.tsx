@@ -16,39 +16,33 @@ import './index.css'
 import '@fontsource/pt-serif/400.css'
 
 import * as React from 'react'
-import { GatsbyBrowser } from 'gatsby'
-import { PrismicPreviewProvider } from 'gatsby-plugin-prismic-previews'
-import { LazyMotion } from 'framer-motion'
+import { type GatsbyBrowser } from 'gatsby'
+import {
+	PrismicPreviewProvider,
+	type RepositoryConfig,
+} from 'gatsby-plugin-prismic-previews'
 
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { PageContainer } from './components/PageContainer'
 
-async function loadFeatures() {
-	const mod = await import('./lib/framerFeatures')
-
-	return mod.default
-}
+const repositoryConfigs: RepositoryConfig[] = [
+	{
+		repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY_NAME!,
+		componentResolver: {
+			page: React.lazy(() => import('./pages/{PrismicPage.url}')),
+		},
+	},
+]
 
 export const wrapRootElement: NonNullable<GatsbyBrowser['wrapRootElement']> = ({
 	element,
 }) => (
-	<LazyMotion features={loadFeatures} strict>
-		<PrismicPreviewProvider
-			repositoryConfigs={[
-				{
-					repositoryName: process.env.GATSBY_PRISMIC_REPOSITORY_NAME!,
-					componentResolver: {
-						page: React.lazy(() => import('./templates/page')),
-					},
-				},
-			]}
-		>
-			<PageContainer>
-				<Header />
-				{element}
-				<Footer />
-			</PageContainer>
-		</PrismicPreviewProvider>
-	</LazyMotion>
+	<PrismicPreviewProvider repositoryConfigs={repositoryConfigs}>
+		<PageContainer>
+			<Header />
+			{element}
+			<Footer />
+		</PageContainer>
+	</PrismicPreviewProvider>
 )

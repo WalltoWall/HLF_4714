@@ -1,15 +1,14 @@
 import * as React from 'react'
 import clsx from 'clsx'
+import { graphql } from 'gatsby'
 
-import { PageBodyPageIntroFragment } from '../../types.generated'
-import { MapDataToPropsArgs } from '../../lib/mapSlicesToComponents'
-import { PageTemplateEnhancerProps } from '../../templates/page'
-import { BoundedBox } from '../../components/BoundedBox'
-import { HStack } from '../../components/HStack'
-import heroBgUrl from '../../assets/hero-bg.jpg'
-import * as typo from '../../typography'
-import { ChevronRight } from '../../components/icons/ChevronRight'
-import { Link } from '../../components/Link'
+import { BoundedBox } from '../components/BoundedBox'
+import { HStack } from '../components/HStack'
+import heroBgUrl from '../assets/hero-bg.jpg'
+import * as typo from '../typography'
+import { ChevronRight } from '../components/icons/ChevronRight'
+import { Link } from '../components/Link'
+import type { SliceComponentProps } from '@prismicio/react'
 
 interface NavItemProps {
 	children: string
@@ -32,13 +31,27 @@ const NavItem = ({ children, href }: NavItemProps) => {
 	)
 }
 
-export type PageBodyPageIntroProps = ReturnType<typeof mapDataToProps> &
-	PageTemplateEnhancerProps
+type NavItem = { label?: string | null; href?: string | null }
 
-const PageBodyPageIntro = ({
-	heading,
-	navItems = [],
-}: PageBodyPageIntroProps) => {
+type Slice = Queries.PageIntroFragment & { slice_type: 'page_intro' }
+type Props = SliceComponentProps<Slice>
+
+const PageIntro = ({ slice }: Props) => {
+	const heading = slice.primary.heading.text
+
+	let navItems: NavItem[] = []
+
+	if (
+		slice.primary.navigation?.document?.__typename === 'PrismicNavigation'
+	) {
+		navItems = slice.primary.navigation.document.data.nav_items.map(
+			(item) => ({
+				label: item.label.text,
+				href: item.link?.url,
+			}),
+		)
+	}
+
 	return (
 		<BoundedBox
 			as="section"
@@ -100,20 +113,34 @@ const PageBodyPageIntro = ({
 	)
 }
 
-export const mapDataToProps = ({
-	data,
-}: MapDataToPropsArgs<PageBodyPageIntroFragment, typeof mapDataToContext>) => ({
-	heading: data.primary?.heading?.text,
-	navItems: data.primary?.navigation?.document?.data?.nav_items?.map(
-		(navItem) => ({
-			label: navItem?.label?.text,
-			href: navItem?.link?.url,
-		}),
-	),
-})
+export default PageIntro
 
-export const mapDataToContext = () => ({
-	bg: Symbol('Background image'),
-})
+export const fragment = graphql`
+	fragment PageIntro on PrismicPageDataBodyPageIntro {
+		id
+		primary {
+			heading {
+				text
+			}
+			navigation {
+				document {
+					__typename
 
-export default PageBodyPageIntro
+					... on PrismicNavigation {
+						_previewable
+						data {
+							nav_items {
+								label {
+									text
+								}
+								link {
+									url
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`

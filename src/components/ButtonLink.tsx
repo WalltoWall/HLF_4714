@@ -4,6 +4,7 @@ import { focusRing } from '../lib/utilStyles'
 import { ExternalLink } from './icons/ExternalLink'
 
 import { Link, LinkProps } from './Link'
+import { sansCaps } from '../typography'
 
 export const ButtonLink = ({ className, children, ...props }: LinkProps) => {
 	return (
@@ -17,7 +18,7 @@ export const ButtonLink = ({ className, children, ...props }: LinkProps) => {
 			)}
 			{...props}
 		>
-			<div className="text-white sans-caps">{children}</div>
+			<div className={clsx('text-white', sansCaps)}>{children}</div>
 			<ExternalLink className="w-3.5 h-3.5 md:w-4 md:h-4" />
 		</Link>
 	)
