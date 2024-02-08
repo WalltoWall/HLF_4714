@@ -1,86 +1,84 @@
-import tailwindCapsize from '@asyarb/tailwind-capsize'
-import tailwindAspectRatio from '@tailwindcss/aspect-ratio'
-import tailwindForms from '@tailwindcss/forms'
-import { Config } from 'tailwindcss'
+import tailwindCapsize from "@asyarb/tailwind-capsize"
+import { Config } from "tailwindcss"
 
 /**
  * Sizes used for media queries and max-widths.
  */
 const SCREENS = {
-	sm: '30rem',
-	md: '48rem',
-	lg: '64rem',
-	container: '1240px',
-	xl: '90rem',
+	sm: "30rem",
+	md: "48rem",
+	lg: "64rem",
+	container: "1240px",
+	xl: "90rem"
 }
 
 export default {
-	content: ['./src/**/*.{ts,tsx}'],
+	content: ["./src/**/*.{html,js,svelte,ts}"],
 	theme: {
 		screens: SCREENS,
 
 		colors: {
-			debug: '#f0f',
+			debug: "#f0f",
 
-			white: '#fff',
-			'transparent-white': 'rgba(255, 255, 255, 0)',
+			white: "#fff",
+			"transparent-white": "rgba(255, 255, 255, 0)",
 
-			black: '#000',
-			transparent: 'transparent',
+			black: "#000",
+			transparent: "transparent",
 
 			yellow: {
-				59: '#f9ed32',
+				59: "#f9ed32"
 			},
 
 			teal: {
-				45: '#3fa896',
+				45: "#3fa896"
 			},
 
 			blue: {
-				36: '#0090b8',
+				36: "#0090b8"
 			},
 
 			gray: {
-				17: '#2b2b2b',
-				25: '#3f3f3f',
-				38: '#616161',
-				51: '#808285',
-				87: '#dedede',
+				17: "#2b2b2b",
+				25: "#3f3f3f",
+				38: "#616161",
+				51: "#808285",
+				87: "#dedede"
 			},
 
 			green: {
-				24: '#087050',
-				92: '#e8f5e2',
-			},
+				24: "#087050",
+				92: "#e8f5e2"
+			}
 		},
 
 		fontFamily: {
 			sans: '"proxima-nova", system-ui',
-			serif: '"PT Serif", serif',
+			serif: '"PT Serif", serif'
 		},
 		fontSize: {
-			10: '10',
-			11: '11',
-			12: '12',
-			13: '13',
-			14: '14',
-			16: '16',
-			18: '18',
-			20: '20',
-			24: '24',
-			32: '32',
-			40: '40',
+			10: "10",
+			11: "11",
+			12: "12",
+			13: "13",
+			14: "14",
+			16: "16",
+			18: "18",
+			20: "20",
+			24: "24",
+			32: "32",
+			40: "40"
 		},
 		lineHeight: {
-			1: '1',
-			'1_1': '1.1',
-			'1_25': '1.25',
-			'1_3': '1.3',
-			'1_35': '1.35',
-			'1_4': '1.4',
-			'1_45': '1.45',
-			'1_55': '1.55',
-			'1_6': '1.6',
+			1: "1",
+			"1_1": "1.1",
+			"1_25": "1.25",
+			"1_3": "1.3",
+			"1_35": "1.35",
+			"1_4": "1.4",
+			"1_45": "1.45",
+			"1_55": "1.55",
+			"1_6": "1.6"
 		},
 
 		// Font metrics for @asyarb/tailwindcss-capsize to enable Capsize classnames.
@@ -95,7 +93,7 @@ export default {
 					lineGap: 0,
 					unitsPerEm: 1000,
 					xHeight: 483,
-					xWidthAvg: 453,
+					xWidthAvg: 453
 				},
 				serif: {
 					capHeight: 700,
@@ -104,19 +102,19 @@ export default {
 					lineGap: 0,
 					unitsPerEm: 1000,
 					xHeight: 500,
-					xWidthAvg: 624,
-				},
-			},
+					xWidthAvg: 624
+				}
+			}
 		},
 
 		extend: {
 			maxWidth: {
-				content: '56rem',
+				content: "56rem"
 			},
 			letterSpacing: {
-				caps: '.14em',
-			},
-		},
+				caps: ".14em"
+			}
+		}
 	},
-	plugins: [tailwindCapsize, tailwindAspectRatio, tailwindForms],
+	plugins: [tailwindCapsize]
 } satisfies Config
