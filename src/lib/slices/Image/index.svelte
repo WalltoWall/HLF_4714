@@ -1,23 +1,20 @@
 <script lang="ts">
 	import { PrismicImage } from "@prismicio/svelte"
 	import * as prismic from "@prismicio/client"
-	import clsx from "clsx"
-
-	import Bounded from "$lib/components/Bounded.svelte"
 
 	export let slice: prismic.Content.ImageSlice
-	export let index: number
 </script>
 
-<Bounded
-	tag="section"
-	class={clsx("bg-white", index === 0 && "pt-0 md:pt-0")}
+<section
+	class="relative"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
 	{#if prismic.isFilled.image(slice.primary.image)}
-		<div class="bg-gray-100">
-			<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full" />
-		</div>
+		<PrismicImage
+			field={slice.primary.image}
+			sizes="(min-width: 56rem) 56rem, 100vw"
+			class="w-full h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px] object-cover"
+		/>
 	{/if}
-</Bounded>
+</section>

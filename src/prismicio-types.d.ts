@@ -61,7 +61,7 @@ export type NavigationDocument<Lang extends string = string> =
 		Lang
 	>
 
-type PageDocumentDataSlicesSlice = HeroSlice | ImageSlice
+type PageDocumentDataSlicesSlice = ImageSlice
 
 /**
  * Content for Page documents
@@ -269,78 +269,6 @@ export type AllDocumentTypes =
 	| SettingsDocument
 
 /**
- * Primary content in *Hero → Primary*
- */
-export interface HeroSliceDefaultPrimary {
-	/**
-	 * Text field in *Hero → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.primary.text
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	text: prismic.RichTextField
-
-	/**
-	 * Button Link field in *Hero → Primary*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.primary.buttonLink
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	buttonLink: prismic.LinkField
-
-	/**
-	 * Button Text field in *Hero → Primary*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.primary.buttonText
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	buttonText: prismic.KeyTextField
-
-	/**
-	 * Background Image field in *Hero → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.primary.backgroundImage
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	backgroundImage: prismic.ImageField<never>
-}
-
-/**
- * Default variation for Hero Slice
- *
- * - **API ID**: `default`
- * - **Description**: Hero
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HeroSliceDefault = prismic.SharedSliceVariation<
-	"default",
-	Simplify<HeroSliceDefaultPrimary>,
-	never
->
-
-/**
- * Slice variation for *Hero*
- */
-type HeroSliceVariation = HeroSliceDefault
-
-/**
- * Hero Shared Slice
- *
- * - **API ID**: `hero`
- * - **Description**: Hero
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>
-
-/**
  * Primary content in *Image → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -369,37 +297,9 @@ export type ImageSliceDefault = prismic.SharedSliceVariation<
 >
 
 /**
- * Primary content in *Image → Primary*
- */
-export interface ImageSliceBannerPrimary {
-	/**
-	 * Image field in *Image → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: image.primary.image
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	image: prismic.ImageField<never>
-}
-
-/**
- * Banner variation for Image Slice
- *
- * - **API ID**: `banner`
- * - **Description**: Image
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ImageSliceBanner = prismic.SharedSliceVariation<
-	"banner",
-	Simplify<ImageSliceBannerPrimary>,
-	never
->
-
-/**
  * Slice variation for *Image*
  */
-type ImageSliceVariation = ImageSliceDefault | ImageSliceBanner
+type ImageSliceVariation = ImageSliceDefault
 
 /**
  * Image Shared Slice
@@ -430,16 +330,10 @@ declare module "@prismicio/client" {
 			SettingsDocumentData,
 			SettingsDocumentDataRedirectsItem,
 			AllDocumentTypes,
-			HeroSlice,
-			HeroSliceDefaultPrimary,
-			HeroSliceVariation,
-			HeroSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
-			ImageSliceBannerPrimary,
 			ImageSliceVariation,
-			ImageSliceDefault,
-			ImageSliceBanner
+			ImageSliceDefault
 		}
 	}
 }
