@@ -1,4 +1,4 @@
-export function anchorAttrs(href?: string) {
+export function anchorAttrs(href?: string | null) {
 	if (href?.startsWith("http")) {
 		return {
 			target: "_blank",
