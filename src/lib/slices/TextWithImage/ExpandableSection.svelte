@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Content } from "@prismicio/client"
+	import { createCollapsible, melt } from "@melt-ui/svelte"
 	import * as prismic from "@prismicio/client"
 	import clsx from "clsx"
 	import * as typo from "$lib/typography"
@@ -8,10 +9,17 @@
 	import ButtonLink from "$lib/components/ButtonLink.svelte"
 	import TextWithImageParagraph from "./TextWithImageParagraph.svelte"
 	import TextWithImageListItem from "./TextWithImageListItem.svelte"
+	import { expand } from "./expand"
 
 	export let item: Content.TextWithImageSliceDefaultItem
 
-	let expanded = false
+	const length = prismic.asText(item.text).length
+	const isExpandable = length >= 420
+
+	const {
+		elements: { content, root, trigger },
+		states: { open }
+	} = createCollapsible({ defaultOpen: !isExpandable, forceVisible: true })
 </script>
 
 <div
@@ -28,9 +36,15 @@
 		{/if}
 	</div>
 
-	<div class="md:col-span-4 md:pl-20 space-y-7">
-		<div class={clsx("relative overflow-hidden", !expanded && "max-h-[150px]")}>
-			<div class={clsx(expanded && "pb-1", "pt-[2px]")}>
+	<div class="md:col-span-4 md:pl-20 space-y-7" use:melt={$root}>
+		<div
+			class={clsx("relative overflow-hidden pt-0.5", $open && "pb-1")}
+			use:melt={$content}
+		>
+			<div
+				use:expand={{ open: $open, duration: 200, minHeight: 160 }}
+				style:height={isExpandable ? "160px" : undefined}
+			>
 				{#if prismic.isFilled.richText(item.text)}
 					<PrismicRichText
 						field={item.text}
@@ -41,15 +55,15 @@
 						}}
 					/>
 				{/if}
-
-				<div
-					class={clsx(
-						"absolute inset-x-0 bottom-0 h-24 pointer-events-none max-w-full",
-						"bg-gradient-to-b to-white from-[#fff0]",
-						expanded && "opacity-0"
-					)}
-				/>
 			</div>
+
+			<div
+				class={clsx(
+					"absolute inset-x-0 bottom-0 h-24 pointer-events-none max-w-full",
+					"bg-gradient-to-b to-white from-[#fff0]",
+					$open && "opacity-0"
+				)}
+			/>
 		</div>
 
 		<div
@@ -64,12 +78,14 @@
 				</ButtonLink>
 			{/if}
 
-			<button
-				class={clsx(typo.sansCaps, "text-green-24 py-px", "select-none")}
-				on:click={() => (expanded = !expanded)}
-			>
-				{expanded ? "Read Less" : "Read More"}
-			</button>
+			{#if isExpandable}
+				<button
+					class={clsx(typo.sansCaps, "text-green-24 py-px", "select-none")}
+					use:melt={$trigger}
+				>
+					{$open ? "Read Less" : "Read More"}
+				</button>
+			{/if}
 		</div>
 	</div>
 </div>
