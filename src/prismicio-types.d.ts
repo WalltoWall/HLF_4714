@@ -62,6 +62,7 @@ export type NavigationDocument<Lang extends string = string> =
 	>
 
 type PageDocumentDataSlicesSlice =
+	| CenteredTextSlice
 	| CallToActionSlice
 	| AnchorSlice
 	| PageIntroSlice
@@ -380,6 +381,51 @@ export type CallToActionSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *CenteredText → Primary*
+ */
+export interface CenteredTextSliceDefaultPrimary {
+	/**
+	 * Text field in *CenteredText → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: centered_text.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField
+}
+
+/**
+ * Default variation for CenteredText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CenteredTextSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Simplify<CenteredTextSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *CenteredText*
+ */
+type CenteredTextSliceVariation = CenteredTextSliceDefault
+
+/**
+ * CenteredText Shared Slice
+ *
+ * - **API ID**: `centered_text`
+ * - **Description**: CenteredText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CenteredTextSlice = prismic.SharedSlice<
+	"centered_text",
+	CenteredTextSliceVariation
+>
+
+/**
  * Primary content in *Image → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -504,6 +550,10 @@ declare module "@prismicio/client" {
 			CallToActionSliceDefaultPrimary,
 			CallToActionSliceVariation,
 			CallToActionSliceDefault,
+			CenteredTextSlice,
+			CenteredTextSliceDefaultPrimary,
+			CenteredTextSliceVariation,
+			CenteredTextSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,

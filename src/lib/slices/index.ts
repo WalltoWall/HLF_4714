@@ -2,12 +2,14 @@
 
 import Anchor from "./Anchor/index.svelte"
 import CallToAction from "./CallToAction/index.svelte"
+import CenteredText from "./CenteredText/index.svelte"
 import Image from "./Image/index.svelte"
 import PageIntro from "./PageIntro/index.svelte"
 
 export const components = {
 	anchor: Anchor,
 	call_to_action: CallToAction,
+	centered_text: CenteredText,
 	image: Image,
 	page_intro: PageIntro
 }
