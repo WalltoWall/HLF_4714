@@ -522,6 +522,36 @@ export type PageIntroSlice = prismic.SharedSlice<
 	PageIntroSliceVariation
 >
 
+/**
+ * Default variation for TwoColumnText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TwoColumnTextSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Record<string, never>,
+	never
+>
+
+/**
+ * Slice variation for *TwoColumnText*
+ */
+type TwoColumnTextSliceVariation = TwoColumnTextSliceDefault
+
+/**
+ * TwoColumnText Shared Slice
+ *
+ * - **API ID**: `two_column_text`
+ * - **Description**: TwoColumnText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TwoColumnTextSlice = prismic.SharedSlice<
+	"two_column_text",
+	TwoColumnTextSliceVariation
+>
+
 declare module "@prismicio/client" {
 	interface CreateClient {
 		(
@@ -561,7 +591,10 @@ declare module "@prismicio/client" {
 			PageIntroSlice,
 			PageIntroSliceDefaultPrimary,
 			PageIntroSliceVariation,
-			PageIntroSliceDefault
+			PageIntroSliceDefault,
+			TwoColumnTextSlice,
+			TwoColumnTextSliceVariation,
+			TwoColumnTextSliceDefault
 		}
 	}
 }

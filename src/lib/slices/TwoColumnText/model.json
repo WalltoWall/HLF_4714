@@ -1,0 +1,16 @@
+{
+	"id": "two_column_text",
+	"type": "SharedSlice",
+	"name": "TwoColumnText",
+	"description": "TwoColumnText",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": ""
+		}
+	]
+}

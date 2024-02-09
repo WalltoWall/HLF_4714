@@ -1,11 +1,13 @@
 <script lang="ts">
 	import type { Content } from "@prismicio/client"
 
-	export let slice: Content.AnchorSlice
+	export let slice: Content.TwoColumnTextSlice
 </script>
 
-<div
+<section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	id={slice.primary.anchor?.replace("#", "")}
-/>
+>
+	Placeholder component for {slice.slice_type} (variation: {slice.variation})
+	Slices
+</section>
