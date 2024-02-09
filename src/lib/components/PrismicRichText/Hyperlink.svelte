@@ -5,6 +5,9 @@
 	export let node: RTLinkNode
 </script>
 
-<PrismicLink field={node.data} class="underline decoration-1 underline-offset-2">
+<PrismicLink
+	field={node.data}
+	class="hover:underline decoration-1 underline-offset-2 text-green-24 outline-green-24"
+>
 	<slot />
 </PrismicLink>

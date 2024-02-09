@@ -62,7 +62,11 @@
 			<ul class="flex flex-wrap gap-y-[30px] gap-x-4 md:gap-x-[42px]">
 				{#each items as item}
 					<li class="flex items-center gap-2 group">
-						<a class={typo.sansCaps} href={item.href} {...item.attrs}>
+						<a
+							class={clsx("outline-white", typo.sansCaps)}
+							href={item.href}
+							{...item.attrs}
+						>
 							{item.label}
 						</a>
 						<ChevronRight

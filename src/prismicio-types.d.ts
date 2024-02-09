@@ -61,7 +61,11 @@ export type NavigationDocument<Lang extends string = string> =
 		Lang
 	>
 
-type PageDocumentDataSlicesSlice = AnchorSlice | PageIntroSlice | ImageSlice
+type PageDocumentDataSlicesSlice =
+	| CallToActionSlice
+	| AnchorSlice
+	| PageIntroSlice
+	| ImageSlice
 
 /**
  * Content for Page documents
@@ -311,6 +315,71 @@ type AnchorSliceVariation = AnchorSliceDefault
 export type AnchorSlice = prismic.SharedSlice<"anchor", AnchorSliceVariation>
 
 /**
+ * Primary content in *CallToAction → Primary*
+ */
+export interface CallToActionSliceDefaultPrimary {
+	/**
+	 * Subheading field in *CallToAction → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.primary.subheading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	subheading: prismic.TitleField
+
+	/**
+	 * Heading field in *CallToAction → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	heading: prismic.TitleField
+
+	/**
+	 * Text field in *CallToAction → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: call_to_action.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField
+}
+
+/**
+ * Default variation for CallToAction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Simplify<CallToActionSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *CallToAction*
+ */
+type CallToActionSliceVariation = CallToActionSliceDefault
+
+/**
+ * CallToAction Shared Slice
+ *
+ * - **API ID**: `call_to_action`
+ * - **Description**: CallToAction
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlice = prismic.SharedSlice<
+	"call_to_action",
+	CallToActionSliceVariation
+>
+
+/**
  * Primary content in *Image → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -431,6 +500,10 @@ declare module "@prismicio/client" {
 			AnchorSliceDefaultPrimary,
 			AnchorSliceVariation,
 			AnchorSliceDefault,
+			CallToActionSlice,
+			CallToActionSliceDefaultPrimary,
+			CallToActionSliceVariation,
+			CallToActionSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
