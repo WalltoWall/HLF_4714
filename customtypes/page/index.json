@@ -35,6 +35,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"anchor": {
+							"type": "SharedSlice"
+						},
 						"page_intro": {
 							"type": "SharedSlice"
 						},

@@ -61,7 +61,7 @@ export type NavigationDocument<Lang extends string = string> =
 		Lang
 	>
 
-type PageDocumentDataSlicesSlice = PageIntroSlice | ImageSlice
+type PageDocumentDataSlicesSlice = AnchorSlice | PageIntroSlice | ImageSlice
 
 /**
  * Content for Page documents
@@ -269,6 +269,48 @@ export type AllDocumentTypes =
 	| SettingsDocument
 
 /**
+ * Primary content in *Anchor → Primary*
+ */
+export interface AnchorSliceDefaultPrimary {
+	/**
+	 * Anchor field in *Anchor → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: anchor.primary.anchor
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	anchor: prismic.KeyTextField
+}
+
+/**
+ * Default variation for Anchor Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnchorSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Simplify<AnchorSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *Anchor*
+ */
+type AnchorSliceVariation = AnchorSliceDefault
+
+/**
+ * Anchor Shared Slice
+ *
+ * - **API ID**: `anchor`
+ * - **Description**: Anchor
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AnchorSlice = prismic.SharedSlice<"anchor", AnchorSliceVariation>
+
+/**
  * Primary content in *Image → Primary*
  */
 export interface ImageSliceDefaultPrimary {
@@ -385,6 +427,10 @@ declare module "@prismicio/client" {
 			SettingsDocumentData,
 			SettingsDocumentDataRedirectsItem,
 			AllDocumentTypes,
+			AnchorSlice,
+			AnchorSliceDefaultPrimary,
+			AnchorSliceVariation,
+			AnchorSliceDefault,
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
