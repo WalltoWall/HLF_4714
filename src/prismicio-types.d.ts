@@ -61,7 +61,7 @@ export type NavigationDocument<Lang extends string = string> =
 		Lang
 	>
 
-type PageDocumentDataSlicesSlice = ImageSlice
+type PageDocumentDataSlicesSlice = PageIntroSlice | ImageSlice
 
 /**
  * Content for Page documents
@@ -310,6 +310,61 @@ type ImageSliceVariation = ImageSliceDefault
  */
 export type ImageSlice = prismic.SharedSlice<"image", ImageSliceVariation>
 
+/**
+ * Primary content in *PageIntro → Primary*
+ */
+export interface PageIntroSliceDefaultPrimary {
+	/**
+	 * Heading field in *PageIntro → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_intro.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	heading: prismic.TitleField
+
+	/**
+	 * Navigation field in *PageIntro → Primary*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_intro.primary.navigation
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	navigation: prismic.ContentRelationshipField<"navigation">
+}
+
+/**
+ * Default variation for PageIntro Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageIntroSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Simplify<PageIntroSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *PageIntro*
+ */
+type PageIntroSliceVariation = PageIntroSliceDefault
+
+/**
+ * PageIntro Shared Slice
+ *
+ * - **API ID**: `page_intro`
+ * - **Description**: PageIntro
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageIntroSlice = prismic.SharedSlice<
+	"page_intro",
+	PageIntroSliceVariation
+>
+
 declare module "@prismicio/client" {
 	interface CreateClient {
 		(
@@ -333,7 +388,11 @@ declare module "@prismicio/client" {
 			ImageSlice,
 			ImageSliceDefaultPrimary,
 			ImageSliceVariation,
-			ImageSliceDefault
+			ImageSliceDefault,
+			PageIntroSlice,
+			PageIntroSliceDefaultPrimary,
+			PageIntroSliceVariation,
+			PageIntroSliceDefault
 		}
 	}
 }

@@ -4,12 +4,12 @@
 	export let navigation: prismic.Content.NavigationDocument
 
 	const items = navigation.data.navItems
+		.filter((item) => prismic.isFilled.link(item.link))
 		.map((item) => ({
 			href: prismic.asLink(item.link),
 			label: item.label,
 			attrs: prismic.asLinkAttrs(item.link)
 		}))
-		.filter((item) => item.href)
 </script>
 
 <nav>

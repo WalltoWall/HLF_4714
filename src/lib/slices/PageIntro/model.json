@@ -1,0 +1,38 @@
+{
+  "id": "page_intro",
+  "type": "SharedSlice",
+  "name": "PageIntro",
+  "description": "PageIntro",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        },
+        "navigation": {
+          "type": "Link",
+          "config": {
+            "label": "Navigation",
+            "select": "document",
+            "customtypes": [
+              "navigation"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
