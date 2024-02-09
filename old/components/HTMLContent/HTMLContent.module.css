@@ -1,17 +1,3 @@
-.twoColumnText {
-	h2 {
-		@apply font-serif text-24 leading-1_45 capsize md:text-32 md:leading-1_35 lg:text-40 lg:leading-1_25 my-7 last:mb-0 first:mt-0 text-gray-25;
-	}
-
-	h4 {
-		@apply font-sans text-11 leading-1_25 capsize lg:text-12 my-7 last:mb-0 first:mt-0 tracking-caps uppercase font-bold text-gray-17;
-	}
-
-	p {
-		@apply text-16 leading-1_6 font-sans capsize my-7 last:mb-0 first:mt-0 text-gray-25;
-	}
-}
-
 .textWithImage {
 	p {
 		@apply text-16 leading-1_6 font-sans capsize my-7 last:mb-0 first:mt-0 text-gray-25;

@@ -1,8 +1,13 @@
 import { asText } from "@prismicio/client"
 import { createClient } from "$lib/prismicio"
+import { PRISMIC_ACCESS_TOKEN } from "$env/static/private"
 
 export async function load({ fetch, cookies }) {
-	const client = createClient({ fetch, cookies })
+	const client = createClient({
+		fetch,
+		cookies,
+		accessToken: PRISMIC_ACCESS_TOKEN
+	})
 
 	const page = await client.getByUID("page", "home", {
 		fetchLinks: ["navigation.navItems"]

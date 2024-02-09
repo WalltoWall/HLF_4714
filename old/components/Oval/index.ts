@@ -1,1 +1,0 @@
-export { Oval } from './Oval'

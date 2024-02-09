@@ -62,6 +62,8 @@ export type NavigationDocument<Lang extends string = string> =
 	>
 
 type PageDocumentDataSlicesSlice =
+	| TextWithImageSlice
+	| TwoColumnTextSlice
 	| CenteredTextSlice
 	| CallToActionSlice
 	| AnchorSlice
@@ -523,6 +525,131 @@ export type PageIntroSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *TextWithImage → Primary*
+ */
+export interface TextWithImageSliceDefaultPrimary {
+	/**
+	 * Subheading field in *TextWithImage → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_image.primary.subheading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	subheading: prismic.TitleField
+
+	/**
+	 * Heading field in *TextWithImage → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_image.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	heading: prismic.TitleField
+}
+
+/**
+ * Primary content in *TextWithImage → Items*
+ */
+export interface TextWithImageSliceDefaultItem {
+	/**
+	 * Image field in *TextWithImage → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_image.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>
+
+	/**
+	 * Text field in *TextWithImage → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_image.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField
+
+	/**
+	 * Button Text field in *TextWithImage → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_image.items[].buttonText
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	buttonText: prismic.KeyTextField
+
+	/**
+	 * Button Link field in *TextWithImage → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_with_image.items[].buttonLink
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	buttonLink: prismic.LinkField
+}
+
+/**
+ * Default variation for TextWithImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithImageSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Simplify<TextWithImageSliceDefaultPrimary>,
+	Simplify<TextWithImageSliceDefaultItem>
+>
+
+/**
+ * Slice variation for *TextWithImage*
+ */
+type TextWithImageSliceVariation = TextWithImageSliceDefault
+
+/**
+ * TextWithImage Shared Slice
+ *
+ * - **API ID**: `text_with_image`
+ * - **Description**: TextWithImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextWithImageSlice = prismic.SharedSlice<
+	"text_with_image",
+	TextWithImageSliceVariation
+>
+
+/**
+ * Primary content in *TwoColumnText → Primary*
+ */
+export interface TwoColumnTextSliceDefaultPrimary {
+	/**
+	 * Right Text field in *TwoColumnText → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: two_column_text.primary.rightText
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	rightText: prismic.RichTextField
+
+	/**
+	 * Left Text field in *TwoColumnText → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: two_column_text.primary.leftText
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	leftText: prismic.RichTextField
+}
+
+/**
  * Default variation for TwoColumnText Slice
  *
  * - **API ID**: `default`
@@ -531,7 +658,7 @@ export type PageIntroSlice = prismic.SharedSlice<
  */
 export type TwoColumnTextSliceDefault = prismic.SharedSliceVariation<
 	"default",
-	Record<string, never>,
+	Simplify<TwoColumnTextSliceDefaultPrimary>,
 	never
 >
 
@@ -592,7 +719,13 @@ declare module "@prismicio/client" {
 			PageIntroSliceDefaultPrimary,
 			PageIntroSliceVariation,
 			PageIntroSliceDefault,
+			TextWithImageSlice,
+			TextWithImageSliceDefaultPrimary,
+			TextWithImageSliceDefaultItem,
+			TextWithImageSliceVariation,
+			TextWithImageSliceDefault,
 			TwoColumnTextSlice,
+			TwoColumnTextSliceDefaultPrimary,
 			TwoColumnTextSliceVariation,
 			TwoColumnTextSliceDefault
 		}

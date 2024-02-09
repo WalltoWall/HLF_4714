@@ -5,6 +5,7 @@ import CallToAction from "./CallToAction/index.svelte"
 import CenteredText from "./CenteredText/index.svelte"
 import Image from "./Image/index.svelte"
 import PageIntro from "./PageIntro/index.svelte"
+import TextWithImage from "./TextWithImage/index.svelte"
 import TwoColumnText from "./TwoColumnText/index.svelte"
 
 export const components = {
@@ -13,5 +14,6 @@ export const components = {
 	centered_text: CenteredText,
 	image: Image,
 	page_intro: PageIntro,
+	text_with_image: TextWithImage,
 	two_column_text: TwoColumnText
 }
