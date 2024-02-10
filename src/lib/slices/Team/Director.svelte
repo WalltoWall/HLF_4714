@@ -45,6 +45,8 @@
 				<PrismicImage
 					field={person.headshot}
 					class="object-cover rounded-xl h-[90px] sm:h-28 md:h-32 lg:h-[130px] w-[90px] sm:w-28 md:w-32 lg:w-[130px]"
+					sizes="(min-width: 64rem) 130px, (min-width: 30rem) 7rem, 90px"
+					widths={[90, 130, 260]}
 				/>
 			{/if}
 		</div>

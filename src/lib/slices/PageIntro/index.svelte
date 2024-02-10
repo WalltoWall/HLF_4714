@@ -37,8 +37,7 @@
 		<img
 			class="object-cover w-full h-full"
 			src="/images/hero-bg.jpg"
-			loading="lazy"
-			decoding="async"
+			loading="eager"
 			width={2400}
 			height={624}
 			alt=""
