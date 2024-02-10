@@ -8,6 +8,7 @@
 	import PrismicRichText from "$lib/components/PrismicRichText.svelte"
 	import ButtonLink from "$lib/components/ButtonLink.svelte"
 	import TextWithImageParagraph from "./TextWithImageParagraph.svelte"
+	import TextWithImageOListItem from "./TextWithImageOListItem.svelte"
 	import TextWithImageListItem from "./TextWithImageListItem.svelte"
 	import { expand } from "./expand"
 
@@ -51,7 +52,7 @@
 						field={item.text}
 						components={{
 							paragraph: TextWithImageParagraph,
-							oListItem: TextWithImageListItem,
+							oListItem: TextWithImageOListItem,
 							listItem: TextWithImageListItem
 						}}
 					/>
