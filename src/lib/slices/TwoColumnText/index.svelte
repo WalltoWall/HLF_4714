@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Bounded from "$lib/components/Bounded.svelte"
 	import type { Content } from "@prismicio/client"
-	import Oval from "./Oval.svelte"
+	import Oval from "$lib/components/Oval.svelte"
 	import clsx from "clsx"
 	import * as prismic from "@prismicio/client"
 	import PrismicRichText from "$lib/components/PrismicRichText.svelte"

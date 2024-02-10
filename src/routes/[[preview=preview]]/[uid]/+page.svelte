@@ -2,10 +2,12 @@
 	import { SliceZone } from "@prismicio/svelte"
 	import * as prismic from "@prismicio/client"
 	import { components } from "$lib/slices"
+	import type { SliceContext } from "$lib/context.js"
 
 	export let data
 
 	const page = data.page.data
+	const context: SliceContext = { people: data.people }
 </script>
 
 <svelte:head>
@@ -22,4 +24,4 @@
 	{/if}
 </svelte:head>
 
-<SliceZone slices={data.page.data.slices} {components} />
+<SliceZone slices={page.slices} {context} {components} />

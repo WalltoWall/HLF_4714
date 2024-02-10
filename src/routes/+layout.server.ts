@@ -1,18 +1,10 @@
-import { PRISMIC_ACCESS_TOKEN } from "$env/static/private"
-import { createClient } from "$lib/prismicio"
+import { APIClient } from "$lib/api.js"
 
 export const prerender = "auto"
 
 export async function load({ fetch, cookies }) {
-	const client = createClient({
-		fetch,
-		cookies,
-		accessToken: PRISMIC_ACCESS_TOKEN
-	})
-
-	const settings = await client.getSingle("settings", {
-		fetchLinks: ["navigation.navItems"]
-	})
+	const client = new APIClient({ fetch, cookies })
+	const settings = await client.getSettings()
 
 	return { settings }
 }

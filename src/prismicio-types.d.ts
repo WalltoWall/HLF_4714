@@ -62,6 +62,7 @@ export type NavigationDocument<Lang extends string = string> =
 	>
 
 type PageDocumentDataSlicesSlice =
+	| TeamSlice
 	| TextWithImageSlice
 	| TwoColumnTextSlice
 	| CenteredTextSlice
@@ -150,6 +151,101 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>
+
+/**
+ * Content for Person documents
+ */
+interface PersonDocumentData {
+	/**
+	 * First Name field in *Person*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: person.firstName
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	firstName: prismic.TitleField
+
+	/**
+	 * Last Name field in *Person*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: person.lastName
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	lastName: prismic.TitleField
+
+	/**
+	 * Title field in *Person*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: person.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField
+
+	/**
+	 * Position Type field in *Person*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: Director
+	 * - **API ID Path**: person.positionType
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	positionType: prismic.SelectField<"Director" | "Staff Team", "filled">
+
+	/**
+	 * Bio field in *Person*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: person.bio
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	bio: prismic.RichTextField
+
+	/**
+	 * Bio Link field in *Person*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: person.bioLink
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	bioLink: prismic.LinkField
+
+	/**
+	 * Headshot field in *Person*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: person.headshot
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	headshot: prismic.ImageField<never>
+}
+
+/**
+ * Person document from Prismic
+ *
+ * - **API ID**: `person`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PersonDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithUID<Simplify<PersonDocumentData>, "person", Lang>
 
 /**
  * Item in *Settings → Redirects*
@@ -273,6 +369,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
 	| NavigationDocument
 	| PageDocument
+	| PersonDocument
 	| SettingsDocument
 
 /**
@@ -525,6 +622,68 @@ export type PageIntroSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *Team → Primary*
+ */
+export interface TeamSliceDefaultPrimary {
+	/**
+	 * Subheading field in *Team → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team.primary.subheading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	subheading: prismic.TitleField
+
+	/**
+	 * Directors Heading field in *Team → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team.primary.directorsHeading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	directorsHeading: prismic.TitleField
+
+	/**
+	 * Staff Team Heading field in *Team → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: team.primary.staffTeamHeading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	staffTeamHeading: prismic.TitleField
+}
+
+/**
+ * Default variation for Team Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamSliceDefault = prismic.SharedSliceVariation<
+	"default",
+	Simplify<TeamSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *Team*
+ */
+type TeamSliceVariation = TeamSliceDefault
+
+/**
+ * Team Shared Slice
+ *
+ * - **API ID**: `team`
+ * - **Description**: Team
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeamSlice = prismic.SharedSlice<"team", TeamSliceVariation>
+
+/**
  * Primary content in *TextWithImage → Primary*
  */
 export interface TextWithImageSliceDefaultPrimary {
@@ -695,6 +854,8 @@ declare module "@prismicio/client" {
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			PersonDocument,
+			PersonDocumentData,
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataRedirectsItem,
@@ -719,6 +880,10 @@ declare module "@prismicio/client" {
 			PageIntroSliceDefaultPrimary,
 			PageIntroSliceVariation,
 			PageIntroSliceDefault,
+			TeamSlice,
+			TeamSliceDefaultPrimary,
+			TeamSliceVariation,
+			TeamSliceDefault,
 			TextWithImageSlice,
 			TextWithImageSliceDefaultPrimary,
 			TextWithImageSliceDefaultItem,

@@ -15,7 +15,7 @@
 <nav>
 	<ul class="items-center gap-y-5 gap-x-2 flex sm:gap-x-4 md:gap-x-[50px]">
 		<li>
-			<a href="/" class="block">
+			<a href="/" class="block outline-white">
 				<span class="sr-only">Navigate to home</span>
 				<img
 					loading="lazy"
@@ -33,7 +33,9 @@
 			<li
 				class="font-sans text-10 leading-1_25 capsize sm:text-11 lg:text-12 font-bold uppercase tracking-caps text-white"
 			>
-				<a href={item.href} {...item.attrs}>{item.label}</a>
+				<a class="outline-white" href={item.href} {...item.attrs}>
+					{item.label}
+				</a>
 			</li>
 		{/each}
 	</ul>

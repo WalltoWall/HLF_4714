@@ -1,0 +1,76 @@
+{
+	"format": "custom",
+	"id": "person",
+	"label": "Person",
+	"repeatable": true,
+	"status": true,
+	"json": {
+		"Main": {
+			"firstName": {
+				"type": "StructuredText",
+				"config": {
+					"label": "First Name",
+					"placeholder": "",
+					"allowTargetBlank": false,
+					"single": "heading1"
+				}
+			},
+			"lastName": {
+				"type": "StructuredText",
+				"config": {
+					"label": "Last Name",
+					"placeholder": "",
+					"allowTargetBlank": false,
+					"single": "heading1"
+				}
+			},
+			"uid": {
+				"config": {
+					"label": "UID"
+				},
+				"type": "UID"
+			},
+			"title": {
+				"type": "Text",
+				"config": {
+					"label": "Title",
+					"placeholder": ""
+				}
+			},
+			"positionType": {
+				"type": "Select",
+				"config": {
+					"label": "Position Type",
+					"placeholder": "",
+					"options": ["Director", "Staff Team"],
+					"default_value": "Director"
+				}
+			},
+			"bio": {
+				"type": "StructuredText",
+				"config": {
+					"label": "Bio",
+					"placeholder": "",
+					"allowTargetBlank": true,
+					"multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+				}
+			},
+			"bioLink": {
+				"type": "Link",
+				"config": {
+					"label": "Bio Link",
+					"placeholder": "",
+					"select": null
+				}
+			},
+			"headshot": {
+				"type": "Image",
+				"config": {
+					"label": "Headshot",
+					"constraint": {},
+					"thumbnails": []
+				}
+			}
+		}
+	}
+}

@@ -40,11 +40,12 @@
 			{/if}
 
 			<p class="text-center text-white text-11 font-sans leading-1_45 capsize">
-				{copyright} <br />
+				{copyright}
+				<br />
 				Website designed & developed by
 				<a
 					href="https://walltowall.com"
-					class="underline"
+					class="underline outline-white"
 					target="_blank"
 					rel="noreferrer"
 				>

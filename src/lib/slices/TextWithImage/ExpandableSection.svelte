@@ -15,6 +15,7 @@
 
 	const length = prismic.asText(item.text).length
 	const isExpandable = length >= 420
+	const duration = Math.min(200, length - 520)
 
 	const {
 		elements: { content, root, trigger },
@@ -42,8 +43,8 @@
 			use:melt={$content}
 		>
 			<div
-				use:expand={{ open: $open, duration: 200, minHeight: 160 }}
-				style:height={isExpandable ? "160px" : undefined}
+				use:expand={{ open: $open, duration, minHeight: 160 }}
+				class={clsx(isExpandable && "h-40")}
 			>
 				{#if prismic.isFilled.richText(item.text)}
 					<PrismicRichText
@@ -80,7 +81,10 @@
 
 			{#if isExpandable}
 				<button
-					class={clsx(typo.sansCaps, "text-green-24 py-px", "select-none")}
+					class={clsx(
+						typo.sansCaps,
+						"text-green-24 py-px select-none outline-green-24"
+					)}
 					use:melt={$trigger}
 				>
 					{$open ? "Read Less" : "Read More"}

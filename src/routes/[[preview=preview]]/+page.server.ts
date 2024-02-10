@@ -1,20 +1,20 @@
 import { asText } from "@prismicio/client"
-import { createClient } from "$lib/prismicio"
-import { PRISMIC_ACCESS_TOKEN } from "$env/static/private"
+import { APIClient } from "$lib/api.js"
 
 export async function load({ fetch, cookies }) {
-	const client = createClient({
+	const client = new APIClient({
 		fetch,
-		cookies,
-		accessToken: PRISMIC_ACCESS_TOKEN
+		cookies
 	})
 
-	const page = await client.getByUID("page", "home", {
-		fetchLinks: ["navigation.navItems"]
-	})
+	const [page, people] = await Promise.all([
+		client.getPage("home"),
+		client.getAllPeople()
+	])
 
 	return {
 		page,
+		people,
 		title: asText(page.data.title),
 		meta_description: page.data.meta_description,
 		meta_title: page.data.meta_title,
