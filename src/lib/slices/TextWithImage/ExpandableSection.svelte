@@ -40,7 +40,7 @@
 
 	<div class="md:col-span-4 md:pl-20 space-y-7" use:melt={$root}>
 		<div
-			class={clsx("relative overflow-hidden pt-0.5", $open && "pb-1")}
+			class={clsx("relative overflow-hidden pt-0.5", $open && "pb-1.5")}
 			use:melt={$content}
 		>
 			<div

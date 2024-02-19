@@ -5,9 +5,11 @@
 	import { PrismicPreview } from "@prismicio/svelte/kit"
 	import { repositoryName } from "$lib/prismicio"
 	import GradientContainer from "$lib/components/GradientContainer.svelte"
+	import Analytics from "$lib/components/Analytics.svelte"
 	import Header from "$lib/components/Header.svelte"
 	import Footer from "$lib/components/Footer.svelte"
 	import * as prismic from "@prismicio/client"
+	import { dev } from "$app/environment"
 
 	export let data
 
@@ -22,12 +24,13 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<div class="text-slate-800">
-	<GradientContainer>
-		<Header />
-		<main id="main"><slot /></main>
-		<Footer settings={data.settings} />
-	</GradientContainer>
-</div>
+<GradientContainer>
+	<Header />
+	<main id="main"><slot /></main>
+	<Footer settings={data.settings} />
+</GradientContainer>
 
-<PrismicPreview {repositoryName} />
+{#if !dev}
+	<Analytics />
+	<PrismicPreview {repositoryName} />
+{/if}
