@@ -40,11 +40,13 @@
 	>
 		<span class="sr-only">Open {name}'s biography.</span>
 
-		<div class="flex-shrink-0 rounded-xl bg-gray-87 overflow-hidden">
+		<div
+			class="flex-shrink-0 rounded-xl bg-gray-87 overflow-hidden h-[90px] sm:h-28 md:h-32 lg:h-[130px] w-[90px] sm:w-28 md:w-32 lg:w-[130px]"
+		>
 			{#if isFilled.image(person.headshot)}
 				<PrismicImage
 					field={person.headshot}
-					class="object-cover rounded-xl h-[90px] sm:h-28 md:h-32 lg:h-[130px] w-[90px] sm:w-28 md:w-32 lg:w-[130px]"
+					class="object-cover rounded-xl w-full h-full"
 					sizes="(min-width: 64rem) 130px, (min-width: 30rem) 7rem, 90px"
 					widths={[90, 130, 260]}
 				/>
@@ -54,6 +56,12 @@
 		<p class={clsx(typo.personName, "text-center text-green-24 pb-1 mt-4")}>
 			{name}
 		</p>
+
+		{#if person.title}
+			<p class={clsx(typo.personTitle, "text-gray-17 mt-3 text-balance")}>
+				{person.title}
+			</p>
+		{/if}
 	</button>
 </li>
 
@@ -140,7 +148,7 @@
 					<button
 						type="button"
 						use:melt={$close}
-						class="flex items-center gap-x-2"
+						class="flex items-center gap-x-2 outline-green-24"
 					>
 						<div class={clsx(typo.sansCaps, "text-green-24")}>Close</div>
 

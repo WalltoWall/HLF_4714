@@ -3,9 +3,8 @@
 	import type { Content } from "@prismicio/client"
 	import Oval from "$lib/components/Oval.svelte"
 	import * as prismic from "@prismicio/client"
-	import Directors from "./Directors.svelte"
+	import People from "./People.svelte"
 	import type { SliceContext } from "$lib/context"
-	import StaffTeam from "./StaffTeam.svelte"
 
 	export let slice: Content.TeamSlice
 	export let context: SliceContext
@@ -33,7 +32,7 @@
 	/>
 
 	<div class="space-y-9 md:space-y-16 isolate">
-		<Directors
+		<People
 			people={directors}
 			heading={prismic.asText(slice.primary.directorsHeading)}
 			subheading={prismic.asText(slice.primary.subheading)}
@@ -41,7 +40,7 @@
 
 		<hr class="w-full border-t border-gray-87" />
 
-		<StaffTeam
+		<People
 			people={staffTeam}
 			heading={prismic.asText(slice.primary.staffTeamHeading)}
 		/>

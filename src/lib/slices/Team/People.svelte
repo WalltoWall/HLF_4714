@@ -2,7 +2,7 @@
 	import clsx from "clsx"
 	import * as typo from "$lib/typography"
 	import type { Content } from "@prismicio/client"
-	import Director from "./Director.svelte"
+	import Person from "./Person.svelte"
 
 	export let subheading: string = ""
 	export let heading: string = ""
@@ -25,9 +25,9 @@
 		{/if}
 	</div>
 
-	<ul class={clsx("flex justify-center flex-wrap", "gap-5 md:gap-x-6")}>
+	<ul class={clsx("flex justify-center flex-wrap", "gap-5 md:gap-6")}>
 		{#each people as person}
-			<Director person={person.data} />
+			<Person person={person.data} />
 		{/each}
 	</ul>
 </div>
