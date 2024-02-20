@@ -34,7 +34,12 @@
 		class="max-w-[150px] md:max-w-[175px] w-full md:col-span-2 md:justify-self-center flex-shrink-0"
 	>
 		{#if prismic.isFilled.image(item.image)}
-			<PrismicImage field={item.image} class="object-contain" sizes="175px" />
+			<PrismicImage
+				field={item.image}
+				class="object-contain"
+				sizes="175px"
+				loading="lazy"
+			/>
 		{/if}
 	</div>
 

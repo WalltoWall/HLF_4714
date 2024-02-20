@@ -49,6 +49,7 @@
 					class="object-cover rounded-xl w-full h-full"
 					sizes="(min-width: 64rem) 130px, (min-width: 30rem) 7rem, 90px"
 					widths={[90, 130, 260]}
+					loading="lazy"
 				/>
 			{/if}
 		</div>
@@ -104,6 +105,9 @@
 								<PrismicImage
 									field={person.headshot}
 									class="object-cover rounded-xl"
+									loading="lazy"
+									sizes="(min-width: 64rem) 130px, (min-width: 30rem) 7rem, 90px"
+									widths={[90, 130, 260]}
 								/>
 							{/if}
 						</div>

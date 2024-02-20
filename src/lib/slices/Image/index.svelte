@@ -16,6 +16,7 @@
 			sizes="(min-width: 56rem) 56rem, 100vw"
 			class="w-full h-[38px] sm:h-[50px] md:h-[60px] lg:h-[75px] object-cover"
 			fallbackAlt=""
+			loading="lazy"
 		/>
 	{/if}
 </section>
