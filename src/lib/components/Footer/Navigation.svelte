@@ -13,7 +13,9 @@
 </script>
 
 <nav>
-	<ul class="items-center gap-y-5 gap-x-2 flex sm:gap-x-4 md:gap-x-[50px]">
+	<ul
+		class="items-center gap-y-5 gap-x-4 flex sm:gap-x-4 md:gap-x-[50px] flex-wrap"
+	>
 		<li>
 			<a href="/" class="block outline-white">
 				<span class="sr-only">Navigate to home</span>

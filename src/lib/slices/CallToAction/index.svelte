@@ -6,6 +6,8 @@
 	import * as typo from "$lib/typography"
 	import CallToActionParagraph from "./CallToActionParagraph.svelte"
 	import CallToActionHeading from "./CallToActionHeading.svelte"
+	import CallToActionListItem from "./CallToActionListItem.svelte"
+	import CallToActionOListItem from "./CallToActionOListItem.svelte"
 
 	export let slice: Content.CallToActionSlice
 
@@ -35,7 +37,9 @@
 					field={slice.primary.text}
 					components={{
 						paragraph: CallToActionParagraph,
-						heading5: CallToActionHeading
+						heading5: CallToActionHeading,
+						oListItem: CallToActionOListItem,
+						listItem: CallToActionListItem
 					}}
 				/>
 			</div>

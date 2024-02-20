@@ -1,5 +1,6 @@
 import { asText } from "@prismicio/client"
 import { APIClient } from "$lib/api"
+import { error } from "@sveltejs/kit"
 
 export async function load({ params, fetch, cookies }) {
 	const client = new APIClient({
@@ -8,9 +9,13 @@ export async function load({ params, fetch, cookies }) {
 	})
 
 	const [page, people] = await Promise.all([
-		client.getPage(params.uid),
+		client.getPage(params.uid).catch(() => null),
 		client.getAllPeople()
 	])
+
+	if (!page) {
+		error(404, "Not found.")
+	}
 
 	return {
 		page,

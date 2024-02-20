@@ -60,17 +60,20 @@
 		<nav>
 			<ul class="flex flex-wrap gap-y-[30px] gap-x-4 md:gap-x-[42px]">
 				{#each items as item}
-					<li class="flex items-center gap-2 group">
+					<li>
 						<a
-							class={clsx("outline-white", typo.sansCaps)}
+							class={clsx(
+								"outline-white flex items-center gap-2 group",
+								typo.sansCaps
+							)}
 							href={item.href}
 							{...item.attrs}
 						>
-							{item.label}
+							<span>{item.label}</span>
+							<ChevronRight
+								class="w-2 transform transition ease-out group-hover:translate-x-1 group-focus-within:translate-x-1"
+							/>
 						</a>
-						<ChevronRight
-							class="w-2 transform transition ease-out group-hover:translate-x-1 group-focus-within:translate-x-1"
-						/>
 					</li>
 				{/each}
 			</ul>
