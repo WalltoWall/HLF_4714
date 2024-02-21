@@ -18,7 +18,8 @@
 		"@fontsource/pt-serif": "^5.0.19",
 		"@prismicio/client": "^7.3.1",
 		"@prismicio/svelte": "^1.0.3",
-		"clsx": "^2.1.0"
+		"clsx": "^2.1.0",
+		"remeda": "^1.43.0"
 	},
 	"devDependencies": {
 		"@asyarb/tailwind-capsize": "^1.2.1",

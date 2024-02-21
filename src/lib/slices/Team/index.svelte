@@ -5,15 +5,21 @@
 	import * as prismic from "@prismicio/client"
 	import People from "./People.svelte"
 	import type { SliceContext } from "$lib/context"
+	import * as R from "remeda"
 
 	export let slice: Content.TeamSlice
 	export let context: SliceContext
 
-	const directors = context.people.filter(
-		(p) => p.data.positionType === "Director"
+	const directors = R.pipe(
+		context.people,
+		R.filter((p) => p.data.positionType === "Director"),
+		R.sortBy((p) => prismic.asText(p.data.lastName))
 	)
-	const staffTeam = context.people.filter(
-		(p) => p.data.positionType === "Staff Team"
+
+	const staffTeam = R.pipe(
+		context.people,
+		R.filter((p) => p.data.positionType === "Staff Team"),
+		R.sortBy((p) => prismic.asText(p.data.lastName))
 	)
 </script>
 
