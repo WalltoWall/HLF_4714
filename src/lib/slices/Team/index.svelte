@@ -49,6 +49,7 @@
 		<People
 			people={staffTeam}
 			heading={prismic.asText(slice.primary.staffTeamHeading)}
+			width="narrow"
 		/>
 	</div>
 </Bounded>

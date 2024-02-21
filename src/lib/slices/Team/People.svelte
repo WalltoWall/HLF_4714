@@ -8,6 +8,8 @@
 	export let heading: string = ""
 
 	export let people: Content.PersonDocument[] = []
+
+	export let width: "narrow" | "default" = "default"
 </script>
 
 <div class="space-y-8 md:space-y-12 lg:space-y-16">
@@ -26,7 +28,8 @@
 	</div>
 
 	<ul
-		class="flex justify-center flex-wrap max-w-2xl w-full mx-auto gap-x-5 gap-y-7 md:gap-x-6 md:gap-y-10"
+		class="flex justify-center flex-wrap w-full mx-auto gap-x-5 gap-y-7 md:gap-x-6 md:gap-y-10"
+		class:max-w-2xl={width === "narrow"}
 	>
 		{#each people as person}
 			<Person person={person.data} />
