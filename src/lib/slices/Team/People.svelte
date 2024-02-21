@@ -25,7 +25,9 @@
 		{/if}
 	</div>
 
-	<ul class={clsx("flex justify-center flex-wrap", "gap-5 md:gap-6")}>
+	<ul
+		class="flex justify-center flex-wrap max-w-2xl w-full mx-auto gap-x-5 gap-y-7 md:gap-x-6 md:gap-y-10"
+	>
 		{#each people as person}
 			<Person person={person.data} />
 		{/each}
